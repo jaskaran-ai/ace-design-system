@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ACE Haematology — Design System (Theme 6: Midnight Indigo & Burnt Orange)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="sticky top-0 z-40 border-b border-[#C8C8E0]/70 bg-[#F7F7FC]/80 backdrop-blur-xl">
+    <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="h-[68px] flex items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <a href="../index.html" class="flex items-center gap-1.5 text-[13px] font-medium text-[#3E3E5E] hover:text-[#12122E] transition">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Themes
+          </a>
+          <div class="w-px h-6 bg-[#C8C8E0]"></div>
+          <div class="w-9 h-9 rounded-[10px] bg-[#312E81] flex items-center justify-center text-white font-extrabold text-[18px] shadow-[0_2px_8px_rgba(49,46,129,0.3)]">A</div>
+          <div>
+            <div class="font-semibold tracking-tight leading-none text-[#12122E]">ACE Haematology</div>
+            <div class="text-[11px] text-[#5E5E7E] font-medium -mt-0.5">Design System v1.0 — Theme 6: Midnight Indigo</div>
+          </div>
+        </div>
+        <div class="hidden sm:flex items-center gap-3">
+          <span class="code">Inter</span>
+          <span class="code">#312E81</span>
+          <a href="#components" class="text-[13px] font-medium text-[#26245E] hover:underline">Components →</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="lg:flex lg:gap-10 py-6 lg:py-10">
+      <aside class="hidden lg:block w-[240px] shrink-0">
+        <div class="sticky top-[92px]">
+          <nav class="space-y-1">
+            <a href="#overview" data-nav="overview" class="nav-link active">Overview</a>
+            <a href="#colors" data-nav="colors" class="nav-link">Color Palette</a>
+            <a href="#typography" data-nav="typography" class="nav-link">Typography</a>
+            <a href="#spacing" data-nav="spacing" class="nav-link">Spacing</a>
+            <a href="#components" data-nav="components" class="nav-link">Components</a>
+            <a href="#layouts" data-nav="layouts" class="nav-link">Sample Layouts</a>
+            <a href="#voice" data-nav="voice" class="nav-link">Voice & Tone</a>
+          </nav>
+          <div class="mt-8 p-4 card">
+            <div class="text-[12px] font-semibold text-[#26245E] uppercase tracking-wide">Status</div>
+            <div class="mt-1 text-[13px] text-[#3E3E5E] leading-snug">Reviewed by UK consultants. For clinical education use.</div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="min-w-0 flex-1 relative">
+        <div class="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+          <div class="absolute -top-24 -right-24 w-[420px] h-[420px] rounded-full bg-[#818CF8]/20 blur-[80px]"></div>
+          <div class="absolute top-[600px] -left-32 w-[360px] h-[360px] rounded-full bg-[#312E81]/15 blur-[80px]"></div>
+        </div>
+
+        <!-- Mobile tabs -->
+        <div class="lg:hidden -mx-4 px-4 mb-6">
+          <div class="mobile-tabs flex gap-2 overflow-x-auto">
+            <button data-nav="overview" class="nav-link active">Overview</button>
+            <button data-nav="colors" class="nav-link">Colors</button>
+            <button data-nav="typography" class="nav-link">Type</button>
+            <button data-nav="spacing" class="nav-link">Spacing</button>
+            <button data-nav="components" class="nav-link">Components</button>
+            <button data-nav="layouts" class="nav-link">Layouts</button>
+            <button data-nav="voice" class="nav-link">Voice</button>
+          </div>
+        </div>
+
+        <!-- OVERVIEW -->
+        <section id="overview" class="scroll-mt-24 mb-14">
+          <div class="card p-6 sm:p-10">
+            <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8">
+              <div class="max-w-[640px]">
+                <div class="inline-flex items-center gap-2 mb-4">
+                  <span class="tag">Medical Education</span>
+                  <span class="tag" style="background:#E8E8F5; color:#1E2A5F; border-color:#C8C8E8">UK Consultants</span>
+                </div>
+                <h1 class="text-[40px] sm:text-[56px] font-extrabold tracking-[-0.02em] leading-[1.05] text-[#0C0C24]">Design System</h1>
+                <p class="mt-4 text-[17px] leading-7 text-[#3E3E5E]">ACE Haematology is a medical education platform for haematology. Every module is evidence-based, concise, and reviewed by practising UK consultants for trainees, SAS doctors, and consultants.</p>
+                <div class="mt-6 flex flex-wrap gap-3">
+                  <button class="btn-primary">Explore guidelines</button>
+                  <button class="btn-secondary">View library</button>
+                </div>
+              </div>
+              <div class="lg:w-[320px] w-full">
+                <div class="card p-6 bg-[#F7F7FC]">
+                  <div class="text-[12px] font-semibold uppercase tracking-wide text-[#5E5E7E] mb-4">Logo Concept</div>
+                  <div class="flex items-center gap-4">
+                    <div class="w-[56px] h-[56px] rounded-[12px] bg-[#312E81] flex items-center justify-center text-white font-extrabold text-[28px] shadow-[inset_0_1px_0_rgba(255,255,255,0.2)]">A</div>
+                    <div>
+                      <div class="text-[22px] font-bold tracking-tight text-[#12122E] leading-none">ACE</div>
+                      <div class="text-[22px] font-semibold tracking-tight text-[#12122E] -mt-1">Haematology</div>
+                    </div>
+                  </div>
+                  <div class="mt-5 space-y-2 text-[13px]">
+                    <div class="flex justify-between"><span class="text-[#5E5E7E]">Square</span><span class="mono font-medium">#312E81</span></div>
+                    <div class="flex justify-between"><span class="text-[#5E5E7E]">Mark</span><span class="mono font-medium">#FFFFFF</span></div>
+                    <div class="flex justify-between"><span class="text-[#5E5E7E]">Wordmark</span><span class="mono font-medium">#12122E</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="grid sm:grid-cols-3 gap-4 mt-10 pt-8 border-t border-[#E2E2F0]">
+              <div><div class="text-[13px] font-semibold text-[#0C0C24]">Clinical</div><p class="text-[14px] text-[#4E4E6E] mt-1">Evidence-based, NICE & BSH aligned.</p></div>
+              <div><div class="text-[13px] font-semibold text-[#0C0C24]">Clear</div><p class="text-[14px] text-[#4E4E6E] mt-1">Plain English, structured format.</p></div>
+              <div><div class="text-[13px] font-semibold text-[#0C0C24]">Supportive</div><p class="text-[14px] text-[#4E4E6E] mt-1">Designed for busy clinicians.</p></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- COLORS -->
+        <section id="colors" class="scroll-mt-24 mb-14">
+          <div class="mb-6">
+            <h2 class="text-[28px] sm:text-[36px] font-bold tracking-tight text-[#0C0C24]">Color Palette</h2>
+            <p class="text-[#4E4E6E] mt-1 max-w-[720px]">Warm neutrals create a calm, clinical feel. Teal anchors trust and focus. Mint supports data and success states.</p>
+          </div>
+
+          <div class="card p-6 sm:p-8 mb-6">
+            <h3 class="font-semibold text-[#12122E] mb-1">Primary / Teal</h3>
+            <p class="text-sm text-[#4E4E6E] mb-5">Core brand, primary actions, links, focus.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div class="swatch"><div class="h-[88px]" style="background:#312E81"></div><div class="p-4"><div class="flex justify-between items-center"><span class="mono text-[15px] font-semibold">#312E81</span><button data-hex="#312E81" class="copy-btn text-[11px] px-2 py-1 rounded-md bg-[#F0F0F8] hover:bg-[#E2E2F0] text-[#3E3E5E]">Copy</button></div><div class="mt-1 text-[12px] text-[#5E5E7E]">Teal 600</div><div class="mt-3 text-[13px] text-[#3E3E5E]">Primary buttons, links, active nav</div></div></div>
+              <div class="swatch"><div class="h-[88px]" style="background:#26245E"></div><div class="p-4"><div class="flex justify-between items-center"><span class="mono text-[15px] font-semibold">#26245E</span><button data-hex="#26245E" class="copy-btn text-[11px] px-2 py-1 rounded-md bg-[#F0F0F8] hover:bg-[#E2E2F0] text-[#3E3E5E]">Copy</button></div><div class="mt-1 text-[12px] text-[#5E5E7E]">Teal 700</div><div class="mt-3 text-[13px] text-[#3E3E5E]">Hover states, emphasis</div></div></div>
+              <div class="swatch"><div class="h-[88px]" style="background:#1A1860"></div><div class="p-4"><div class="flex justify-between items-center"><span class="mono text-[15px] font-semibold text-white mix-blend-difference">#1A1860</span><button data-hex="#1A1860" class="copy-btn text-[11px] px-2 py-1 rounded-md bg-[#F0F0F8] hover:bg-[#E2E2F0] text-[#3E3E5E]">Copy</button></div><div class="mt-1 text-[12px] text-[#5E5E7E]">Teal 900</div><div class="mt-3 text-[13px] text-[#3E3E5E]">Pressed, footer, deep backgrounds</div></div></div>
+            </div>
+          </div>
+
+          <div class="card p-6 sm:p-8 mb-6">
+            <h3 class="font-semibold text-[#12122E] mb-1">Secondary / Mint</h3>
+            <p class="text-sm text-[#4E4E6E] mb-5">Support, success, data visualization.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div class="swatch"><div class="h-[88px]" style="background:#6366F1"></div><div class="p-4"><div class="flex justify-between"><span class="mono font-semibold">#6366F1</span><button data-hex="#6366F1" class="copy-btn text-[11px] px-2 py-1 rounded bg-[#F0F0F8]">Copy</button></div><div class="text-[12px] text-[#5E5E7E] mt-1">Mint 500</div><div class="text-[13px] text-[#3E3E5E] mt-3">Secondary actions, illustrations</div></div></div>
+              <div class="swatch"><div class="h-[88px]" style="background:#818CF8"></div><div class="p-4"><div class="flex justify-between"><span class="mono font-semibold">#818CF8</span><button data-hex="#818CF8" class="copy-btn text-[11px] px-2 py-1 rounded bg-[#F0F0F8]">Copy</button></div><div class="text-[12px] text-[#5E5E7E] mt-1">Mint 300</div><div class="text-[13px] text-[#3E3E5E] mt-3">Highlights, charts, success</div></div></div>
+              <div class="swatch"><div class="h-[88px]" style="background:#4F46E5"></div><div class="p-4"><div class="flex justify-between"><span class="mono font-semibold">#4F46E5</span><button data-hex="#4F46E5" class="copy-btn text-[11px] px-2 py-1 rounded bg-[#F0F0F8]">Copy</button></div><div class="text-[12px] text-[#5E5E7E] mt-1">Deep Mint</div><div class="text-[13px] text-[#3E3E5E] mt-3">Data viz, confirmation</div></div></div>
+            </div>
+          </div>
+
+          <div class="grid lg:grid-cols-2 gap-6">
+            <div class="card p-6 sm:p-8">
+              <h3 class="font-semibold mb-1">Neutrals / Warm</h3>
+              <p class="text-sm text-[#4E4E6E] mb-5">Backgrounds, borders, subtle surfaces.</p>
+              <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                <div class="swatch"><div class="h-14" style="background:#F0F0F8"></div><div class="p-2.5"><div class="mono text-[12px]">#F0F0F8</div><div class="text-[11px] text-[#5E5E7E]">App bg</div></div></div>
+                <div class="swatch"><div class="h-14" style="background:#F7F7FC"></div><div class="p-2.5"><div class="mono text-[12px]">#F7F7FC</div><div class="text-[11px] text-[#5E5E7E]">Page alt</div></div></div>
+                <div class="swatch"><div class="h-14" style="background:#F5F5FA"></div><div class="p-2.5"><div class="mono text-[12px]">#F5F5FA</div><div class="text-[11px] text-[#5E5E7E]">Panel</div></div></div>
+                <div class="swatch"><div class="h-14" style="background:#E2E2F0"></div><div class="p-2.5"><div class="mono text-[12px]">#E2E2F0</div><div class="text-[11px] text-[#5E5E7E]">Divider</div></div></div>
+                <div class="swatch"><div class="h-14" style="background:#DEDEF0"></div><div class="p-2.5"><div class="mono text-[12px]">#DEDEF0</div><div class="text-[11px] text-[#5E5E7E]">Border</div></div></div>
+                <div class="swatch"><div class="h-14" style="background:#C8C8E0"></div><div class="p-2.5"><div class="mono text-[12px]">#C8C8E0</div><div class="text-[11px] text-[#5E5E7E]">Strong border</div></div></div>
+              </div>
+            </div>
+            <div class="card p-6 sm:p-8">
+              <h3 class="font-semibold mb-1">Text</h3>
+              <p class="text-sm text-[#4E4E6E] mb-5">Hierarchy for clinical readability.</p>
+              <div class="space-y-3">
+                <div class="flex items-center gap-3"><div class="w-10 h-10 rounded-lg" style="background:#12122E"></div><div><div class="mono text-[13px]">#12122E</div><div class="text-[12px] text-[#4E4E6E]">Primary text</div></div></div>
+                <div class="flex items-center gap-3"><div class="w-10 h-10 rounded-lg" style="background:#0C0C24"></div><div><div class="mono text-[13px]">#0C0C24</div><div class="text-[12px] text-[#4E4E6E]">Headings</div></div></div>
+                <div class="flex items-center gap-3"><div class="w-10 h-10 rounded-lg" style="background:#3E3E5E"></div><div><div class="mono text-[13px]">#3E3E5E</div><div class="text-[12px] text-[#4E4E6E]">Secondary</div></div></div>
+                <div class="flex items-center gap-3"><div class="w-10 h-10 rounded-lg" style="background:#4E4E6E"></div><div><div class="mono text-[13px]">#4E4E6E</div><div class="text-[12px] text-[#4E4E6E]">Tertiary</div></div></div>
+                <div class="flex items-center gap-3"><div class="w-10 h-10 rounded-lg" style="background:#5E5E7E"></div><div><div class="mono text-[13px]">#5E5E7E</div><div class="text-[12px] text-[#4E4E6E]">Muted</div></div></div>
+                <div class="flex items-center gap-3"><div class="w-10 h-10 rounded-lg" style="background:#8A8AAB"></div><div><div class="mono text-[13px]">#8A8AAB</div><div class="text-[12px] text-[#4E4E6E]">Disabled</div></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card p-6 sm:p-8 mt-6">
+            <h3 class="font-semibold mb-1">Accents</h3>
+            <p class="text-sm text-[#4E4E6E] mb-5">Use sparingly for status and categorization.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div class="swatch"><div class="h-[72px]" style="background:#1E2A5F"></div><div class="p-3"><div class="flex justify-between"><span class="mono text-[14px]">#1E2A5F</span><button data-hex="#1E2A5F" class="copy-btn text-[11px] px-2 py-0.5 rounded bg-[#F0F0F8]">Copy</button></div><div class="text-[12px] text-[#4E4E6E] mt-1">Navy – Info, links</div></div></div>
+              <div class="swatch"><div class="h-[72px]" style="background:#5B2E8A"></div><div class="p-3"><div class="flex justify-between"><span class="mono text-[14px]">#5B2E8A</span><button data-hex="#5B2E8A" class="copy-btn text-[11px] px-2 py-0.5 rounded bg-[#F0F0F8]">Copy</button></div><div class="text-[12px] text-[#4E4E6E] mt-1">Plum – Error, critical</div></div></div>
+              <div class="swatch"><div class="h-[72px]" style="background:#C2410C"></div><div class="p-3"><div class="flex justify-between"><span class="mono text-[14px]">#C2410C</span><button data-hex="#C2410C" class="copy-btn text-[11px] px-2 py-0.5 rounded bg-[#F0F0F8]">Copy</button></div><div class="text-[12px] text-[#4E4E6E] mt-1">Amber 600 – CTA, warnings, premium actions</div></div></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- TYPOGRAPHY -->
+        <section id="typography" class="scroll-mt-24 mb-14">
+          <div class="mb-6">
+            <h2 class="text-[28px] sm:text-[36px] font-bold tracking-tight">Typography</h2>
+            <p class="text-[#4E4E6E] mt-1">Inter for UI. Georgia for long-form fallback.</p>
+          </div>
+          <div class="card p-6 sm:p-8">
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="code">Inter 400</span><span class="code">500</span><span class="code">600</span><span class="code">700</span><span class="code">800</span><span class="code">Georgia fallback</span>
+            </div>
+            <div class="grid md:grid-cols-5 gap-3 mb-8">
+              <div class="p-4 rounded-xl bg-[#F7F7FC] border border-[#E2E2F0]"><div class="text-[11px] text-[#5E5E7E] mb-1">400 Regular</div><div class="text-[26px] leading-none">Aa</div></div>
+              <div class="p-4 rounded-xl bg-[#F7F7FC] border border-[#E2E2F0]"><div class="text-[11px] text-[#5E5E7E] mb-1">500 Medium</div><div class="text-[26px] leading-none font-medium">Aa</div></div>
+              <div class="p-4 rounded-xl bg-[#F7F7FC] border border-[#E2E2F0]"><div class="text-[11px] text-[#5E5E7E] mb-1">600 Semibold</div><div class="text-[26px] leading-none font-semibold">Aa</div></div>
+              <div class="p-4 rounded-xl bg-[#F7F7FC] border border-[#E2E2F0]"><div class="text-[11px] text-[#5E5E7E] mb-1">700 Bold</div><div class="text-[26px] leading-none font-bold">Aa</div></div>
+              <div class="p-4 rounded-xl bg-[#F7F7FC] border border-[#E2E2F0]"><div class="text-[11px] text-[#5E5E7E] mb-1">800 Extrabold</div><div class="text-[26px] leading-none font-extrabold">Aa</div></div>
+            </div>
+            <div class="space-y-8">
+              <div>
+                <div class="text-[11px] uppercase tracking-widest text-[#8A8AAB] mb-2">H1 / 48–56 • Extrabold</div>
+                <div class="text-[44px] sm:text-[56px] font-extrabold leading-[1.05] tracking-[-0.02em] text-[#0C0C24]">Haematology, made clear</div>
+              </div>
+              <div>
+                <div class="text-[11px] uppercase tracking-widest text-[#8A8AAB] mb-2">H2 / 32–40 • Semibold</div>
+                <div class="text-[30px] sm:text-[38px] font-semibold leading-[1.15] text-[#12122E]">Consultant-reviewed learning pathways</div>
+              </div>
+              <div>
+                <div class="text-[11px] uppercase tracking-widest text-[#8A8AAB] mb-2">Body / 16 • Regular</div>
+                <p class="text-[16px] leading-7 text-[#3E3E5E] max-w-[70ch]">ACE delivers concise, evidence-based modules aligned to the UK curriculum. Each topic includes investigations, management, and exam-focused key points.</p>
+              </div>
+              <div>
+                <div class="text-[11px] uppercase tracking-widest text-[#8A8AAB] mb-2">Small / 14 • Medium</div>
+                <p class="text-[14px] leading-6 text-[#4E4E6E] max-w-[70ch]">Used for captions, metadata, and secondary UI elements.</p>
+              </div>
+              <div>
+                <div class="text-[11px] uppercase tracking-widest text-[#8A8AAB] mb-2">Serif Fallback / Georgia</div>
+                <p class="georgia text-[18px] leading-8 text-[#3E3E5E] max-w-[70ch]">For long-form articles, Georgia improves reading comfort while maintaining clinical authority.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SPACING -->
+        <section id="spacing" class="scroll-mt-24 mb-14">
+          <div class="mb-6">
+            <h2 class="text-[28px] sm:text-[36px] font-bold tracking-tight">Spacing</h2>
+            <p class="text-[#4E4E6E] mt-1">4px base scale for consistent rhythm.</p>
+          </div>
+          <div class="card p-6 sm:p-8">
+            <div class="grid sm:grid-cols-2 gap-6">
+              <div class="space-y-3">
+                <div class="flex items-center gap-4"><div class="w-10 text-right mono text-[13px] text-[#5E5E7E]">4</div><div class="h-3 rounded-full bg-[#312E81]" style="width:4px"></div><div class="text-[13px] text-[#3E3E5E]">Tight – icon padding</div></div>
+                <div class="flex items-center gap-4"><div class="w-10 text-right mono text-[13px] text-[#5E5E7E]">8</div><div class="h-3 rounded-full bg-[#312E81]" style="width:8px"></div><div class="text-[13px] text-[#3E3E5E]">XS – chip gaps</div></div>
+                <div class="flex items-center gap-4"><div class="w-10 text-right mono text-[13px] text-[#5E5E7E]">12</div><div class="h-3 rounded-full bg-[#312E81]" style="width:12px"></div><div class="text-[13px] text-[#3E3E5E]">SM – form spacing</div></div>
+                <div class="flex items-center gap-4"><div class="w-10 text-right mono text-[13px] text-[#5E5E7E]">16</div><div class="h-3 rounded-full bg-[#312E81]" style="width:16px"></div><div class="text-[13px] text-[#3E3E5E]">MD – default</div></div>
+              </div>
+              <div class="space-y-3">
+                <div class="flex items-center gap-4"><div class="w-10 text-right mono text-[13px] text-[#5E5E7E]">24</div><div class="h-3 rounded-full bg-[#26245E]" style="width:24px"></div><div class="text-[13px] text-[#3E3E5E]">LG – section padding</div></div>
+                <div class="flex items-center gap-4"><div class="w-10 text-right mono text-[13px] text-[#5E5E7E]">32</div><div class="h-3 rounded-full bg-[#26245E]" style="width:32px"></div><div class="text-[13px] text-[#3E3E5E]">XL – card gaps</div></div>
+                <div class="flex items-center gap-4"><div class="w-10 text-right mono text-[13px] text-[#5E5E7E]">48</div><div class="h-3 rounded-full bg-[#1A1860]" style="width:48px"></div><div class="text-[13px] text-[#3E3E5E]">2XL – page sections</div></div>
+                <div class="flex items-center gap-4"><div class="w-10 text-right mono text-[13px] text-[#5E5E7E]">64</div><div class="h-3 rounded-full bg-[#1A1860]" style="width:64px"></div><div class="text-[13px] text-[#3E3E5E]">3XL – hero spacing</div></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- COMPONENTS -->
+        <section id="components" class="scroll-mt-24 mb-14">
+          <div class="mb-6">
+            <h2 class="text-[28px] sm:text-[36px] font-bold tracking-tight text-[#0C0C24]">Components</h2>
+            <p class="text-[#4E4E6E] mt-1 max-w-[720px]">Built for clarity, speed, and accessibility.</p>
+          </div>
+          <div class="grid lg:grid-cols-2 gap-6">
+            <!-- Buttons -->
+            <div class="card p-6 sm:p-8 lg:col-span-2">
+              <h3 class="font-semibold text-[#12122E]">Buttons</h3>
+              <p class="text-[13px] text-[#4E4E6E] mt-1">Primary teal, Amber warning CTA, and secondary actions.</p>
+              <div class="mt-6 grid sm:grid-cols-3 gap-6">
+                <div>
+                  <div class="text-[12px] font-medium text-[#5E5E7E] mb-2.5">Primary / Teal</div>
+                  <div class="flex flex-wrap gap-2">
+                    <button class="btn-primary">Start Learning</button>
+                    <button class="btn-primary" disabled>Disabled</button>
+                  </div>
+                  <div class="mt-3 flex gap-1.5 flex-wrap"><span class="code">bg #312E81</span><span class="code">hover #26245E</span><span class="code">active #1A1860</span></div>
+                </div>
+                <div>
+                  <div class="text-[12px] font-medium text-[#5E5E7E] mb-2.5">Amber / Warning CTA</div>
+                  <div class="flex flex-wrap gap-2">
+                    <button class="btn-amber">Explore platform</button>
+                    <button class="btn-amber" disabled>Disabled</button>
+                  </div>
+                  <div class="mt-3 flex gap-1.5 flex-wrap"><span class="code">bg #C2410C</span><span class="code">hover #A3360A</span><span class="code">active #8A2C08</span></div>
+                </div>
+                <div>
+                  <div class="text-[12px] font-medium text-[#5E5E7E] mb-2.5">Secondary</div>
+                  <div class="flex flex-wrap gap-2">
+                    <button class="btn-secondary">View details</button>
+                    <button class="btn-secondary" style="background:transparent; border:1px solid #C8C8E0;">Cancel</button>
+                  </div>
+                  <div class="mt-3"><span class="code">bg #DEDEF0</span></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card -->
+            <div class="card p-6 sm:p-8">
+              <h3 class="font-semibold text-[#12122E]">Card</h3>
+              <p class="text-[13px] text-[#4E4E6E] mt-1">White bg, border #D5D5E5, radius 16px.</p>
+              <div class="mt-5">
+                <div class="card p-5 shadow-[0_1px_2px_rgba(13,31,28,0.04)]">
+                  <div class="flex items-start justify-between gap-3">
+                    <div>
+                      <div class="font-semibold text-[#12122E]">Iron Deficiency Anaemia</div>
+                      <p class="text-[14px] text-[#4E4E6E] mt-1">Core module • 24 mins • CPD</p>
+                    </div>
+                    <span class="tag">Updated</span>
+                  </div>
+                  <div class="mt-4 flex gap-2">
+                    <span class="tag" style="background:#F0F0F8; color:#3E3E5E; border-color:#DEDEF0">Beginner</span>
+                    <span class="tag">UK reviewed</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tag -->
+            <div class="card p-6 sm:p-8">
+              <h3 class="font-semibold text-[#12122E]">Tag / Pill</h3>
+              <p class="text-[13px] text-[#4E4E6E] mt-1">Status and metadata.</p>
+              <div class="mt-5 flex flex-wrap gap-2">
+                <span class="tag">Consultant Reviewed</span>
+                <span class="tag" style="background:#E8E8F5; color:#1E2A5F; border-color:#C8C8E8">NICE-aligned</span>
+                <span class="tag" style="background:#F5EDE8; color:#C2410C; border-color:#E8D8C8">New</span>
+                <span class="tag" style="background:#F5F0FA; color:#5B2E8A; border-color:#D8D0E8">Haemostasis</span>
+              </div>
+            </div>
+
+            <!-- Navigation Bar -->
+            <div class="card p-6 sm:p-8 lg:col-span-2">
+              <h3 class="font-semibold">Navigation Bar</h3>
+              <p class="text-[13px] text-[#4E4E6E] mt-1">Sticky, blurred, warm neutral.</p>
+              <div class="mt-5 border border-[#C8C8E0] rounded-[16px] overflow-hidden">
+                <div class="h-[64px] bg-[#F7F7FC]/90 backdrop-blur flex items-center justify-between px-4 sm:px-6">
+                  <div class="flex items-center gap-6">
+                    <div class="flex items-center gap-2.5">
+                      <div class="w-8 h-8 rounded-[9px] bg-[#312E81] flex items-center justify-center text-white font-extrabold">A</div>
+                      <span class="font-semibold text-[#12122E] hidden sm:block">ACE Haematology</span>
+                    </div>
+                    <nav class="hidden md:flex items-center gap-5 text-[14px] font-medium text-[#3E3E5E]">
+                      <a class="text-[#12122E]">Learn</a>
+                      <a class="hover:text-[#12122E]">Cases</a>
+                      <a class="hover:text-[#12122E]">CPD</a>
+                      <a class="hover:text-[#12122E]">Guidelines</a>
+                    </nav>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <button class="hidden sm:inline-flex text-[13px] font-medium text-[#3E3E5E] px-3 py-1.5 rounded-lg hover:bg-[#F0F0F8]">Sign in</button>
+                    <button class="btn-primary !py-[8px] !px-[14px] text-[13px]">Start free</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Alerts -->
+            <div class="card p-6 sm:p-8 lg:col-span-2">
+              <h3 class="font-semibold text-[#12122E]">Alert Banners</h3>
+              <p class="text-[13px] text-[#4E4E6E] mt-1">Contextual feedback for clinical workflows.</p>
+              <div class="mt-5 space-y-3">
+                <div class="flex items-start gap-3 p-4 rounded-xl border" style="background:#E0E0F0; border-color:#B8B8E0;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#312E81" stroke-width="2" class="mt-0.5 shrink-0"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+                  <div>
+                    <div class="text-[13px] font-semibold text-[#26245E]">Info • NICE guidance</div>
+                    <div class="text-[13px] text-[#1A1860] mt-0.5">BSH 2024 iron deficiency pathway now includes hepcidin testing.</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 p-4 rounded-xl border" style="background:#E0E0F2; border-color:#B0B0E0;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2" class="mt-0.5 shrink-0"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+                  <div>
+                    <div class="text-[13px] font-semibold" style="color:#4F46E5">Success • Mock saved</div>
+                    <div class="text-[13px] mt-0.5" style="color:#26245E">Your SCE mock has been submitted and added to CPD log.</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 p-4 rounded-xl border" style="background:#F5EDE8; border-color:#E8D8C8;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C2410C" stroke-width="2" class="mt-0.5 shrink-0"><path d="M12 9v4M12 17h.01"/><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+                  <div>
+                    <div class="text-[13px] font-semibold" style="color:#A3360A">Warning • Subscription</div>
+                    <div class="text-[13px] mt-0.5" style="color:#8A2C08">Your trial expires in 3 days. Upgrade to keep access.</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 p-4 rounded-xl border" style="background:#F5F0FA; border-color:#D8D0E8;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5B2E8A" stroke-width="2" class="mt-0.5 shrink-0"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg>
+                  <div>
+                    <div class="text-[13px] font-semibold" style="color:#5B2E8A">Error • Sync failed</div>
+                    <div class="text-[13px] mt-0.5" style="color:#442266">Unable to save progress. Check your connection.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Form Inputs -->
+            <div class="card p-6 sm:p-8 lg:col-span-2">
+              <h3 class="font-semibold text-[#12122E]">Form Inputs</h3>
+              <p class="text-[13px] text-[#4E4E6E] mt-1">Focus ring uses Teal #312E81 for accessibility.</p>
+              <div class="mt-5 grid sm:grid-cols-2 gap-5">
+                <div>
+                  <label class="text-[12px] font-medium text-[#3E3E5E]">NHS Email</label>
+                  <input type="email" placeholder="name@nhs.uk" class="mt-1.5 w-full rounded-xl border border-[#D5D5E5] bg-white px-3.5 py-2.5 text-[14px] outline-none focus:ring-2 focus:ring-[#312E81]/30 focus:border-[#312E81] transition">
+                </div>
+                <div>
+                  <label class="text-[12px] font-medium text-[#3E3E5E]">Grade</label>
+                  <select class="mt-1.5 w-full rounded-xl border border-[#D5D5E5] bg-white px-3.5 py-2.5 text-[14px] outline-none focus:ring-2 focus:ring-[#312E81]/30 focus:border-[#312E81]">
+                    <option>FY2</option><option>IMT</option><option selected>ST3+</option><option>Consultant</option>
+                  </select>
+                </div>
+                <div class="sm:col-span-2">
+                  <label class="text-[12px] font-medium text-[#3E3E5E]">Learning goal</label>
+                  <textarea rows="3" placeholder="e.g., Revise myeloma for SCE..." class="mt-1.5 w-full rounded-xl border border-[#D5D5E5] bg-white px-3.5 py-2.5 text-[14px] outline-none focus:ring-2 focus:ring-[#312E81]/30 focus:border-[#312E81]"></textarea>
+                </div>
+                <div class="flex flex-wrap items-center gap-5">
+                  <label class="flex items-center gap-2 cursor-pointer">
+                    <input type="checkbox" checked class="w-4 h-4 rounded border-[#C0C0D8] text-[#312E81] focus:ring-[#312E81]">
+                    <span class="text-[14px] text-[#3E3E5E]">Email CPD summary</span>
+                  </label>
+                  <label class="flex items-center gap-2 cursor-pointer">
+                    <input type="radio" name="track" checked class="w-4 h-4 text-[#312E81] border-[#C0C0D8] focus:ring-[#312E81]">
+                    <span class="text-[14px] text-[#3E3E5E]">Haematology</span>
+                  </label>
+                  <label class="flex items-center gap-2 cursor-pointer">
+                    <input type="radio" name="track" class="w-4 h-4 text-[#312E81] border-[#C0C0D8] focus:ring-[#312E81]">
+                    <span class="text-[14px] text-[#3E3E5E]">Transfusion</span>
+                  </label>
+                </div>
+                <div class="flex items-center justify-between sm:justify-end gap-3">
+                  <span class="text-[14px] text-[#3E3E5E]">Weekly reminders</span>
+                  <button id="toggle" aria-pressed="false" class="relative w-11 h-6 rounded-full bg-[#D5D5E5] transition">
+                    <span class="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow-sm transition"></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Data Table -->
+            <div class="card p-6 sm:p-8 lg:col-span-2">
+              <h3 class="font-semibold text-[#12122E]">Data Table • Question Bank</h3>
+              <p class="text-[13px] text-[#4E4E6E] mt-1">Sortable, compact, clinical.</p>
+              <div class="mt-4 overflow-x-auto -mx-6 sm:mx-0">
+                <div class="min-w-[640px] px-6 sm:px-0">
+                  <table class="w-full text-[13px]">
+                    <thead>
+                      <tr class="text-left text-[#5E5E7E] border-b border-[#E2E2F0]">
+                        <th class="py-2.5 font-medium">Topic</th>
+                        <th class="py-2.5 font-medium">Questions</th>
+                        <th class="py-2.5 font-medium">Last Updated</th>
+                        <th class="py-2.5 font-medium">Difficulty</th>
+                        <th class="py-2.5 font-medium text-right">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody class="divide-y divide-[#EDEDF5]">
+                      <tr class="hover:bg-[#F7F7FC]">
+                        <td class="py-3 font-medium text-[#12122E]">Iron Deficiency Anaemia</td>
+                        <td class="py-3 text-[#3E3E5E]">342</td>
+                        <td class="py-3 text-[#3E3E5E]">12 Dec 2024</td>
+                        <td class="py-3"><span class="tag" style="background:#E0E0F0">Core</span></td>
+                        <td class="py-3 text-right"><button class="text-[#26245E] hover:underline font-medium">Practice</button></td>
+                      </tr>
+                      <tr class="hover:bg-[#F7F7FC]">
+                        <td class="py-3 font-medium text-[#12122E]">Myeloma</td>
+                        <td class="py-3 text-[#3E3E5E]">278</td>
+                        <td class="py-3 text-[#3E3E5E]">28 Nov 2024</td>
+                        <td class="py-3"><span class="tag" style="background:#E8E8F5; color:#1E2A5F; border-color:#C8C8E8">Advanced</span></td>
+                        <td class="py-3 text-right"><button class="text-[#26245E] hover:underline font-medium">Practice</button></td>
+                      </tr>
+                      <tr class="hover:bg-[#F7F7FC]">
+                        <td class="py-3 font-medium text-[#12122E]">ITP</td>
+                        <td class="py-3 text-[#3E3E5E]">156</td>
+                        <td class="py-3 text-[#3E3E5E]">05 Jan 2025</td>
+                        <td class="py-3"><span class="tag" style="background:#E0E0F0">Core</span></td>
+                        <td class="py-3 text-right"><button class="text-[#26245E] hover:underline font-medium">Practice</button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- Breadcrumb & Pagination -->
+            <div class="card p-6 sm:p-8">
+              <h3 class="font-semibold text-[#12122E]">Breadcrumb</h3>
+              <nav class="mt-4 text-[13px] text-[#4E4E6E] flex items-center gap-1.5 flex-wrap">
+                <a class="hover:text-[#12122E] cursor-pointer">Learn</a>
+                <span class="text-[#C0C0D8]">/</span>
+                <a class="hover:text-[#12122E] cursor-pointer">Anaemia</a>
+                <span class="text-[#C0C0D8]">/</span>
+                <span class="text-[#12122E] font-medium">Iron Deficiency</span>
+              </nav>
+              <h3 class="font-semibold text-[#12122E] mt-8">Pagination</h3>
+              <div class="mt-3 flex items-center gap-1.5">
+                <button class="w-8 h-8 rounded-lg border border-[#D5D5E5] text-[#5E5E7E] hover:bg-[#F0F0F8]">‹</button>
+                <button class="w-8 h-8 rounded-lg bg-[#312E81] text-white font-medium">1</button>
+                <button class="w-8 h-8 rounded-lg hover:bg-[#F0F0F8] text-[#3E3E5E]">2</button>
+                <button class="w-8 h-8 rounded-lg hover:bg-[#F0F0F8] text-[#3E3E5E]">3</button>
+                <span class="px-1 text-[#8A8AAB]">…</span>
+                <button class="w-8 h-8 rounded-lg hover:bg-[#F0F0F8] text-[#3E3E5E]">12</button>
+                <button class="w-8 h-8 rounded-lg border border-[#D5D5E5] text-[#5E5E7E] hover:bg-[#F0F0F8]">›</button>
+              </div>
+            </div>
+
+            <!-- Feedback -->
+            <div class="card p-6 sm:p-8">
+              <h3 class="font-semibold text-[#12122E]">Toast • Avatars • Progress</h3>
+              <div class="mt-4 space-y-5">
+                <div>
+                  <div class="text-[12px] text-[#5E5E7E] mb-2">Toast Notification</div>
+                  <button onclick="showToast('Progress saved to CPD')" class="btn-secondary !py-1.5 text-[13px]">Trigger toast</button>
+                </div>
+                <div>
+                  <div class="text-[12px] text-[#5E5E7E] mb-2">Avatar Stack • Community</div>
+                  <div class="flex -space-x-2">
+                    <div class="w-8 h-8 rounded-full bg-[#312E81] border-2 border-white flex items-center justify-center text-[11px] text-white font-bold">AK</div>
+                    <div class="w-8 h-8 rounded-full bg-[#6366F1] border-2 border-white flex items-center justify-center text-[11px] text-white font-bold">SR</div>
+                    <div class="w-8 h-8 rounded-full bg-[#1E2A5F] border-2 border-white flex items-center justify-center text-[11px] text-white font-bold">ML</div>
+                    <div class="w-8 h-8 rounded-full bg-[#F0F0F8] border-2 border-white flex items-center justify-center text-[11px] text-[#3E3E5E] font-medium">+12</div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between mb-1.5">
+                    <span class="text-[12px] text-[#5E5E7E]">Study Planner</span>
+                    <span class="text-[12px] font-medium text-[#26245E]">68%</span>
+                  </div>
+                  <div class="h-2 rounded-full bg-[#DEDEF0] overflow-hidden">
+                    <div class="h-full w-[68%] bg-[#312E81] rounded-full"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tabs -->
+            <div class="card p-6 sm:p-8">
+              <h3 class="font-semibold text-[#12122E]">Tabs</h3>
+              <div class="mt-4">
+                <div class="flex gap-1.5 p-1 bg-[#F0F0F8] rounded-xl w-fit">
+                  <button data-tab="overview" class="active-tab px-3.5 py-1.5 rounded-lg text-[13px] font-medium transition">Overview</button>
+                  <button data-tab="investigations" class="px-3.5 py-1.5 rounded-lg text-[13px] font-medium text-[#4E4E6E] hover:text-[#12122E] transition">Investigations</button>
+                  <button data-tab="management" class="px-3.5 py-1.5 rounded-lg text-[13px] font-medium text-[#4E4E6E] hover:text-[#12122E] transition">Management</button>
+                </div>
+                <div class="mt-4 text-[14px] text-[#3E3E5E] min-h-[60px]">
+                  <div data-panel="overview">Covers epidemiology, pathophysiology and classification of iron deficiency.</div>
+                  <div data-panel="investigations" class="hidden">Ferritin, CRP, transferrin saturation, reticulocyte haemoglobin.</div>
+                  <div data-panel="management" class="hidden">Oral iron first-line, IV iron indications, monitoring response at 2-4 weeks.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Modal -->
+            <div class="card p-6 sm:p-8">
+              <h3 class="font-semibold text-[#12122E]">Modal Dialog</h3>
+              <p class="text-[13px] text-[#4E4E6E] mt-1">Confirm critical actions.</p>
+              <div class="mt-4">
+                <button id="openModal" class="btn-primary !py-2">Open modal</button>
+              </div>
+            </div>
+
+            <!-- Empty State -->
+            <div class="card p-6 sm:p-8 lg:col-span-2">
+              <h3 class="font-semibold text-[#12122E]">Empty State</h3>
+              <div class="mt-4 border-2 border-dashed border-[#C8C8E0] rounded-2xl p-10 text-center bg-[#F7F7FC]/50">
+                <div class="w-12 h-12 mx-auto rounded-xl bg-[#E0E0F0] flex items-center justify-center mb-3">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#312E81" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M9 10h.01M15 10h.01M9.5 14c1 .8 2.5.8 3.5 0"/></svg>
+                </div>
+                <div class="font-medium text-[#12122E]">No mocks taken yet</div>
+                <p class="text-[13px] text-[#4E4E6E] mt-1 max-w-[360px] mx-auto">Start your first timed assessment to track progress against the UK curriculum.</p>
+                <button class="btn-primary mt-4 !py-2">Start mock exam</button>
+              </div>
+            </div>
+            <!-- Breadcrumbs -->
+            <div class="card p-6 sm:p-8 lg:col-span-2">
+              <h3 class="font-semibold text-[#12122E]">Breadcrumbs</h3>
+              <p class="text-[13px] text-[#4E4E6E] mt-1">Navigation trail for hierarchical pages.</p>
+              <div class="mt-6 flex flex-wrap gap-2 items-center text-[14px]">
+                <a href="#" class="text-[#312E81] hover:underline font-medium">Home</a>
+                <span class="text-[#8A8AAB]">/</span>
+                <a href="#" class="text-[#312E81] hover:underline font-medium">Haematology</a>
+                <span class="text-[#8A8AAB]">/</span>
+                <a href="#" class="text-[#312E81] hover:underline font-medium">Red Cell Disorders</a>
+                <span class="text-[#8A8AAB]">/</span>
+                <span class="text-[#12122E] font-semibold">Sickle Cell Disease</span>
+              </div>
+              <div class="mt-4 flex flex-wrap gap-1.5"><span class="code">link #312E81</span><span class="code">separator #8A8AAB</span><span class="code">current #12122E</span></div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="card p-6 sm:p-8 lg:col-span-2">
+              <h3 class="font-semibold text-[#12122E]">Pagination</h3>
+              <p class="text-[13px] text-[#4E4E6E] mt-1">Page navigation for long content lists.</p>
+              <div class="mt-6 flex items-center gap-2">
+                <button class="w-9 h-9 rounded-[10px] border border-[#D5D5E5] flex items-center justify-center text-[#4E4E6E] hover:bg-[#F0F0F8] transition" disabled>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+                </button>
+                <button class="w-9 h-9 rounded-[10px] bg-[#312E81] text-white font-semibold text-[14px] flex items-center justify-center">1</button>
+                <button class="w-9 h-9 rounded-[10px] border border-[#D5D5E5] text-[#12122E] font-medium text-[14px] flex items-center justify-center hover:bg-[#F0F0F8] transition">2</button>
+                <button class="w-9 h-9 rounded-[10px] border border-[#D5D5E5] text-[#12122E] font-medium text-[14px] flex items-center justify-center hover:bg-[#F0F0F8] transition">3</button>
+                <span class="text-[#8A8AAB] px-1">…</span>
+                <button class="w-9 h-9 rounded-[10px] border border-[#D5D5E5] text-[#12122E] font-medium text-[14px] flex items-center justify-center hover:bg-[#F0F0F8] transition">12</button>
+                <button class="w-9 h-9 rounded-[10px] border border-[#D5D5E5] flex items-center justify-center text-[#4E4E6E] hover:bg-[#F0F0F8] transition">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                </button>
+              </div>
+              <div class="mt-4 flex flex-wrap gap-1.5"><span class="code">active bg #312E81</span><span class="code">border #D5D5E5</span><span class="code">text #12122E</span></div>
+            </div>
+
+            <!-- Alert Banner -->
+            <div class="card p-6 sm:p-8 lg:col-span-2">
+              <h3 class="font-semibold text-[#12122E]">Alert Banner</h3>
+              <p class="text-[13px] text-[#4E4E6E] mt-1">Contextual feedback messages for users.</p>
+              <div class="mt-6 space-y-4">
+                <div class="flex items-start gap-3 p-4 rounded-xl bg-[#E0E0F0] border border-[#C0C0E0]">
+                  <div class="w-5 h-5 rounded-full bg-[#312E81] flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+                  </div>
+                  <div>
+                    <div class="font-semibold text-[#12122E] text-[14px]">Success</div>
+                    <p class="text-[13px] text-[#3E3E5E] mt-0.5">Your changes have been saved successfully.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 p-4 rounded-xl bg-[#F0E8E0] border border-[#D8C8B8]">
+                  <div class="w-5 h-5 rounded-full bg-[#C2410C] flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg>
+                  </div>
+                  <div>
+                    <div class="font-semibold text-[#12122E] text-[14px]">Warning</div>
+                    <p class="text-[13px] text-[#3E3E5E] mt-0.5">This module has been updated. Please review the changes.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 p-4 rounded-xl bg-[#EDE8F0] border border-[#D0D0E0]">
+                  <div class="w-5 h-5 rounded-full bg-[#4A2E5E] flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg>
+                  </div>
+                  <div>
+                    <div class="font-semibold text-[#12122E] text-[14px]">Error</div>
+                    <p class="text-[13px] text-[#3E3E5E] mt-0.5">Unable to submit. Please check your connection and try again.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-4 flex flex-wrap gap-1.5"><span class="code">success bg #E0E0F0</span><span class="code">warning bg #F0E8E0</span><span class="code">error bg #EDE8F0</span></div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="card p-6 sm:p-8 lg:col-span-2">
+              <h3 class="font-semibold text-[#12122E]">Progress Bar</h3>
+              <p class="text-[13px] text-[#4E4E6E] mt-1">Visual indicator for completion or loading states.</p>
+              <div class="mt-6 space-y-5">
+                <div>
+                  <div class="flex justify-between text-[13px] mb-2">
+                    <span class="font-medium text-[#12122E]">Course Progress</span>
+                    <span class="mono text-[#4E4E6E]">75%</span>
+                  </div>
+                  <div class="h-2.5 rounded-full bg-[#DCE0EC] overflow-hidden">
+                    <div class="h-full rounded-full bg-[#312E81]" style="width: 75%"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-[13px] mb-2">
+                    <span class="font-medium text-[#12122E]">Assessment Score</span>
+                    <span class="mono text-[#4E4E6E]">92%</span>
+                  </div>
+                  <div class="h-2.5 rounded-full bg-[#DCE0EC] overflow-hidden">
+                    <div class="h-full rounded-full bg-[#C2410C]" style="width: 92%"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-[13px] mb-2">
+                    <span class="font-medium text-[#12122E]">Reading Time</span>
+                    <span class="mono text-[#4E4E6E]">40%</span>
+                  </div>
+                  <div class="h-2.5 rounded-full bg-[#DCE0EC] overflow-hidden">
+                    <div class="h-full rounded-full bg-[#5B5BAE]" style="width: 40%"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-4 flex flex-wrap gap-1.5"><span class="code">track #DCE0EC</span><span class="code">primary #312E81</span><span class="code">accent #C2410C</span></div>
+            </div>
+
+        </section>
+
+        <!-- SAMPLE LAYOUTS -->
+        <section id="layouts" class="scroll-mt-24 mb-14">
+          <div class="mb-6">
+            <h2 class="text-[28px] sm:text-[36px] font-bold tracking-tight text-[#0C0C24]">Sample Layouts</h2>
+            <p class="text-[#4E4E6E] mt-1 max-w-[720px]">Real screens built with the system.</p>
+          </div>
+
+          <!-- Layout 1: Homepage Hero -->
+          <div class="card p-0 overflow-hidden mb-6">
+            <div class="bg-[#F0F0F8]">
+              <div class="px-6 sm:px-10 lg:px-14 py-14 sm:py-20">
+                <div class="max-w-[840px]">
+                  <div class="inline-flex items-center gap-2 mb-4">
+                    <span class="tag">New</span>
+                    <span class="text-[12px] text-[#5E5E7E]">Reviewed by UK consultant haematologists</span>
+                  </div>
+                  <h3 class="text-[34px] sm:text-[48px] lg:text-[56px] font-extrabold tracking-[-0.02em] leading-[1.05] text-[#0C0C24]">From exam prep to a haematology community — all in one place</h3>
+                  <p class="mt-5 text-[17px] sm:text-[18px] leading-7 text-[#3E3E5E] max-w-[640px]">Evidence-based modules, 2,000+ SBA questions, and consultant-led discussions. Built for UK trainees.</p>
+                  <div class="mt-8 flex flex-wrap gap-3">
+                    <button class="btn-primary text-[15px] !py-3 !px-6">Start free trial</button>
+                    <button class="btn-amber text-[15px] !py-3 !px-6">Explore the platform</button>
+                  </div>
+                  <div class="mt-8 flex items-center gap-5 text-[13px] text-[#4E4E6E]">
+                    <div class="flex -space-x-2">
+                      <div class="w-7 h-7 rounded-full bg-[#312E81] border-2 border-[#F0F0F8]"></div>
+                      <div class="w-7 h-7 rounded-full bg-[#6366F1] border-2 border-[#F0F0F8]"></div>
+                      <div class="w-7 h-7 rounded-full bg-[#1E2A5F] border-2 border-[#F0F0F8]"></div>
+                    </div>
+                    <span>Trusted by 1,200+ UK trainees</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Layout 2: Question Bank -->
+          <div class="card p-6 sm:p-8 mb-6">
+            <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-6">
+              <div>
+                <h3 class="text-[22px] font-semibold text-[#12122E]">Question Bank</h3>
+                <p class="text-[14px] text-[#4E4E6E] mt-0.5">2,000+ questions • BSH & NICE aligned • SCE mapped</p>
+              </div>
+              <div class="flex gap-2">
+                <button class="btn-secondary !py-1.5 text-[13px]">Filters</button>
+                <button class="btn-primary !py-1.5 text-[13px]">Custom mock</button>
+              </div>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div class="card p-5 hover:shadow-md transition hover:-translate-y-0.5">
+                <div class="flex items-start justify-between">
+                  <div class="w-10 h-10 rounded-lg bg-[#E0E0F0] flex items-center justify-center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#312E81" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div>
+                  <span class="tag">Core</span>
+                </div>
+                <div class="mt-3 font-semibold text-[#12122E]">Iron Deficiency Anaemia</div>
+                <div class="text-[13px] text-[#4E4E6E] mt-1">342 questions • 94% pass rate</div>
+                <div class="mt-3 flex gap-1.5"><span class="code !text-[11px]">Anaemia</span><span class="code !text-[11px]">BSH</span></div>
+              </div>
+              <div class="card p-5 hover:shadow-md transition hover:-translate-y-0.5">
+                <div class="flex items-start justify-between">
+                  <div class="w-10 h-10 rounded-lg bg-[#E8E8F5] flex items-center justify-center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1E2A5F" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg></div>
+                  <span class="tag" style="background:#E8E8F5; color:#1E2A5F; border-color:#C8C8E8">Advanced</span>
+                </div>
+                <div class="mt-3 font-semibold text-[#12122E]">Myeloma & MGUS</div>
+                <div class="text-[13px] text-[#4E4E6E] mt-1">278 questions • Updated Jan 2025</div>
+                <div class="mt-3 flex gap-1.5"><span class="code !text-[11px]">Malignant</span><span class="code !text-[11px]">NICE</span></div>
+              </div>
+              <div class="card p-5 hover:shadow-md transition hover:-translate-y-0.5">
+                <div class="flex items-start justify-between">
+                  <div class="w-10 h-10 rounded-lg bg-[#F5F0FA] flex items-center justify-center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5B2E8A" stroke-width="2"><path d="M12 8v8M8 12h8"/></svg></div>
+                  <span class="tag">Core</span>
+                </div>
+                <div class="mt-3 font-semibold text-[#12122E]">ITP & Thrombocytopenia</div>
+                <div class="text-[13px] text-[#4E4E6E] mt-1">156 questions • 2,000+ attempts</div>
+                <div class="mt-3 flex gap-1.5"><span class="code !text-[11px]">Haemostasis</span><span class="code !text-[11px]">SCE</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Layout 3: Dashboard -->
+          <div class="card p-0 overflow-hidden">
+            <div class="grid lg:grid-cols-[240px_1fr]">
+              <div class="hidden lg:block border-r border-[#E2E2F0] bg-[#F7F7FC] p-5">
+                <div class="flex items-center gap-2 mb-6">
+                  <div class="w-8 h-8 rounded-[8px] bg-[#312E81] flex items-center justify-center text-white font-bold">A</div>
+                  <span class="font-semibold text-[14px]">ACE</span>
+                </div>
+                <nav class="space-y-1 text-[14px]">
+                  <a class="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#E0E0F0] text-[#26245E] font-medium"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l9-9 9 9"/><path d="M9 21V9h6v12"/></svg>Dashboard</a>
+                  <a class="flex items-center gap-2 px-3 py-2 rounded-lg text-[#3E3E5E] hover:bg-[#F0F0F8]">Learn</a>
+                  <a class="flex items-center gap-2 px-3 py-2 rounded-lg text-[#3E3E5E] hover:bg-[#F0F0F8]">Question Bank</a>
+                  <a class="flex items-center gap-2 px-3 py-2 rounded-lg text-[#3E3E5E] hover:bg-[#F0F0F8]">Mocks</a>
+                  <a class="flex items-center gap-2 px-3 py-2 rounded-lg text-[#3E3E5E] hover:bg-[#F0F0F8]">CPD</a>
+                </nav>
+              </div>
+              <div class="p-6 sm:p-8">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
+                  <div>
+                    <h3 class="text-[22px] font-semibold text-[#12122E]">Good morning, Dr Sharma</h3>
+                    <p class="text-[13px] text-[#4E4E6E]">ST4 Haematology • SCE 68 days away</p>
+                  </div>
+                  <button class="btn-amber !py-2 self-start">Continue learning</button>
+                </div>
+                <div class="grid sm:grid-cols-3 gap-4 mb-6">
+                  <div class="card p-4">
+                    <div class="text-[12px] text-[#5E5E7E]">Overall Progress</div>
+                    <div class="mt-2 flex items-center gap-3">
+                      <div class="relative w-12 h-12">
+                        <svg class="transform -rotate-90" width="48" height="48" viewBox="0 0 48 48"><circle cx="24" cy="24" r="20" stroke="#DEDEF0" stroke-width="4" fill="none"/><circle cx="24" cy="24" r="20" stroke="#312E81" stroke-width="4" fill="none" stroke-dasharray="125.6" stroke-dashoffset="37.7" stroke-linecap="round"/></svg>
+                        <span class="absolute inset-0 flex items-center justify-center text-[12px] font-semibold text-[#26245E]">70%</span>
+                      </div>
+                      <div class="text-[13px] text-[#3E3E5E]">1,420 / 2,047 questions</div>
+                    </div>
+                  </div>
+                  <div class="card p-4">
+                    <div class="text-[12px] text-[#5E5E7E]">Weak Areas</div>
+                    <div class="mt-2 font-medium text-[#5B2E8A]">Coagulation</div>
+                    <div class="text-[13px] text-[#4E4E6E]">58% accuracy • 12 topics</div>
+                  </div>
+                  <div class="card p-4">
+                    <div class="text-[12px] text-[#5E5E7E]">Next Mock</div>
+                    <div class="mt-2 font-medium text-[#12122E]">SCE Paper 1</div>
+                    <div class="text-[13px] text-[#4E4E6E]">Scheduled • Tomorrow 8am</div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex items-center justify-between mb-3">
+                    <h4 class="font-semibold text-[#12122E]">Recent Mocks</h4>
+                    <a class="text-[13px] text-[#26245E] hover:underline cursor-pointer">View all</a>
+                  </div>
+                  <div class="overflow-x-auto -mx-6 sm:mx-0">
+                    <div class="min-w-[560px] px-6 sm:px-0">
+                      <table class="w-full text-[13px]">
+                        <thead class="text-[#5E5E7E] border-b border-[#E2E2F0]">
+                          <tr><th class="text-left py-2 font-medium">Exam</th><th class="text-left py-2 font-medium">Score</th><th class="text-left py-2 font-medium">Date</th><th class="text-left py-2 font-medium">Time</th></tr>
+                        </thead>
+                        <tbody class="divide-y divide-[#EDEDF5]">
+                          <tr><td class="py-2.5">Haemostasis Mock #4</td><td class="py-2.5 text-[#4F46E5] font-medium">78%</td><td class="py-2.5">12 Jan</td><td class="py-2.5">52m</td></tr>
+                          <tr><td class="py-2.5">Anaemia Essentials</td><td class="py-2.5 text-[#4F46E5] font-medium">84%</td><td class="py-2.5">09 Jan</td><td class="py-2.5">41m</td></tr>
+                          <tr><td class="py-2.5">Myeloid Malignancy</td><td class="py-2.5 text-[#C2410C] font-medium">66%</td><td class="py-2.5">05 Jan</td><td class="py-2.5">63m</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- VOICE -->
+        <section id="voice" class="scroll-mt-24 mb-20">
+          <div class="mb-6">
+            <h2 class="text-[28px] sm:text-[36px] font-bold tracking-tight">Voice & Tone</h2>
+            <p class="text-[#4E4E6E] mt-1">Clinical, clear, supportive — for UK haematology practice.</p>
+          </div>
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="card p-6">
+              <div class="w-10 h-10 rounded-xl bg-[#E0E0F0] flex items-center justify-center mb-3"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#26245E" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg></div>
+              <h3 class="font-semibold text-[#12122E]">Clinical</h3>
+              <p class="text-[14px] text-[#4E4E6E] mt-1 leading-6">Evidence-based, precise, never speculative. Reference BSH, NICE, WHO.</p>
+              <div class="mt-4 p-3 rounded-lg bg-[#F7F7FC] border border-[#E2E2F0] text-[13px]"><span class="text-[#4F46E5] font-medium">Do:</span> "First-line investigation is ferritin and CRP."<br><span class="text-[#5B2E8A] font-medium">Don't:</span> "You might want to check iron studies."</div>
+            </div>
+            <div class="card p-6">
+              <div class="w-10 h-10 rounded-xl bg-[#E8E8F5] flex items-center justify-center mb-3"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1E2A5F" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg></div>
+              <h3 class="font-semibold text-[#12122E]">Clear</h3>
+              <p class="text-[14px] text-[#4E4E6E] mt-1 leading-6">Plain English, active voice, short sentences. Define acronyms first use.</p>
+              <div class="mt-4 p-3 rounded-lg bg-[#F7F7FC] border border-[#E2E2F0] text-[13px]"><span class="text-[#4F46E5] font-medium">Do:</span> "Start oral iron if ferritin &lt;30 µg/L."<br><span class="text-[#5B2E8A] font-medium">Don't:</span> "Consideration could be given to iron replacement therapy."</div>
+            </div>
+            <div class="card p-6">
+              <div class="w-10 h-10 rounded-xl bg-[#F5EDE8] flex items-center justify-center mb-3"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C2410C" stroke-width="2"><path d="M12 21c4.97 0 9-4.03 9-9s-4.03-9-9-9-9 4.03-9 9 4.03 9 9z"/><path d="M8 14s1.5 2 4 2 4-2"/></svg></div>
+              <h3 class="font-semibold text-[#12122E]">Supportive</h3>
+              <p class="text-[14px] text-[#4E4E6E] mt-1 leading-6">Encouraging and non-judgemental. Built for time-poor clinicians.</p>
+              <div class="mt-4 p-3 rounded-lg bg-[#F7F7FC] border border-[#E2E2F0] text-[13px]"><span class="text-[#4F46E5] font-medium">Do:</span> "Revise key differentials in 5 minutes."<br><span class="text-[#5B2E8A] font-medium">Don't:</span> "You should already know this."</div>
+            </div>
+          </div>
+          <div class="mt-8 card p-6 sm:p-8 bg-[#12122E] text-white border-[#0C0C24]">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <div>
+                <div class="text-[13px] uppercase tracking-wide text-[#818CF8] font-semibold">Principles</div>
+                <div class="text-[20px] font-semibold mt-1">Accuracy over speed. Clarity over cleverness. Kindness over ego.</div>
+              </div>
+              <button class="btn-primary !bg-white !text-[#12122E] hover:!bg-[#DEDEF0] self-start">Download brand kit</button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="fixed inset-0 z-[100] hidden">
+    <div class="absolute inset-0 bg-[#12122E]/60 backdrop-blur-sm" data-close></div>
+    <div class="relative z-10 max-w-[460px] mx-4 sm:mx-auto mt-[20vh] card p-6 shadow-2xl">
+      <h4 class="text-[18px] font-semibold text-[#12122E]">Confirm action</h4>
+      <p class="text-[14px] text-[#4E4E6E] mt-2">This will permanently delete your mock exam results. This cannot be undone.</p>
+      <div class="mt-6 flex justify-end gap-2.5">
+        <button data-close class="btn-secondary !py-2">Cancel</button>
+        <button class="px-4 py-2 rounded-xl bg-[#5B2E8A] text-white text-[14px] font-semibold hover:bg-[#4E2566] transition">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-[#12122E] text-white text-[13px] font-medium px-4 py-2 rounded-full shadow-xl opacity-0 pointer-events-none transition-all duration-300 z-50">Copied</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
