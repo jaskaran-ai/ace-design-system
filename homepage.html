@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ACE Haematology — Homepage Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; font-family: Georgia, 'Times New Roman', serif; color:#0A0A0A; background:#fff; -webkit-font-smoothing:antialiased; }
+  *, *::before, *::after { box-sizing:border-box; }
+  @keyframes acefloat { 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(-9px);} }
+  @keyframes acebar { from{ width:0;} }
+  a { text-decoration:none; }
+  a:hover { color: #007D6E; }
+</style>
+</head>
+<body>
+
+
+
+
+<div style="font-family:Georgia,serif;color:#0A0A0A;background:#fff;overflow-x:hidden;">
+
+  <!-- ================= NAV ================= -->
+  <header style="position:sticky;top:0;z-index:200;background:rgba(255,255,255,0.92);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid #E8E4DE;">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;min-height:66px;gap:16px;">
+      <a href="#top" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+        <span style="display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:9px;background:#007D6E;color:#fff;font-family:Inter,sans-serif;font-weight:800;font-size:17px;letter-spacing:-0.02em;">A</span>
+        <span style="font-family:Inter,sans-serif;font-weight:800;font-size:19px;color:#0D1F1C;letter-spacing:-0.02em;">ACE Haematology</span>
+      </a>
+      <nav aria-label="Primary" style="display:flex;align-items:center;gap:22px;">
+        <a href="https://www.acehaematology.com/question-bank" style="font-family:Inter,sans-serif;font-weight:500;font-size:15px;color:#0A0A0A;text-decoration:none;">Question Bank</a>
+        <a href="https://www.acehaematology.com/mock-exams" style="font-family:Inter,sans-serif;font-weight:500;font-size:15px;color:#0A0A0A;text-decoration:none;">Mock Exams</a>
+        <div style="position:relative;display:flex;align-items:center;"><a href="#" class="tools-toggle" style="display:inline-flex;align-items:center;gap:5px;font-family:Inter,sans-serif;font-weight:500;font-size:15px;color:#0A0A0A;text-decoration:none;">ACE Tools <span style="font-size:9px;color:#8A938F;">▼</span></a>
+          <div style="position:absolute;top:100%;left:-12px;display:none;min-width:210px;background:#fff;border:1px solid #E8E4DE;border-radius:10px;box-shadow:0 14px 34px rgba(13,31,28,0.14);padding:8px;z-index:300;">
+            <a href="https://www.acehaematology.com/ace-tools/essay-analyser" style="display:block;padding:9px 12px;border-radius:7px;font-family:Inter,sans-serif;font-weight:500;font-size:14px;color:#0A0A0A;text-decoration:none;">Essay Analyser</a>
+            <a href="https://www.acehaematology.com/ace-tools/flash-cards" style="display:block;padding:9px 12px;border-radius:7px;font-family:Inter,sans-serif;font-weight:500;font-size:14px;color:#0A0A0A;text-decoration:none;">Flashcards</a>
+            <a href="https://www.acehaematology.com/ace-tools/study-planner" style="display:block;padding:9px 12px;border-radius:7px;font-family:Inter,sans-serif;font-weight:500;font-size:14px;color:#0A0A0A;text-decoration:none;">Study Planner</a>
+          </div>
+        </div>
+        <a href="https://www.acehaematology.com/discussion-forum" style="font-family:Inter,sans-serif;font-weight:500;font-size:15px;color:#0A0A0A;text-decoration:none;">Community</a>
+        <a href="https://www.acehaematology.com/resources" style="font-family:Inter,sans-serif;font-weight:500;font-size:15px;color:#0A0A0A;text-decoration:none;">Resources</a>
+        <a href="https://www.acehaematology.com/pricing" style="font-family:Inter,sans-serif;font-weight:500;font-size:15px;color:#0A0A0A;text-decoration:none;">Pricing</a>
+      </nav>
+      <div style="display:flex;align-items:center;gap:16px;">
+        <a href="https://www.acehaematology.com/login" style="font-family:Inter,sans-serif;font-weight:600;font-size:15px;color:#007D6E;text-decoration:none;">Sign in</a>
+        <a href="https://www.acehaematology.com/register" style="display:inline-flex;align-items:center;min-height:44px;padding:10px 22px;border-radius:6px;font-family:Inter,sans-serif;font-weight:700;font-size:15px;text-decoration:none;border:2px solid transparent;background:#A85A18;color:#fff;transition:background .18s,box-shadow .18s;">Start free</a>
+      </div>
+    </div>
+  </header>
+
+  <span id="top"></span>
+
+  <!-- ================= HERO ================= -->
+  <section aria-labelledby="hero-h1" style="position:relative;overflow:hidden;background:#F4F2EE;padding:96px 0;">
+    <div aria-hidden="true" style="position:absolute;top:-160px;right:-180px;width:660px;height:660px;border-radius:50%;background:radial-gradient(circle at 50% 50%, rgba(0,125,110,0.16) 0%, rgba(0,125,110,0.05) 45%, rgba(0,125,110,0) 70%);pointer-events:none;"></div>
+    <div aria-hidden="true" style="position:absolute;bottom:-200px;left:-160px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle at 50% 50%, rgba(168,90,24,0.07) 0%, rgba(168,90,24,0) 70%);pointer-events:none;"></div>
+    <div style="position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:center;">
+      <div style="max-width:640px;">
+        <span style="display:inline-flex;align-items:center;gap:8px;font-family:Inter,sans-serif;font-size:12.5px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;padding:7px 14px;border-radius:100px;background:rgba(0,125,110,0.10);border:1px solid rgba(0,125,110,0.25);color:#005A4E;margin-bottom:24px;">
+          <span style="width:7px;height:7px;border-radius:50%;background:#007D6E;"></span>
+          Reviewed by UK consultant haematologists
+        </span>
+        <h1 id="hero-h1" style="font-family:Inter,sans-serif;font-weight:800;font-size:clamp(34px,5vw,56px);line-height:1.06;letter-spacing:-0.025em;margin:0 0 22px;color:#0D1F1C;">From exam prep to a haematology community — all in one place</h1>
+        <p style="font-family:Georgia,serif;font-size:19px;line-height:1.65;color:#3A4744;margin:0 0 28px;max-width:54ch;">Over <strong style="color:#0D1F1C;">2,000 haematology questions</strong>, full-length mocks and the <strong style="color:#0D1F1C;">Essay Analyser</strong> for FRCPath essay practice — alongside a live professional community and current-awareness editorial that keep you sharp long after exam day.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:14px;margin-bottom:20px;">
+          <a href="https://www.acehaematology.com/register" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;min-width:236px;padding:15px 28px;border-radius:7px;font-family:Inter,sans-serif;font-weight:700;font-size:17px;line-height:1;text-decoration:none;border:2px solid transparent;background:#A85A18;color:#fff;transition:background .18s,box-shadow .18s,transform .12s;">Start free</a>
+          <a href="#platform" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;min-width:236px;padding:15px 28px;border-radius:7px;font-family:Inter,sans-serif;font-weight:700;font-size:17px;line-height:1;text-decoration:none;background:transparent;color:#007D6E;border:2px solid #007D6E;transition:background .18s,color .18s;">Explore the platform</a>
+        </div>
+        <div style="display:flex;align-items:center;gap:13px;margin-bottom:24px;">
+          <div style="display:flex;align-items:center;">
+            <img src="homepage-assets/d82e10e7-79a7-459a-990f-ae96be7b7fc5.jpg" alt="" style="width:42px;height:42px;border-radius:50%;object-fit:cover;border:2.5px solid #F4F2EE;box-shadow:0 1px 3px rgba(0,0,0,0.12);">
+            <img src="homepage-assets/1e5f90c8-4f53-4f62-b942-c08bc9eca0d5.jpg" alt="" style="width:42px;height:42px;border-radius:50%;object-fit:cover;border:2.5px solid #F4F2EE;box-shadow:0 1px 3px rgba(0,0,0,0.12);margin-left:-12px;">
+            <img src="homepage-assets/93a49a92-612e-4485-a453-4daaf33d5441.jpg" alt="" style="width:42px;height:42px;border-radius:50%;object-fit:cover;border:2.5px solid #F4F2EE;box-shadow:0 1px 3px rgba(0,0,0,0.12);margin-left:-12px;">
+            <img src="homepage-assets/794f8fc8-2894-4380-88b1-e1b7bdaf5c64.jpg" alt="" style="width:42px;height:42px;border-radius:50%;object-fit:cover;border:2.5px solid #F4F2EE;box-shadow:0 1px 3px rgba(0,0,0,0.12);margin-left:-12px;">
+          </div>
+          <span style="font-family:Inter,sans-serif;font-size:13.5px;line-height:1.35;color:#3A4744;"><strong style="color:#0D1F1C;font-weight:700;">Trusted by haematology trainees</strong><br>around the world</span>
+        </div>
+        <p style="display:flex;align-items:center;gap:9px;font-family:Inter,sans-serif;font-size:14px;color:#4A5754;margin:0 0 26px;">
+          <span style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:rgba(0,125,110,0.12);color:#007D6E;flex:none;"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+          Try every feature free for 15 days, no card needed — and the Social Hub, flashcards and editorial stay free for good.
+        </p>
+      </div>
+
+      <!-- Hero product visual: Essay Analyser feedback panel -->
+      <div style="position:relative;">
+        <div style="position:relative;z-index:2;background:#fff;border:1px solid #E8E4DE;border-radius:16px;box-shadow:0 24px 60px rgba(13,31,28,0.16),0 4px 14px rgba(13,31,28,0.06);overflow:hidden;">
+          <div style="display:flex;align-items:center;gap:7px;padding:13px 16px;border-bottom:1px solid #EEEBE5;background:#FBFAF8;">
+            <span style="width:11px;height:11px;border-radius:50%;background:#E4DfD7;"></span>
+            <span style="width:11px;height:11px;border-radius:50%;background:#E4DfD7;"></span>
+            <span style="width:11px;height:11px;border-radius:50%;background:#E4DfD7;"></span>
+            <span style="margin-left:10px;font-family:Inter,sans-serif;font-size:12px;font-weight:600;color:#8A938F;">Essay Analyser</span>
+          </div>
+          <div style="padding:22px 22px 24px;">
+            <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;">
+              <div style="position:relative;width:74px;height:74px;border-radius:50%;flex:none;background:conic-gradient(#007D6E 0 82%, #E8EEEC 82% 100%);display:flex;align-items:center;justify-content:center;">
+                <div style="width:56px;height:56px;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+                  <span style="font-family:Inter,sans-serif;font-weight:800;font-size:22px;color:#0D1F1C;line-height:1;">82</span>
+                  <span style="font-family:Inter,sans-serif;font-size:9px;font-weight:600;color:#8A938F;letter-spacing:0.04em;">/100</span>
+                </div>
+              </div>
+              <div>
+                <p style="font-family:Inter,sans-serif;font-weight:700;font-size:15px;color:#0D1F1C;margin:0 0 3px;">Structured feedback returned</p>
+                <p style="font-family:Inter,sans-serif;font-size:12.5px;color:#8A938F;margin:0;">Compared against a model answer · study aid</p>
+              </div>
+            </div>
+            <p style="font-family:Inter,sans-serif;font-weight:700;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:#0E8A5F;margin:0 0 9px;">You covered</p>
+            <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:16px;">
+              <div style="display:flex;align-items:center;gap:10px;"><span style="display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:rgba(14,138,95,0.12);color:#0E8A5F;flex:none;"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="3.2"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span style="font-family:Inter,sans-serif;font-size:13px;color:#3A4744;">Diagnostic criteria &amp; WHO classification</span></div>
+              <div style="display:flex;align-items:center;gap:10px;"><span style="display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:rgba(14,138,95,0.12);color:#0E8A5F;flex:none;"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="3.2"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span style="font-family:Inter,sans-serif;font-size:13px;color:#3A4744;">First-line management per BSH guidance</span></div>
+            </div>
+            <p style="font-family:Inter,sans-serif;font-weight:700;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:#A85A18;margin:0 0 9px;">To strengthen</p>
+            <div style="display:flex;flex-direction:column;gap:7px;">
+              <div style="display:flex;align-items:center;gap:10px;"><span style="display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:rgba(168,90,24,0.12);color:#A85A18;flex:none;font-family:Inter,sans-serif;font-weight:800;font-size:12px;">!</span><span style="font-family:Inter,sans-serif;font-size:13px;color:#3A4744;">Cytogenetic risk stratification detail</span></div>
+            </div>
+          </div>
+        </div>
+        <!-- floating community chip -->
+        
+      </div>
+    <div style="position: absolute; z-index: 3; background: #003D36; color: #fff; border-radius: 13px; padding: 13px 16px; box-shadow: 0 16px 36px rgba(0,61,54,0.34); display: flex; align-items: center; gap: 11px; animation: acefloat 6s ease-in-out infinite; left: 884px; top: 547px">
+          <span style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:9px;background:rgba(255,255,255,0.12);flex:none;"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 11.5a8.38 8.38 0 0 1-9 8.32L4 21l1.18-4A8.5 8.5 0 1 1 21 11.5z"></path></svg></span>
+          <div>
+            <p style="font-family:Inter,sans-serif;font-weight:700;font-size:13px;margin:0;line-height:1.2;">Social Hub</p>
+            <p style="font-family:Inter,sans-serif;font-size:11.5px;margin:0;color:rgba(255,255,255,0.7);">Live discussion now</p>
+          </div>
+        </div></div>
+  </section>
+
+  <!-- ================= STAT BAR ================= -->
+  <section aria-label="Platform at a glance" style="background:#0D1F1C;">
+    <div style="max-width:1200px;margin:0 auto;padding:30px 24px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;">
+      <div style="text-align:center;border-right:1px solid rgba(255,255,255,0.10);">
+        <div style="font-family:Inter,sans-serif;font-weight:800;font-size:clamp(32px,5vw,46px);color:#fff;line-height:1;letter-spacing:-0.02em;">2,000<span style="color:#2FB39B;">+</span></div>
+        <div style="font-family:Inter,sans-serif;font-size:13px;color:rgba(255,255,255,0.62);margin-top:8px;letter-spacing:0.02em;">Practice questions</div>
+      </div>
+      <div style="text-align:center;border-right:1px solid rgba(255,255,255,0.10);">
+        <div style="font-family:Inter,sans-serif;font-weight:800;font-size:clamp(32px,5vw,46px);color:#fff;line-height:1;letter-spacing:-0.02em;">47</div>
+        <div style="font-family:Inter,sans-serif;font-size:13px;color:rgba(255,255,255,0.62);margin-top:8px;letter-spacing:0.02em;">Essay questions live</div>
+      </div>
+      <div style="text-align:center;border-right:1px solid rgba(255,255,255,0.10);">
+        <div style="font-family:Inter,sans-serif;font-weight:800;font-size:clamp(32px,5vw,46px);color:#fff;line-height:1;letter-spacing:-0.02em;">3</div>
+        <div style="font-family:Inter,sans-serif;font-size:13px;color:rgba(255,255,255,0.62);margin-top:8px;letter-spacing:0.02em;">Mock papers live</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-family:Inter,sans-serif;font-weight:800;font-size:clamp(32px,5vw,46px);color:#fff;line-height:1;letter-spacing:-0.02em;">49</div>
+        <div style="font-family:Inter,sans-serif;font-size:13px;color:rgba(255,255,255,0.62);margin-top:8px;letter-spacing:0.02em;">Editorial articles</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= AUDIENCE ================= -->
+  <section id="audience" aria-labelledby="audience-h2" style="padding:88px 0;background:#fff;">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+      <div style="max-width:760px;margin-bottom:44px;">
+        <span style="display:inline-block;font-family:Inter,sans-serif;font-size:12.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#007D6E;margin-bottom:14px;">Who it's for</span>
+        <h2 style="font-family:Inter,sans-serif;font-weight:800;font-size:clamp(26px,3.5vw,36px);line-height:1.12;letter-spacing:-0.02em;color:#0D1F1C;margin:0 0 14px;">Built for the whole haematology team</h2>
+        <p style="font-family:Georgia,serif;font-size:18px;line-height:1.6;color:#5A6663;margin:0;max-width:62ch;">ACE serves haematology professionals worldwide — from candidates preparing for their exams to consultants keeping pace with the guidelines. We're starting with the FRCPath and expanding to more haematology exams.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;">
+        <!-- FRCPath -->
+        <article style="display:flex;flex-direction:column;background:#fff;border:1px solid #E8E4DE;border-top:4px solid #007D6E;border-radius:12px;padding:26px 22px;overflow:hidden;transition:box-shadow .2s,transform .2s;">
+          <img src="homepage-assets/74c451be-fbe4-4e2b-94f5-722c303f824f.jpg" alt="A candidate studying for their exams" style="display:block;width:calc(100% + 44px);height:130px;object-fit:cover;margin:-26px -22px 18px;">
+          <span style="display:inline-block;align-self:flex-start;font-family:Inter,sans-serif;font-size:11.5px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#005A4E;background:rgba(0,125,110,0.10);padding:5px 11px;border-radius:100px;margin-bottom:16px;">FRCPath Candidates</span>
+          <h3 style="font-family:Inter,sans-serif;font-weight:700;font-size:18px;line-height:1.25;color:#0D1F1C;margin:0 0 10px;">The full exam-preparation suite</h3>
+          <p style="font-family:Georgia,serif;font-size:14.5px;line-height:1.6;color:#5A6663;margin:0 0 16px;">The bank is built around the FRCPath curriculum: 2,000+ questions, full-length Part 1 mocks combining SBA and EMQ, and the Essay Analyser.</p>
+          <ul style="list-style:none;margin:auto 0 0;padding:0;display:flex;flex-direction:column;gap:8px;">
+            <li style="display:flex;gap:8px;font-family:Inter,sans-serif;font-size:13px;color:#3A4744;"><span style="color:#007D6E;flex:none;">✓</span> Full explanations, references &amp; peer comparison</li>
+            <li style="display:flex;gap:8px;font-family:Inter,sans-serif;font-size:13px;color:#3A4744;"><span style="color:#007D6E;flex:none;">✓</span> Essay Analyser, EMQ &amp; mock papers</li>
+          </ul>
+        </article>
+        <!-- IMTs -->
+        <article style="display:flex;flex-direction:column;background:#fff;border:1px solid #E8E4DE;border-top:4px solid #005A4E;border-radius:12px;padding:26px 22px;overflow:hidden;transition:box-shadow .2s,transform .2s;">
+          <img src="homepage-assets/8be975b7-600b-4076-9cb2-32d35cda6e31.jpg" alt="A hospital ward during a clinical rotation" style="display:block;width:calc(100% + 44px);height:130px;object-fit:cover;margin:-26px -22px 18px;">
+          <span style="display:inline-block;align-self:flex-start;font-family:Inter,sans-serif;font-size:11.5px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#005A4E;background:rgba(0,90,78,0.10);padding:5px 11px;border-radius:100px;margin-bottom:16px;">IMTs &amp; Rotating Trainees</span>
+          <h3 style="font-family:Inter,sans-serif;font-weight:700;font-size:18px;line-height:1.25;color:#0D1F1C;margin:0 0 10px;">Depth, wherever your rotation takes you</h3>
+          <p style="font-family:Georgia,serif;font-size:14.5px;line-height:1.6;color:#5A6663;margin:0 0 16px;">Working through a haematology rotation or building depth for the MRCP curriculum? The bank, flashcards and study planner give structured, specialist practice.</p>
+          <ul style="list-style:none;margin:auto 0 0;padding:0;display:flex;flex-direction:column;gap:8px;">
+            <li style="display:flex;gap:8px;font-family:Inter,sans-serif;font-size:13px;color:#3A4744;"><span style="color:#007D6E;flex:none;">✓</span> Flashcards &amp; study planner</li>
+            <li style="display:flex;gap:8px;font-family:Inter,sans-serif;font-size:13px;color:#3A4744;"><span style="color:#007D6E;flex:none;">✓</span> Specialist topic practice</li>
+          </ul>
+        </article>
+        <!-- Consultants -->
+        <article style="display:flex;flex-direction:column;background:#fff;border:1px solid #E8E4DE;border-top:4px solid #003D36;border-radius:12px;padding:26px 22px;overflow:hidden;transition:box-shadow .2s,transform .2s;">
+          <img src="homepage-assets/5c54740a-6dc2-4707-926b-ab10c67ec218.jpg" alt="A consultant haematologist" style="display:block;width:calc(100% + 44px);height:130px;object-fit:cover;margin:-26px -22px 18px;">
+          <span style="display:inline-block;align-self:flex-start;font-family:Inter,sans-serif;font-size:11.5px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#003D36;background:rgba(0,61,54,0.10);padding:5px 11px;border-radius:100px;margin-bottom:16px;">Consultants &amp; Fellows</span>
+          <h3 style="font-family:Inter,sans-serif;font-weight:700;font-size:18px;line-height:1.25;color:#0D1F1C;margin:0 0 10px;">Stay current, stay connected</h3>
+          <p style="font-family:Georgia,serif;font-size:14.5px;line-height:1.6;color:#5A6663;margin:0 0 16px;">CPD-relevant editorial, a curated calendar of every major UK haematology event planned for you, and the Social Hub community — all live today. Built for the career beyond the examination.</p>
+          <ul style="list-style:none;margin:auto 0 0;padding:0;display:flex;flex-direction:column;gap:8px;">
+            <li style="display:flex;gap:8px;font-family:Inter,sans-serif;font-size:13px;color:#3A4744;"><span style="color:#007D6E;flex:none;">✓</span> Editorial &amp; events calendar</li>
+            <li style="display:flex;gap:8px;font-family:Inter,sans-serif;font-size:13px;color:#3A4744;"><span style="color:#007D6E;flex:none;">✓</span> Professional community</li>
+          </ul>
+        </article>
+        <!-- BMS -->
+        <article style="display:flex;flex-direction:column;background:#FAFAF9;border:1px solid #E8E4DE;border-top:4px solid #636363;border-radius:12px;padding:26px 22px;overflow:hidden;transition:box-shadow .2s,transform .2s;">
+          <img src="homepage-assets/bd891c8b-a5d2-4ecf-af7b-d099b7834cb7.jpg" alt="A biomedical scientist working in the laboratory" style="display:block;width:calc(100% + 44px);height:130px;object-fit:cover;margin:-26px -22px 18px;">
+          <span style="display:inline-flex;align-items:center;gap:6px;align-self:flex-start;font-family:Inter,sans-serif;font-size:11.5px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#4A4A4A;background:rgba(99,99,99,0.10);padding:5px 11px;border-radius:100px;margin-bottom:16px;">Biomedical Scientists</span>
+          <h3 style="font-family:Inter,sans-serif;font-weight:700;font-size:18px;line-height:1.25;color:#0D1F1C;margin:0 0 10px;">Designed with you in mind</h3>
+          <p style="font-family:Georgia,serif;font-size:14.5px;line-height:1.6;color:#5A6663;margin:0 0 16px;">Tailored BMS &amp; IBMS editions are in development and not yet available — the live question bank, flashcards and editorial are open to everyone in the meantime.</p>
+          <span style="margin:auto 0 0;align-self:flex-start;font-family:Inter,sans-serif;font-size:11.5px;font-weight:700;letter-spacing:0.03em;text-transform:uppercase;color:#636363;border:1px dashed #C4C4C4;padding:4px 10px;border-radius:6px;">In development</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ACE INTELLIGENCE (TRUST) ================= -->
+  <section id="trust" aria-labelledby="trust-h2" style="padding:88px 0;background:#F4F2EE;">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1.1fr 0.9fr;gap:52px;align-items:center;">
+      <div>
+        <span style="display:inline-flex;align-items:center;gap:8px;font-family:Inter,sans-serif;font-size:12.5px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#007D6E;margin-bottom:16px;">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          ACE Intelligence
+        </span>
+        <h2 style="font-family:Inter,sans-serif;font-weight:800;font-size:clamp(26px,3.5vw,36px);line-height:1.12;letter-spacing:-0.02em;color:#0D1F1C;margin:0 0 18px;">Reviewed and kept current by ACE Intelligence</h2>
+        <p style="font-family:Georgia,serif;font-size:18px;line-height:1.66;color:#48544F;margin:0 0 18px;max-width:58ch;">Haematology guidance changes constantly — BSH, NICE and ELN update, and new evidence lands between exams. Every question is written by experienced contributors, reviewed against current guidance, and continuously re-checked so that explanations stay current.</p>
+        <p style="font-family:Inter,sans-serif;font-size:14px;line-height:1.6;color:#6A736F;margin:0;padding-top:18px;border-top:1px solid #E0DACF;max-width:58ch;">ACE Intelligence combines AI-assisted reviews with UK consultant haematologist oversight.</p>
+      </div>
+      <div style="background:#fff;border:1px solid #E8E4DE;border-radius:14px;padding:30px 28px;box-shadow:0 14px 40px rgba(13,31,28,0.08);overflow:hidden;">
+        <img src="homepage-assets/18c158c0-447e-402e-b642-b5decb15a2b8.jpg" alt="Haematology laboratory — blood samples being processed by a scientist" style="display:block;width:calc(100% + 56px);height:170px;object-fit:cover;margin:-30px -28px 22px;">
+        <h3 style="font-family:Inter,sans-serif;font-weight:700;font-size:16px;color:#0D1F1C;margin:0 0 20px;">How content stays trustworthy</h3>
+        <div style="display:flex;flex-direction:column;gap:18px;">
+          <div style="display:flex;gap:14px;">
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;background:rgba(0,125,110,0.10);color:#007D6E;flex:none;"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"></path></svg></span>
+            <div><p style="font-family:Inter,sans-serif;font-weight:700;font-size:14.5px;color:#0D1F1C;margin:0 0 3px;">Written by contributors</p><p style="font-family:Georgia,serif;font-size:14px;line-height:1.5;color:#5A6663;margin:0;">Experienced haematology contributors draft every item.</p></div>
+          </div>
+          <div style="display:flex;gap:14px;">
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;background:rgba(0,125,110,0.10);color:#007D6E;flex:none;"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></span>
+            <div><p style="font-family:Inter,sans-serif;font-weight:700;font-size:14.5px;color:#0D1F1C;margin:0 0 3px;">Reviewed against guidance</p><p style="font-family:Georgia,serif;font-size:14px;line-height:1.5;color:#5A6663;margin:0;">Checked against BSH, NICE and ELN where relevant.</p></div>
+          </div>
+          <div style="display:flex;gap:14px;">
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;background:rgba(0,125,110,0.10);color:#007D6E;flex:none;"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg></span>
+            <div><p style="font-family:Inter,sans-serif;font-weight:700;font-size:14.5px;color:#0D1F1C;margin:0 0 3px;">Kept current</p><p style="font-family:Georgia,serif;font-size:14px;line-height:1.5;color:#5A6663;margin:0;">Regular ACE Intelligence scans flag outdated guidance and superseded evidence, so explanations are refreshed fast — every change checked by a UK consultant.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ESSAY ANALYSER SPOTLIGHT ================= -->
+  <section aria-labelledby="essay-h2" style="padding:88px 0;background:#fff;">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:0.95fr 1.05fr;gap:52px;align-items:center;">
+      <div>
+        <span style="display:inline-flex;align-items:center;gap:8px;font-family:Inter,sans-serif;font-size:12.5px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#A85A18;margin-bottom:16px;">Signature feature · One of a kind</span>
+        <h2 style="font-family:Inter,sans-serif;font-weight:800;font-size:clamp(26px,3.5vw,36px);line-height:1.12;letter-spacing:-0.02em;color:#0D1F1C;margin:0 0 18px;">Essay practice, graded like a real examiner</h2>
+        <p style="font-family:Georgia,serif;font-size:18px;line-height:1.66;color:#48544F;margin:0 0 22px;max-width:54ch;">Write a timed essay and our AI grades it like a real examiner — structured feedback on what you covered, what you missed and how to improve, in seconds. No more waiting weeks for a consultant to mark your work. The bank is growing towards 100 essays, with 47 available now.</p>
+        <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:24px;">
+          <div style="display:flex;align-items:center;gap:11px;font-family:Inter,sans-serif;font-size:15px;color:#3A4744;"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:7px;background:rgba(0,125,110,0.10);color:#007D6E;flex:none;font-weight:800;font-size:13px;">1</span> Write under timed conditions</div>
+          <div style="display:flex;align-items:center;gap:11px;font-family:Inter,sans-serif;font-size:15px;color:#3A4744;"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:7px;background:rgba(0,125,110,0.10);color:#007D6E;flex:none;font-weight:800;font-size:13px;">2</span> Graded instantly, like an examiner</div>
+          <div style="display:flex;align-items:center;gap:11px;font-family:Inter,sans-serif;font-size:15px;color:#3A4744;"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:7px;background:rgba(0,125,110,0.10);color:#007D6E;flex:none;font-weight:800;font-size:13px;">3</span> Act on structured feedback</div>
+        </div>
+        <a href="https://www.acehaematology.com/ace-tools/essay-analyser" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:14px 30px;border-radius:7px;font-family:Inter,sans-serif;font-weight:700;font-size:16px;text-decoration:none;border:2px solid transparent;background:#A85A18;color:#fff;transition:background .18s,box-shadow .18s;">Try the Essay Analyser</a>
+        <p style="font-family:Inter,sans-serif;font-size:12.5px;color:#8A938F;margin:16px 0 0;">Automated feedback is a study aid, not a formal mark or a prediction of examination outcome.</p>
+      </div>
+      <div style="background:linear-gradient(160deg,#F4F2EE 0%,#EAF0EE 100%);border:1px solid #E0E5E2;border-radius:16px;padding:30px;">
+        <div style="background:#fff;border:1px solid #E8E4DE;border-radius:12px;padding:24px;box-shadow:0 12px 30px rgba(13,31,28,0.08);">
+          <h3 style="font-family:Inter,sans-serif;font-weight:700;font-size:15px;color:#0D1F1C;margin:0 0 4px;">Example — structure of feedback</h3>
+          <p style="font-family:Inter,sans-serif;font-size:12px;color:#8A938F;margin:0 0 18px;">AI-generated against a model answer.</p>
+          <div style="display:flex;flex-direction:column;gap:14px;">
+            <div>
+              <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;"><span style="font-family:Inter,sans-serif;font-size:13px;font-weight:600;color:#3A4744;">Coverage of key points</span><span style="font-family:Inter,sans-serif;font-size:13px;font-weight:700;color:#0E8A5F;">Strong</span></div>
+              <div style="height:7px;border-radius:5px;background:#EDEAE4;overflow:hidden;"><div style="height:100%;width:84%;border-radius:5px;background:#0E8A5F;animation:acebar 1.2s ease;"></div></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;"><span style="font-family:Inter,sans-serif;font-size:13px;font-weight:600;color:#3A4744;">Use of current guidance</span><span style="font-family:Inter,sans-serif;font-size:13px;font-weight:700;color:#0E8A5F;">Good</span></div>
+              <div style="height:7px;border-radius:5px;background:#EDEAE4;overflow:hidden;"><div style="height:100%;width:72%;border-radius:5px;background:#0E8A5F;animation:acebar 1.4s ease;"></div></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;"><span style="font-family:Inter,sans-serif;font-size:13px;font-weight:600;color:#3A4744;">Depth &amp; prioritisation</span><span style="font-family:Inter,sans-serif;font-size:13px;font-weight:700;color:#A85A18;">Develop</span></div>
+              <div style="height:7px;border-radius:5px;background:#EDEAE4;overflow:hidden;"><div style="height:100%;width:48%;border-radius:5px;background:#A85A18;animation:acebar 1.6s ease;"></div></div>
+            </div>
+          </div>
+          <div style="margin-top:18px;padding-top:16px;border-top:1px solid #EEEBE5;font-family:Georgia,serif;font-size:13.5px;line-height:1.55;color:#5A6663;">"Strong on diagnosis and first-line management. To improve, add cytogenetic risk stratification and reference the relevant BSH guideline."</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PLATFORM GRID ================= -->
+  <section id="platform" aria-labelledby="platform-h2" style="padding:88px 0;background:#F4F2EE;">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+      <div style="max-width:720px;margin-bottom:44px;">
+        <span style="display:inline-block;font-family:Inter,sans-serif;font-size:12.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#007D6E;margin-bottom:14px;">The platform</span>
+        <h2 style="font-family:Inter,sans-serif;font-weight:800;font-size:clamp(26px,3.5vw,36px);line-height:1.12;letter-spacing:-0.02em;color:#0D1F1C;margin:0 0 14px;">One platform. Every tool.</h2>
+        <p style="font-family:Georgia,serif;font-size:18px;line-height:1.6;color:#5A6663;margin:0;max-width:60ch;">Every tool you need to prepare for FRCPath — each one specialist, each one reviewed through the same process.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+        <article style="position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid #E8E4DE;border-radius:12px;padding:26px 24px;transition:box-shadow .2s,transform .2s;">
+            
+            
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:12px;background:rgba(0,125,110,0.10);color:#007D6E;margin-bottom:16px;"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5h13a2 2 0 0 1 2 2v12a1 1 0 0 1-1 1H4zM8 9h7M8 13h7"></path></svg></span>
+            <h3 style="font-family:Inter,sans-serif;font-weight:700;font-size:17px;color:#0D1F1C;margin:0 0 8px;">Question Bank</h3>
+            <p style="font-family:Georgia,serif;font-size:14.5px;line-height:1.58;color:#5A6663;margin:0 0 16px;">Every question comes with full worked explanations, referenced sources and peer comparison — see how your answer measures up against others. More than 2,000 published across Part 1 and Part 2, graded for depth.</p>
+            <a href="https://www.acehaematology.com/question-bank" style="margin:auto 0 0;display:inline-flex;align-items:center;gap:6px;font-family:Inter,sans-serif;font-weight:600;font-size:14px;color:#007D6E;text-decoration:none;">Explore the bank <span aria-hidden="true">→</span></a>
+          </article>
+<article style="position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid #E8E4DE;border-radius:12px;padding:26px 24px;transition:box-shadow .2s,transform .2s;">
+            
+            
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:12px;background:rgba(0,125,110,0.10);color:#007D6E;margin-bottom:16px;"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 6h16M4 12h16M4 18h10"></path></svg></span>
+            <h3 style="font-family:Inter,sans-serif;font-weight:700;font-size:17px;color:#0D1F1C;margin:0 0 8px;">EMQ Scenarios</h3>
+            <p style="font-family:Georgia,serif;font-size:14.5px;line-height:1.58;color:#5A6663;margin:0 0 16px;">FRCPath-format extended-matching scenarios covering complex topics — practice in the true exam format.</p>
+            <a href="https://www.acehaematology.com/emq" style="margin:auto 0 0;display:inline-flex;align-items:center;gap:6px;font-family:Inter,sans-serif;font-weight:600;font-size:14px;color:#007D6E;text-decoration:none;">See EMQ practice <span aria-hidden="true">→</span></a>
+          </article>
+<article style="position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid #E8E4DE;border-radius:12px;padding:26px 24px;transition:box-shadow .2s,transform .2s;">
+            <span style="position:absolute;top:16px;right:16px;font-family:Inter,sans-serif;font-size:9.5px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#fff;background:#A85A18;padding:4px 9px;border-radius:100px;">Signature</span>
+            
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:12px;background:rgba(0,125,110,0.10);color:#007D6E;margin-bottom:16px;"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9zM14 3v6h6M9 14l2 2 4-4"></path></svg></span>
+            <h3 style="font-family:Inter,sans-serif;font-weight:700;font-size:17px;color:#0D1F1C;margin:0 0 8px;">Essay Analyser</h3>
+            <p style="font-family:Georgia,serif;font-size:14.5px;line-height:1.58;color:#5A6663;margin:0 0 16px;">Our signature tool, and one of a kind for FRCPath essays. Write a timed essay and receive immediate, structured feedback against a model answer. A bank growing towards 100, with 47 available now.</p>
+            <a href="https://www.acehaematology.com/ace-tools/essay-analyser" style="margin:auto 0 0;display:inline-flex;align-items:center;gap:6px;font-family:Inter,sans-serif;font-weight:600;font-size:14px;color:#007D6E;text-decoration:none;">Try the Analyser <span aria-hidden="true">→</span></a>
+          </article>
+<article style="position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid #E8E4DE;border-radius:12px;padding:26px 24px;transition:box-shadow .2s,transform .2s;">
+            
+            
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:12px;background:rgba(0,125,110,0.10);color:#007D6E;margin-bottom:16px;"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 7v5l3 2M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z"></path></svg></span>
+            <h3 style="font-family:Inter,sans-serif;font-weight:700;font-size:17px;color:#0D1F1C;margin:0 0 8px;">Mock Exams</h3>
+            <p style="font-family:Georgia,serif;font-size:14.5px;line-height:1.58;color:#5A6663;margin:0 0 16px;">Full-length Part 1 mock sittings combining SBA and EMQ, sat under timed conditions with attempt history.</p>
+            <a href="https://www.acehaematology.com/mock-exams" style="margin:auto 0 0;display:inline-flex;align-items:center;gap:6px;font-family:Inter,sans-serif;font-weight:600;font-size:14px;color:#007D6E;text-decoration:none;">View mock exams <span aria-hidden="true">→</span></a>
+          </article>
+<article style="position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid #E8E4DE;border-radius:12px;padding:26px 24px;transition:box-shadow .2s,transform .2s;">
+            
+            <span style="position:absolute;top:16px;right:16px;font-family:Inter,sans-serif;font-size:9.5px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#0E8A5F;background:rgba(14,138,95,0.12);padding:4px 9px;border-radius:100px;">Free</span>
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:12px;background:rgba(0,125,110,0.10);color:#007D6E;margin-bottom:16px;"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 6a2 2 0 0 1 2-2h9l4 4v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zM8 9h6M8 13h6"></path></svg></span>
+            <h3 style="font-family:Inter,sans-serif;font-weight:700;font-size:17px;color:#0D1F1C;margin:0 0 8px;">Flashcards</h3>
+            <p style="font-family:Georgia,serif;font-size:14.5px;line-height:1.58;color:#5A6663;margin:0 0 16px;">Rapid spaced recall across immunophenotype, CD markers and genetic associations — the visual knowledge the SBAs assume. Free for everyone.</p>
+            <a href="https://www.acehaematology.com/ace-tools/flash-cards" style="margin:auto 0 0;display:inline-flex;align-items:center;gap:6px;font-family:Inter,sans-serif;font-weight:600;font-size:14px;color:#007D6E;text-decoration:none;">Open the decks <span aria-hidden="true">→</span></a>
+          </article>
+<article style="position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid #E8E4DE;border-radius:12px;padding:26px 24px;transition:box-shadow .2s,transform .2s;">
+            
+            
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:12px;background:rgba(0,125,110,0.10);color:#007D6E;margin-bottom:16px;"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 4h18v18H3zM3 9h18M8 4v18"></path></svg></span>
+            <h3 style="font-family:Inter,sans-serif;font-weight:700;font-size:17px;color:#0D1F1C;margin:0 0 8px;">Study Planner</h3>
+            <p style="font-family:Georgia,serif;font-size:14.5px;line-height:1.58;color:#5A6663;margin:0 0 16px;">A structured daily revision schedule — tracks progress, surfaces what is overdue, and keeps your plan on course to exam day.</p>
+            <a href="https://www.acehaematology.com/ace-tools/study-planner" style="margin:auto 0 0;display:inline-flex;align-items:center;gap:6px;font-family:Inter,sans-serif;font-weight:600;font-size:14px;color:#007D6E;text-decoration:none;">Plan your revision <span aria-hidden="true">→</span></a>
+          </article>
+<article style="position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid #E8E4DE;border-radius:12px;padding:26px 24px;transition:box-shadow .2s,transform .2s;">
+            
+            <span style="position:absolute;top:16px;right:16px;font-family:Inter,sans-serif;font-size:9.5px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#0E8A5F;background:rgba(14,138,95,0.12);padding:4px 9px;border-radius:100px;">Free</span>
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:12px;background:rgba(0,125,110,0.10);color:#007D6E;margin-bottom:16px;"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 11.5a8.38 8.38 0 0 1-9 8.32L4 21l1.18-4A8.5 8.5 0 1 1 21 11.5z"></path></svg></span>
+            <h3 style="font-family:Inter,sans-serif;font-weight:700;font-size:17px;color:#0D1F1C;margin:0 0 8px;">Social Hub</h3>
+            <p style="font-family:Georgia,serif;font-size:14.5px;line-height:1.58;color:#5A6663;margin:0 0 16px;">A live professional community — haematology trainees and consultants discussing cases and staying current. Free for everyone.</p>
+            <a href="https://www.acehaematology.com/discussion-forum" style="margin:auto 0 0;display:inline-flex;align-items:center;gap:6px;font-family:Inter,sans-serif;font-weight:600;font-size:14px;color:#007D6E;text-decoration:none;">Explore the Hub <span aria-hidden="true">→</span></a>
+          </article>
+<article style="position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid #E8E4DE;border-radius:12px;padding:26px 24px;transition:box-shadow .2s,transform .2s;">
+            
+            <span style="position:absolute;top:16px;right:16px;font-family:Inter,sans-serif;font-size:9.5px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#0E8A5F;background:rgba(14,138,95,0.12);padding:4px 9px;border-radius:100px;">Free</span>
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:12px;background:rgba(0,125,110,0.10);color:#007D6E;margin-bottom:16px;"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h12a2 2 0 0 1 2 2v14H6a2 2 0 0 1-2-2zM18 6h2v12a2 2 0 0 1-2 2M8 8h6M8 12h6"></path></svg></span>
+            <h3 style="font-family:Inter,sans-serif;font-weight:700;font-size:17px;color:#0D1F1C;margin:0 0 8px;">Editorial</h3>
+            <p style="font-family:Georgia,serif;font-size:14.5px;line-height:1.58;color:#5A6663;margin:0 0 16px;">49 articles across three streams — guideline updates (BSH/NICE/ELN), exam technique, and career and finance reading. Free for everyone.</p>
+            <a href="https://www.acehaematology.com/recent-updates" style="margin:auto 0 0;display:inline-flex;align-items:center;gap:6px;font-family:Inter,sans-serif;font-weight:600;font-size:14px;color:#007D6E;text-decoration:none;">Read the blog <span aria-hidden="true">→</span></a>
+          </article>
+<article style="position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid #E8E4DE;border-radius:12px;padding:26px 24px;transition:box-shadow .2s,transform .2s;">
+            
+            
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:12px;background:rgba(0,125,110,0.10);color:#007D6E;margin-bottom:16px;"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3v18h18M7 14l4-4 3 3 5-6"></path></svg></span>
+            <h3 style="font-family:Inter,sans-serif;font-weight:700;font-size:17px;color:#0D1F1C;margin:0 0 8px;">Progress & Analytics</h3>
+            <p style="font-family:Georgia,serif;font-size:14.5px;line-height:1.58;color:#5A6663;margin:0 0 16px;">Peer benchmarking and analytics — compare every answer against the whole community to see exactly how you did, with insights that surface your weaker topics.</p>
+            <a href="https://www.acehaematology.com/account/progress" style="margin:auto 0 0;display:inline-flex;align-items:center;gap:6px;font-family:Inter,sans-serif;font-weight:600;font-size:14px;color:#007D6E;text-decoration:none;">See how it works <span aria-hidden="true">→</span></a>
+          </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SOCIAL HUB BAND ================= -->
+  <section id="community" aria-labelledby="social-h2" style="padding:88px 0;background:#003D36;color:#fff;">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+      <div style="max-width:720px;margin-bottom:40px;">
+        <span style="display:inline-flex;align-items:center;gap:8px;font-family:Inter,sans-serif;font-size:12.5px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#2FB39B;margin-bottom:14px;">The Social Hub</span>
+        <h2 style="font-family:Inter,sans-serif;font-weight:800;font-size:clamp(26px,3.5vw,36px);line-height:1.12;letter-spacing:-0.02em;color:#fff;margin:0 0 14px;">A live professional community</h2>
+        <p style="font-family:Georgia,serif;font-size:18px;line-height:1.6;color:rgba(255,255,255,0.78);margin:0;max-width:60ch;">Find a study buddy, chat with friends, follow contributors and share exam tips — plus discuss cases with trainees and consultants, between exams and well beyond them.</p>
+      </div>
+      <img src="homepage-assets/794cc8b4-e7a2-44a2-947b-e09b221e48b5.jpg" alt="Haematology trainees and consultants collaborating around a workspace" style="width:100%;height:260px;object-fit:cover;border-radius:14px;border:1px solid rgba(255,255,255,0.12);margin-bottom:30px;">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px;">
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:26px 24px;">
+          <span style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:11px;background:rgba(47,179,155,0.16);color:#5FD3BB;margin-bottom:16px;"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></span>
+          <h3 style="font-family:Inter,sans-serif;font-weight:700;font-size:17px;color:#fff;margin:0 0 8px;">Find a study buddy</h3>
+          <p style="font-family:Georgia,serif;font-size:14.5px;line-height:1.58;color:rgba(255,255,255,0.72);margin:0;">Match with peers preparing for the same exam and revise together — accountability that keeps you on track.</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:26px 24px;">
+          <span style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:11px;background:rgba(47,179,155,0.16);color:#5FD3BB;margin-bottom:16px;"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"></path></svg></span>
+          <h3 style="font-family:Inter,sans-serif;font-weight:700;font-size:17px;color:#fff;margin:0 0 8px;">Chat, like, follow &amp; share</h3>
+          <p style="font-family:Georgia,serif;font-size:14.5px;line-height:1.58;color:rgba(255,255,255,0.72);margin:0;">Message friends, follow contributors, and like and share posts across the community.</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:26px 24px;">
+          <span style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:11px;background:rgba(47,179,155,0.16);color:#5FD3BB;margin-bottom:16px;"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0 0 12 2z"></path></svg></span>
+          <h3 style="font-family:Inter,sans-serif;font-weight:700;font-size:17px;color:#fff;margin:0 0 8px;">Share exam tips</h3>
+          <p style="font-family:Georgia,serif;font-size:14.5px;line-height:1.58;color:rgba(255,255,255,0.72);margin:0;">Swap revision strategies, exam-technique tips and guideline updates with trainees and consultants.</p>
+        </div>
+      </div>
+      <div style="margin-top:32px;">
+        <a href="https://www.acehaematology.com/discussion-forum" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:14px 30px;border-radius:7px;font-family:Inter,sans-serif;font-weight:700;font-size:16px;text-decoration:none;background:transparent;color:#fff;border:2px solid rgba(255,255,255,0.7);transition:background .18s,border-color .18s;">Explore the Social Hub</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ROADMAP ================= -->
+  
+
+  <!-- ================= FINAL CTA ================= -->
+  <section aria-labelledby="final-h2" style="padding:88px 0;background:#0D1F1C;color:#fff;">
+    <div style="max-width:760px;margin:0 auto;padding:0 24px;text-align:center;">
+      <h2 style="font-family:Inter,sans-serif;font-weight:800;font-size:clamp(28px,4vw,42px);line-height:1.1;letter-spacing:-0.025em;color:#fff;margin:0 0 18px;">Your revision starts today</h2>
+      <p style="font-family:Georgia,serif;font-size:19px;line-height:1.6;color:rgba(255,255,255,0.8);margin:0 0 30px;">Create a free account and get a 15-day trial of every feature — no card needed. The question bank, the Essay Analyser and mock papers are all yours during the trial, and the Social Hub, flashcards and editorial stay free for good.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-bottom:22px;">
+        <a href="https://www.acehaematology.com/register" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:15px 34px;border-radius:7px;font-family:Inter,sans-serif;font-weight:700;font-size:17px;text-decoration:none;border:2px solid transparent;background:#A85A18;color:#fff;transition:background .18s,box-shadow .18s,transform .12s;">Start free</a>
+        <a href="https://www.acehaematology.com/pricing" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:15px 32px;border-radius:7px;font-family:Inter,sans-serif;font-weight:700;font-size:17px;text-decoration:none;background:transparent;color:#fff;border:2px solid rgba(255,255,255,0.7);transition:background .18s,border-color .18s;">View pricing</a>
+      </div>
+      <p style="font-family:Inter,sans-serif;font-size:13.5px;color:rgba(255,255,255,0.6);margin:0;">Plan your revision around the Autumn 2026 FRCPath examinations (21 September – 30 October). <a href="https://www.rcpath.org/trainees/examinations/" style="color:rgba(255,255,255,0.85);">Check the RCPath website</a> for your specific sitting date.</p>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer style="background:#0A1714;color:#fff;padding:56px 0 32px;">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+      <div style="display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:32px;margin-bottom:40px;">
+        <div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;background:#007D6E;color:#fff;font-family:Inter,sans-serif;font-weight:800;font-size:16px;">A</span>
+            <span style="font-family:Inter,sans-serif;font-weight:800;font-size:17px;color:#fff;">ACE Haematology</span>
+          </div>
+          <p style="font-family:Georgia,serif;font-size:14px;line-height:1.6;color:rgba(255,255,255,0.6);max-width:34ch;margin:0;">The specialist haematology platform — exam preparation, community and current-awareness. Independent, with consultant oversight.</p>
+        </div>
+        <div>
+          <h3 style="font-family:Inter,sans-serif;font-size:12.5px;text-transform:uppercase;letter-spacing:0.06em;font-weight:700;color:rgba(255,255,255,0.85);margin:0 0 14px;">Platform</h3>
+          <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;">
+            <li><a href="https://www.acehaematology.com/question-bank" style="font-family:Inter,sans-serif;font-size:14px;color:rgba(255,255,255,0.7);text-decoration:none;">Question Bank</a></li>
+            <li><a href="https://www.acehaematology.com/ace-tools/essay-analyser" style="font-family:Inter,sans-serif;font-size:14px;color:rgba(255,255,255,0.7);text-decoration:none;">Essay Analyser</a></li>
+            <li><a href="https://www.acehaematology.com/mock-exams" style="font-family:Inter,sans-serif;font-size:14px;color:rgba(255,255,255,0.7);text-decoration:none;">Mock Papers</a></li>
+            <li><a href="https://www.acehaematology.com/ace-tools/flash-cards" style="font-family:Inter,sans-serif;font-size:14px;color:rgba(255,255,255,0.7);text-decoration:none;">Flashcards</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="font-family:Inter,sans-serif;font-size:12.5px;text-transform:uppercase;letter-spacing:0.06em;font-weight:700;color:rgba(255,255,255,0.85);margin:0 0 14px;">Community</h3>
+          <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;">
+            <li><a href="https://www.acehaematology.com/discussion-forum" style="font-family:Inter,sans-serif;font-size:14px;color:rgba(255,255,255,0.7);text-decoration:none;">Social Hub</a></li>
+            <li><a href="https://www.acehaematology.com/recent-updates" style="font-family:Inter,sans-serif;font-size:14px;color:rgba(255,255,255,0.7);text-decoration:none;">Blog</a></li>
+            <li><a href="https://www.acehaematology.com/events" style="font-family:Inter,sans-serif;font-size:14px;color:rgba(255,255,255,0.7);text-decoration:none;">Events &amp; CPD</a></li>
+            <li><a href="https://www.acehaematology.com/pricing" style="font-family:Inter,sans-serif;font-size:14px;color:rgba(255,255,255,0.7);text-decoration:none;">Pricing</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="font-family:Inter,sans-serif;font-size:12.5px;text-transform:uppercase;letter-spacing:0.06em;font-weight:700;color:rgba(255,255,255,0.85);margin:0 0 14px;">Legal</h3>
+          <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;">
+            <li><a href="https://www.acehaematology.com/privacy-policy" style="font-family:Inter,sans-serif;font-size:14px;color:rgba(255,255,255,0.7);text-decoration:none;">Privacy Policy</a></li>
+            <li><a href="https://www.acehaematology.com/terms" style="font-family:Inter,sans-serif;font-size:14px;color:rgba(255,255,255,0.7);text-decoration:none;">Terms of Service</a></li>
+            <li><a href="https://www.acehaematology.com/faq" style="font-family:Inter,sans-serif;font-size:14px;color:rgba(255,255,255,0.7);text-decoration:none;">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+      <div style="padding-top:24px;border-top:1px solid rgba(255,255,255,0.1);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;">
+        <p style="font-family:Inter,sans-serif;font-size:12.5px;color:rgba(255,255,255,0.5);margin:0;">© 2026 ACE Haematology. Operated by Marrowminds Limited, Aberdeen.</p>
+        <p style="font-family:Inter,sans-serif;font-size:12.5px;color:rgba(255,255,255,0.5);margin:0;">Independent · Built with UK consultant haematologist oversight.</p>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+
+
+
+<script>
+  // Simple dropdown toggle for the Tools menu in the nav
+  (function() {
+    const toolsToggle = document.querySelector('.tools-toggle');
+    if (toolsToggle) {
+      toolsToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        const menu = this.nextElementSibling;
+        if (menu) menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+      });
+    }
+  })();
+</script>
+</body></html>
