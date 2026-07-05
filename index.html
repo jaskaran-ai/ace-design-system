@@ -77,6 +77,30 @@
     ::-webkit-scrollbar { width: 8px; height: 8px; }
     ::-webkit-scrollbar-thumb { background: var(--color-surface-border); border-radius: 4px; }
     @media (max-width: 1023px) { .mobile-tabs::-webkit-scrollbar { display: none; } }
+    .quiz-option {
+      display: flex; align-items: center; gap: .75rem;
+      padding: .9rem 1rem; border-radius: 12px;
+      border: 1px solid var(--color-surface-border);
+      background: var(--color-surface);
+      color: var(--color-text-body);
+      cursor: pointer;
+      transition: all .15s;
+    }
+    .quiz-option:hover { border-color: var(--color-primary); background: var(--color-bg-subtle); }
+    .quiz-option.selected { border-color: var(--color-primary); background: var(--color-success-bg); color: var(--color-text); }
+    .quiz-option.correct { border-color: #22c55e; background: #dcfce7; color: #166534; }
+    .quiz-option.incorrect { border-color: #ef4444; background: #fee2e2; color: #991b1b; }
+    .quiz-option.disabled { pointer-events: none; opacity: .9; }
+    .quiz-option .quiz-letter {
+      width: 28px; height: 28px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700; flex-shrink: 0;
+      background: var(--color-bg-subtle); color: var(--color-text-body);
+      border: 1px solid var(--color-surface-border);
+    }
+    .quiz-option.selected .quiz-letter { background: var(--color-primary); color: white; border-color: var(--color-primary); }
+    .quiz-option.correct .quiz-letter { background: #22c55e; color: white; border-color: #22c55e; }
+    .quiz-option.incorrect .quiz-letter { background: #ef4444; color: white; border-color: #ef4444; }
   </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -786,7 +810,7 @@
                     <h3 class="text-[22px] font-semibold text-[var(--color-text)]">Good morning, Dr Sharma</h3>
                     <p class="text-[13px] text-[var(--color-text-muted)]">ST4 Haematology • SCE 68 days away</p>
                   </div>
-                  <button class="btn-accent !py-2 self-start">Continue learning</button>
+                  <button type="button" class="btn-accent !py-2 self-start">Continue learning</button>
                 </div>
                 <div class="grid sm:grid-cols-3 gap-4 mb-6">
                   <div class="card p-4">
@@ -831,6 +855,100 @@
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+
+          <!-- Layout 4: MCQ Quiz -->
+          <div class="card p-0 overflow-hidden mt-8">
+            <div class="grid lg:grid-cols-[1fr_320px]">
+              <div class="p-6 sm:p-8">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
+                  <div>
+                    <h3 class="text-[22px] font-semibold text-[var(--color-text)]">MCQ Quiz</h3>
+                    <p class="text-[14px] text-[var(--color-text-muted)] mt-0.5">Iron Deficiency Anaemia • BSH aligned • 5 questions</p>
+                  </div>
+                  <span class="tag" id="mcq-counter">1 / 5</span>
+                </div>
+
+                <div class="mb-6">
+                  <div class="h-2 rounded-full bg-[var(--color-surface-subtle)] overflow-hidden">
+                    <div id="mcq-progress" class="h-full bg-[var(--color-primary)] rounded-full transition-all duration-300" style="width: 20%"></div>
+                  </div>
+                </div>
+
+                <div class="card p-5 sm:p-6 mb-6">
+                  <p class="text-[16px] leading-7 text-[var(--color-text-body)]" id="mcq-stem">A 34-year-old woman presents with fatigue and pallor. Her FBC shows Hb 92 g/L, MCV 78 fL, MCH 26 pg. Ferritin 8 µg/L, CRP 2 mg/L. What is the most appropriate first-line management?</p>
+                </div>
+
+                <div class="space-y-3 mb-6" id="mcq-options" role="radiogroup" aria-label="Answer options">
+                  <!-- Options rendered by JS -->
+                </div>
+
+                <div id="mcq-feedback" class="hidden mb-6">
+                  <div class="p-4 rounded-xl border" id="mcq-feedback-box">
+                    <div class="flex items-start gap-3">
+                      <div id="mcq-feedback-icon" class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"></div>
+                      <div>
+                        <div class="text-[13px] font-semibold" id="mcq-feedback-title">Correct</div>
+                        <p class="text-[13px] mt-0.5 leading-relaxed" id="mcq-feedback-text">Explanation goes here.</p>
+                        <div class="mt-2 text-[12px] text-[var(--color-text-muted)]" id="mcq-feedback-ref">Reference: BSH 2024</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex items-center justify-between gap-3">
+                  <button type="button" id="mcq-prev" class="btn-secondary !py-2" disabled>Previous</button>
+                  <button type="button" id="mcq-submit" class="btn-primary !py-2">Submit</button>
+                  <button type="button" id="mcq-next" class="btn-primary !py-2 hidden">Next</button>
+                  <button type="button" id="mcq-finish" class="btn-accent !py-2 hidden">Finish</button>
+                </div>
+              </div>
+
+              <div class="hidden lg:block border-l border-[var(--color-surface-border)] bg-[var(--color-bg-subtle)] p-5">
+                <div class="text-[12px] font-semibold uppercase tracking-wide text-[var(--color-text-faint)] mb-4">Session Summary</div>
+                <div class="space-y-4">
+                  <div class="card p-4">
+                    <div class="text-[12px] text-[var(--color-text-faint)]">Score</div>
+                    <div class="mt-1 text-[28px] font-bold text-[var(--color-primary)]" id="mcq-score">0 / 5</div>
+                  </div>
+                  <div class="card p-4">
+                    <div class="text-[12px] text-[var(--color-text-faint)]">Accuracy</div>
+                    <div class="mt-1 text-[28px] font-bold text-[var(--color-text)]" id="mcq-accuracy">0%</div>
+                  </div>
+                  <div class="card p-4">
+                    <div class="text-[12px] text-[var(--color-text-faint)]">Time</div>
+                    <div class="mt-1 text-[28px] font-bold text-[var(--color-text)]" id="mcq-timer">00:00</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- MCQ Quiz result overlay -->
+          <div id="mcq-result" class="hidden card p-6 sm:p-8 text-center">
+            <div class="w-16 h-16 mx-auto rounded-full bg-[var(--color-success-bg)] flex items-center justify-center mb-4">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <h3 class="text-[22px] font-semibold text-[var(--color-text)]">Quiz complete</h3>
+            <p class="text-[14px] text-[var(--color-text-muted)] mt-1 max-w-[480px] mx-auto">You have finished the Iron Deficiency Anaemia quiz. Review your score below and retry any weak topics.</p>
+            <div class="mt-6 grid sm:grid-cols-3 gap-4 max-w-[640px] mx-auto">
+              <div class="card p-4">
+                <div class="text-[12px] text-[var(--color-text-faint)]">Correct</div>
+                <div class="mt-1 text-[24px] font-bold text-[var(--color-primary)]" id="mcq-result-correct">0</div>
+              </div>
+              <div class="card p-4">
+                <div class="text-[12px] text-[var(--color-text-faint)]">Incorrect</div>
+                <div class="mt-1 text-[24px] font-bold text-[var(--color-error-icon)]" id="mcq-result-incorrect">0</div>
+              </div>
+              <div class="card p-4">
+                <div class="text-[12px] text-[var(--color-text-faint)]">Accuracy</div>
+                <div class="mt-1 text-[24px] font-bold text-[var(--color-text)]" id="mcq-result-accuracy">0%</div>
+              </div>
+            </div>
+            <div class="mt-6 flex justify-center gap-3">
+              <button type="button" id="mcq-retry" class="btn-primary !py-2">Retry quiz</button>
+              <button type="button" id="mcq-review" class="btn-secondary !py-2">Review answers</button>
             </div>
           </div>
         </section>
@@ -1168,6 +1286,250 @@ function renderColors() {
   });
 }
 
+function initQuiz() {
+  const quizQuestions = [
+    {
+      stem: "A 34-year-old woman presents with fatigue and pallor. Her FBC shows Hb 92 g/L, MCV 78 fL, MCH 26 pg. Ferritin 8 µg/L, CRP 2 mg/L. What is the most appropriate first-line management?",
+      options: ["Start oral iron supplementation", "Request urgent bone marrow biopsy", "Refer for IV iron replacement immediately", "Prescribe a blood transfusion"],
+      correct: 0,
+      explanation: "In non-anaemic or mildly anaemic iron deficiency with low ferritin, oral iron is first-line. IV iron is reserved for intolerance, malabsorption, or ongoing blood loss.",
+      reference: "BSH 2024 guideline on iron deficiency anaemia"
+    },
+    {
+      stem: "Which investigation is most useful to differentiate iron deficiency from anaemia of chronic disease when ferritin is borderline?",
+      options: ["Serum iron alone", "Transferrin saturation", "Reticulocyte count", "Peripheral blood film"],
+      correct: 1,
+      explanation: "Transferrin saturation reflects functional iron availability and helps distinguish iron deficiency from inflammatory block, especially when ferritin is normal or raised by inflammation.",
+      reference: "BSH 2024"
+    },
+    {
+      stem: "A patient with coeliac disease and iron deficiency anaemia fails to respond to 8 weeks of compliant oral iron. What is the next best step?",
+      options: ["Double the oral iron dose", "Check adherence and investigate malabsorption", "Switch to twice-weekly dosing", "Start parenteral iron straight away"],
+      correct: 1,
+      explanation: "Before escalating to IV iron, confirm adherence and investigate causes of malabsorption. In coeliac disease, ongoing gluten exposure or small-bowel disease may limit absorption.",
+      reference: "BSH 2024 / NICE NG20"
+    },
+    {
+      stem: "What is the typical peripheral blood film finding in established iron deficiency anaemia?",
+      options: ["Macrocytosis and hypersegmented neutrophils", "Microcytosis, hypochromia, and pencil cells", "Schistocytes and thrombocytopenia", "Target cells and basophilic stippling"],
+      correct: 1,
+      explanation: "Iron deficiency produces microcytic hypochromic red cells. Pencil cells are a classic morphological clue.",
+      reference: "Dacie & Lewis Practical Haematology"
+    },
+    {
+      stem: "Which of the following is a recognised cause of iron deficiency in a postmenopausal woman?",
+      options: ["Heavy menstrual bleeding", "Pregnancy", "Colonic malignancy", "Growth spurt"],
+      correct: 2,
+      explanation: "In postmenopausal women, iron deficiency is pathological until proven otherwise. Gastrointestinal blood loss, including colonic malignancy, must be excluded.",
+      reference: "NICE NG12 suspected cancer referral"
+    }
+  ];
+
+  let current = 0;
+  let selected = null;
+  let answers = new Array(quizQuestions.length).fill(null);
+  let timerInterval = null;
+  let secondsElapsed = 0;
+
+  const stem = document.getElementById('mcq-stem');
+  const optionsRoot = document.getElementById('mcq-options');
+  const counter = document.getElementById('mcq-counter');
+  const progress = document.getElementById('mcq-progress');
+  const feedback = document.getElementById('mcq-feedback');
+  const feedbackBox = document.getElementById('mcq-feedback-box');
+  const feedbackTitle = document.getElementById('mcq-feedback-title');
+  const feedbackText = document.getElementById('mcq-feedback-text');
+  const feedbackRef = document.getElementById('mcq-feedback-ref');
+  const feedbackIcon = document.getElementById('mcq-feedback-icon');
+  const prevBtn = document.getElementById('mcq-prev');
+  const submitBtn = document.getElementById('mcq-submit');
+  const nextBtn = document.getElementById('mcq-next');
+  const finishBtn = document.getElementById('mcq-finish');
+  const scoreEl = document.getElementById('mcq-score');
+  const accuracyEl = document.getElementById('mcq-accuracy');
+  const timerEl = document.getElementById('mcq-timer');
+  const resultEl = document.getElementById('mcq-result');
+  const resultCorrect = document.getElementById('mcq-result-correct');
+  const resultIncorrect = document.getElementById('mcq-result-incorrect');
+  const resultAccuracy = document.getElementById('mcq-result-accuracy');
+  const retryBtn = document.getElementById('mcq-retry');
+  const reviewBtn = document.getElementById('mcq-review');
+  const quizCard = resultEl?.previousElementSibling;
+
+  if (!stem || !optionsRoot) return;
+
+  function startTimer() {
+    if (timerInterval) clearInterval(timerInterval);
+    timerInterval = setInterval(() => {
+      secondsElapsed++;
+      const m = String(Math.floor(secondsElapsed / 60)).padStart(2, '0');
+      const s = String(secondsElapsed % 60).padStart(2, '0');
+      if (timerEl) timerEl.textContent = `${m}:${s}`;
+    }, 1000);
+  }
+
+  function stopTimer() {
+    if (timerInterval) clearInterval(timerInterval);
+    timerInterval = null;
+  }
+
+  function updateScore() {
+    const correctCount = answers.filter((a, i) => a !== null && a === quizQuestions[i].correct).length;
+    const answeredCount = answers.filter(a => a !== null).length;
+    const accuracy = answeredCount ? Math.round((correctCount / answeredCount) * 100) : 0;
+    if (scoreEl) scoreEl.textContent = `${correctCount} / ${quizQuestions.length}`;
+    if (accuracyEl) accuracyEl.textContent = `${accuracy}%`;
+    return { correctCount, answeredCount, accuracy };
+  }
+
+  function renderQuestion() {
+    const q = quizQuestions[current];
+    selected = answers[current];
+    if (stem) stem.textContent = q.stem;
+    if (counter) counter.textContent = `${current + 1} / ${quizQuestions.length}`;
+    if (progress) progress.style.width = `${((current + 1) / quizQuestions.length) * 100}%`;
+    if (feedback) feedback.classList.add('hidden');
+
+    if (optionsRoot) {
+      optionsRoot.innerHTML = q.options.map((opt, i) => {
+        const letter = String.fromCharCode(65 + i);
+        return `
+          <button type="button" class="quiz-option w-full text-left ${selected === i ? 'selected' : ''}" data-option="${i}" aria-checked="${selected === i ? 'true' : 'false'}" role="radio">
+            <span class="quiz-letter">${letter}</span>
+            <span class="text-[14px]">${opt}</span>
+          </button>`;
+      }).join('');
+    }
+
+    const answered = answers[current] !== null;
+    if (prevBtn) prevBtn.disabled = current === 0;
+    if (submitBtn) submitBtn.classList.toggle('hidden', answered);
+    if (nextBtn) nextBtn.classList.toggle('hidden', !answered || current === quizQuestions.length - 1);
+    if (finishBtn) finishBtn.classList.toggle('hidden', !answered || current !== quizQuestions.length - 1);
+
+    if (answered) {
+      showFeedback(true);
+    } else {
+      if (feedback) feedback.classList.add('hidden');
+    }
+
+    updateScore();
+  }
+
+  function selectOption(i) {
+    if (answers[current] !== null) return;
+    selected = i;
+    answers[current] = i;
+    optionsRoot.querySelectorAll('.quiz-option').forEach(btn => {
+      const isSelected = parseInt(btn.dataset.option, 10) === i;
+      btn.classList.toggle('selected', isSelected);
+      btn.setAttribute('aria-checked', String(isSelected));
+    });
+  }
+
+  function showFeedback(silent = false) {
+    const q = quizQuestions[current];
+    const chosen = answers[current];
+    const isCorrect = chosen === q.correct;
+
+    if (optionsRoot) {
+      optionsRoot.querySelectorAll('.quiz-option').forEach(btn => {
+        const idx = parseInt(btn.dataset.option, 10);
+        btn.classList.add('disabled');
+        if (idx === q.correct) btn.classList.add('correct');
+        else if (idx === chosen && !isCorrect) btn.classList.add('incorrect');
+      });
+    }
+
+    if (feedback) {
+      feedback.classList.remove('hidden');
+      feedbackTitle.textContent = isCorrect ? 'Correct' : 'Incorrect';
+      feedbackText.textContent = q.explanation;
+      feedbackRef.textContent = `Reference: ${q.reference}`;
+      feedbackBox.style.background = isCorrect ? 'var(--color-success-bg)' : 'var(--color-error-bg)';
+      feedbackBox.style.borderColor = isCorrect ? 'var(--color-success-border)' : 'var(--color-error-border)';
+      feedbackTitle.style.color = isCorrect ? 'var(--color-primary-hover)' : 'var(--color-error-icon)';
+      feedbackIcon.style.background = isCorrect ? 'var(--color-primary)' : 'var(--color-error-icon)';
+      feedbackIcon.innerHTML = isCorrect
+        ? `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>`
+        : `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M18 6L6 18M6 6l12 12"/></svg>`;
+    }
+
+    if (submitBtn) submitBtn.classList.add('hidden');
+    if (nextBtn) nextBtn.classList.toggle('hidden', current === quizQuestions.length - 1);
+    if (finishBtn) finishBtn.classList.toggle('hidden', current !== quizQuestions.length - 1);
+
+    if (!silent) updateScore();
+  }
+
+  function submitAnswer() {
+    if (answers[current] === null) {
+      showToast('Please select an answer');
+      return;
+    }
+    showFeedback(false);
+  }
+
+  function nextQuestion() {
+    if (current < quizQuestions.length - 1) {
+      current++;
+      renderQuestion();
+    }
+  }
+
+  function prevQuestion() {
+    if (current > 0) {
+      current--;
+      renderQuestion();
+    }
+  }
+
+  function showResults() {
+    const { correctCount } = updateScore();
+    const incorrectCount = quizQuestions.length - correctCount;
+    const accuracy = Math.round((correctCount / quizQuestions.length) * 100);
+    if (resultCorrect) resultCorrect.textContent = String(correctCount);
+    if (resultIncorrect) resultIncorrect.textContent = String(incorrectCount);
+    if (resultAccuracy) resultAccuracy.textContent = `${accuracy}%`;
+    if (quizCard) quizCard.classList.add('hidden');
+    if (resultEl) resultEl.classList.remove('hidden');
+    resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function resetQuiz() {
+    current = 0;
+    selected = null;
+    answers = new Array(quizQuestions.length).fill(null);
+    secondsElapsed = 0;
+    if (timerEl) timerEl.textContent = '00:00';
+    if (quizCard) quizCard.classList.remove('hidden');
+    if (resultEl) resultEl.classList.add('hidden');
+    renderQuestion();
+    startTimer();
+  }
+
+  optionsRoot?.addEventListener('click', e => {
+    const btn = e.target.closest('.quiz-option');
+    if (!btn) return;
+    selectOption(parseInt(btn.dataset.option, 10));
+  });
+
+  submitBtn?.addEventListener('click', submitAnswer);
+  nextBtn?.addEventListener('click', nextQuestion);
+  prevBtn?.addEventListener('click', prevQuestion);
+  finishBtn?.addEventListener('click', () => { stopTimer(); showResults(); });
+  retryBtn?.addEventListener('click', resetQuiz);
+  reviewBtn?.addEventListener('click', () => {
+    if (quizCard) quizCard.classList.remove('hidden');
+    if (resultEl) resultEl.classList.add('hidden');
+    current = 0;
+    renderQuestion();
+  });
+
+  renderQuestion();
+  startTimer();
+}
+
 function init() {
   // Theme selector dropdown
   const select = document.getElementById('theme-select');
@@ -1180,6 +1542,7 @@ function init() {
 
   renderGallery();
   loadTheme();
+  initQuiz();
 
   // Navigation active state
   const navLinks = document.querySelectorAll('[data-nav]');
