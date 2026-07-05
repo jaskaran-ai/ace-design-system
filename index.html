@@ -4,317 +4,1263 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ACE Design System — Themes</title>
+  <style>
+    :root { color-scheme: light; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background: var(--color-bg);
+      color: var(--color-text);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    .georgia { font-family: Georgia, 'Times New Roman', Times, serif; }
+    .card { background: var(--color-surface); border: 1px solid var(--color-surface-border); border-radius: 16px; }
+    .nav-link {
+      display: flex; align-items: center; gap: .65rem;
+      padding: .6rem .75rem; border-radius: 10px;
+      color: var(--color-text-body); font-size: 14px; font-weight: 500;
+      transition: all .15s; white-space: nowrap;
+    }
+    .nav-link:hover { background: var(--color-bg-subtle); color: var(--color-text); }
+    .nav-link.active { background: var(--color-success-bg); color: var(--color-primary-hover); font-weight: 600; }
+    .swatch {
+      border: 1px solid var(--color-surface-border); border-radius: 14px; overflow: hidden;
+      background: var(--color-surface); transition: transform .15s, box-shadow .15s;
+    }
+    .swatch:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(var(--color-primary-rgb), .08); }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-variant-numeric: tabular-nums; }
+    .btn-primary {
+      background: var(--color-primary); color: white; border-radius: 12px;
+      padding: 10px 18px; font-weight: 600; font-size: 14px;
+      transition: all .15s; box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    }
+    .btn-primary:hover { background: var(--color-primary-hover); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(var(--color-primary-rgb), .25); }
+    .btn-primary:active { background: var(--color-primary-active); transform: translateY(0); }
+    .btn-primary:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+    .btn-accent {
+      background: var(--color-accent); color: white; border-radius: 12px;
+      padding: 10px 18px; font-weight: 600; font-size: 14px;
+      transition: all .15s; box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    }
+    .btn-accent:hover { background: var(--color-accent-hover); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(var(--color-accent-rgb), .25); }
+    .btn-accent:active { background: var(--color-accent-active); transform: translateY(0); }
+    .btn-accent:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+    .btn-secondary {
+      background: var(--color-surface-subtle); color: var(--color-primary-hover); border-radius: 12px;
+      padding: 10px 18px; font-weight: 600; font-size: 14px; transition: all .15s;
+    }
+    .btn-secondary:hover { background: var(--color-surface-border); }
+    .tag {
+      display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px;
+      border-radius: 999px; font-size: 12px; font-weight: 500;
+      background: var(--color-success-bg); color: var(--color-primary-hover); border: 1px solid var(--color-success-border);
+    }
+    .code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 12px; background: var(--color-bg-subtle); border: 1px solid var(--color-surface-border);
+      padding: 2px 6px; border-radius: 6px; color: var(--color-text-body);
+    }
+    .copy-btn { transition: all .12s; }
+    .copy-btn:active { scale: .96; }
+    .active-tab { background: var(--color-success-bg); color: var(--color-primary-hover) !important; }
+    .site-header { background: rgba(var(--color-bg-subtle-rgb), .8); border-bottom: 1px solid rgba(var(--color-surface-border-rgb), .7); }
+    .modal-backdrop { background: rgba(var(--color-text-rgb), .6); }
+    .bg-glow-primary { background: rgba(var(--color-primary-rgb), .15); }
+    .bg-glow-primary-lighter { background: rgba(var(--color-primary-lighter-rgb), .2); }
+    .toggle { background: var(--color-surface-border); }
+    .toggle.on { background: var(--color-primary); }
+    .theme-card { transition: transform .2s, box-shadow .2s; }
+    .theme-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,.08); }
+    .theme-card-active { box-shadow: 0 0 0 2px var(--color-primary), 0 0 0 4px var(--color-bg); }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-thumb { background: var(--color-surface-border); border-radius: 4px; }
+    @media (max-width: 1023px) { .mobile-tabs::-webkit-scrollbar { display: none; } }
+  </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body {
-      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      background: #F4F2EE;
-      color: #0D1F1C;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-    }
-    .card { background: #fff; border: 1px solid #E0E5E2; border-radius: 16px; }
-    .theme-card { transition: transform .2s, box-shadow .2s; }
-    .theme-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,.08); }
-    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
-  </style>
+  
 </head>
 <body>
-  <header class="sticky top-0 z-40 border-b border-[#E0DACF]/70 bg-[#FBFAF8]/80 backdrop-blur-xl">
-    <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="h-[68px] flex items-center justify-between">
-        <div class="flex items-center gap-3">
-          <div>
-            <img src="logo.png" alt="ACE Haematology" class="h-9 w-auto">
-            <div class="text-[11px] text-[#6A736F] font-medium mt-1">Design System — Theme Gallery</div>
-          </div>
-        </div>
-        <span class="text-[13px] font-medium text-[#6A736F]">9 themes available</span>
-      </div>
-    </div>
-  </header>
-
-  <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
-    <div class="mb-12 text-center">
-      <h1 class="text-[40px] sm:text-[56px] font-extrabold tracking-[-0.02em] leading-[1.05] text-[#0A1714]">Design System Themes</h1>
-      <p class="mt-4 text-[17px] leading-7 text-[#4A5754] max-w-[560px] mx-auto">Explore the ACE Haematology design system across nine distinct clinical color palettes. Click a card to open the full system. Each theme includes a downloadable Tailwind config.</p>
-    </div>
-
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
-      <!-- Theme 1 -->
-      <a href="theme-1/index.html" class="theme-card card p-0 overflow-hidden block no-underline">
-        <div class="h-[140px] flex items-center justify-center" style="background: linear-gradient(135deg, #007D6E 0%, #003D36 100%);">
-          <img src="logo.png" alt="ACE Haematology" class="h-12 w-auto brightness-0 invert">
-        </div>
-        <div class="p-6">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="text-[11px] font-semibold uppercase tracking-wide text-[#6A736F]">Theme 1</span>
-          </div>
-          <h3 class="text-[20px] font-bold tracking-tight text-[#0D1F1C]">Teal & Amber</h3>
-          <p class="text-[14px] text-[#5A6663] mt-1 leading-6">Warm neutrals with teal primary and amber accent. The original clinical palette.</p>
-          <div class="mt-4 flex items-center gap-2">
-            <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:#007D6E" title="Primary #007D6E"></div>
-            <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:#A85A18" title="Accent #A85A18"></div>
-            <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:#F4F2EE" title="Background #F4F2EE"></div>
-            <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:#0D1F1C" title="Text #0D1F1C"></div>
-          </div>
-          <div class="mt-5 flex items-center justify-between">
-            <div class="flex gap-1.5">
-              <span class="mono text-[11px] px-2 py-0.5 rounded bg-[#F4F2EE] text-[#4A5754]">#007D6E</span>
-              <span class="mono text-[11px] px-2 py-0.5 rounded bg-[#F4F2EE] text-[#4A5754]">#A85A18</span>
-            </div>
-            <span class="text-[13px] font-semibold text-[#005A4E] flex items-center gap-1">Open <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Theme 2 -->
-      <a href="theme-2/index.html" class="theme-card card p-0 overflow-hidden block no-underline">
-        <div class="h-[140px] flex items-center justify-center" style="background: linear-gradient(135deg, #1B5E9C 0%, #0E3A60 100%);">
-          <img src="logo.png" alt="ACE Haematology" class="h-12 w-auto brightness-0 invert">
-        </div>
-        <div class="p-6">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="text-[11px] font-semibold uppercase tracking-wide text-[#62768A]">Theme 2</span>
-          </div>
-          <h3 class="text-[20px] font-bold tracking-tight text-[#0E1F2E]">Clinical Blue & Coral</h3>
-          <p class="text-[14px] text-[#52677A] mt-1 leading-6">Cool grey backgrounds with royal blue primary and coral accent for warnings.</p>
-          <div class="mt-4 flex items-center gap-2">
-            <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:#1B5E9C" title="Primary #1B5E9C"></div>
-            <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:#D9534F" title="Accent #D9534F"></div>
-            <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:#EEF1F4" title="Background #EEF1F4"></div>
-            <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:#0E1F2E" title="Text #0E1F2E"></div>
-          </div>
-          <div class="mt-5 flex items-center justify-between">
-            <div class="flex gap-1.5">
-              <span class="mono text-[11px] px-2 py-0.5 rounded bg-[#EEF1F4] text-[#3E5566]">#1B5E9C</span>
-              <span class="mono text-[11px] px-2 py-0.5 rounded bg-[#EEF1F4] text-[#3E5566]">#D9534F</span>
-            </div>
-            <span class="text-[13px] font-semibold text-[#154A7A] flex items-center gap-1">Open <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Theme 3 -->
-      <a href="theme-3/index.html" class="theme-card card p-0 overflow-hidden block no-underline">
-        <div class="h-[140px] flex items-center justify-center" style="background: linear-gradient(135deg, #6B3A7A 0%, #3D2047 100%);">
-          <img src="logo.png" alt="ACE Haematology" class="h-12 w-auto brightness-0 invert">
-        </div>
-        <div class="p-6">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="text-[11px] font-semibold uppercase tracking-wide text-[#6A5C72]">Theme 3</span>
-          </div>
-          <h3 class="text-[20px] font-bold tracking-tight text-[#1F1024]">Plum & Sage</h3>
-          <p class="text-[14px] text-[#5A4D63] mt-1 leading-6">Soft lilac backgrounds with plum primary and sage green accent. Distinctive and calming.</p>
-          <div class="mt-4 flex items-center gap-2">
-            <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:#6B3A7A" title="Primary #6B3A7A"></div>
-            <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:#5C8A4F" title="Accent #5C8A4F"></div>
-            <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:#F3EFF4" title="Background #F3EFF4"></div>
-            <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:#1F1024" title="Text #1F1024"></div>
-          </div>
-          <div class="mt-5 flex items-center justify-between">
-            <div class="flex gap-1.5">
-              <span class="mono text-[11px] px-2 py-0.5 rounded bg-[#F3EFF4] text-[#4A3D52]">#6B3A7A</span>
-              <span class="mono text-[11px] px-2 py-0.5 rounded bg-[#F3EFF4] text-[#4A3D52]">#5C8A4F</span>
-            </div>
-            <span class="text-[13px] font-semibold text-[#522C5E] flex items-center gap-1">Open <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Theme 4 -->
-      <a href="theme-4/index.html" class="theme-card card p-0 overflow-hidden block no-underline">
-        <div class="h-[140px] flex items-center justify-center" style="background: linear-gradient(135deg, #2D6A4F 0%, #0F3A24 100%);">
-          <img src="logo.png" alt="ACE Haematology" class="h-12 w-auto brightness-0 invert">
-        </div>
-        <div class="p-6">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="text-[11px] font-semibold uppercase tracking-wide text-[#5A7A62]">Theme 4</span>
-          </div>
-          <h3 class="text-[20px] font-bold tracking-tight text-[#0F1F15]">Forest & Gold</h3>
-          <p class="text-[14px] text-[#4A6A52] mt-1 leading-6">Natural green primary with warm gold accent on a fresh sage background. Grounded and organic.</p>
-          <div class="mt-4 flex items-center gap-2">
-            <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:#2D6A4F" title="Primary #2D6A4F"></div>
-            <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:#C9962A" title="Accent #C9962A"></div>
-            <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:#F2F5F1" title="Background #F2F5F1"></div>
-            <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:#0F1F15" title="Text #0F1F15"></div>
-          </div>
-          <div class="mt-5 flex items-center justify-between">
-            <div class="flex gap-1.5">
-              <span class="mono text-[11px] px-2 py-0.5 rounded bg-[#F2F5F1] text-[#3A5A42]">#2D6A4F</span>
-              <span class="mono text-[11px] px-2 py-0.5 rounded bg-[#F2F5F1] text-[#3A5A42]">#C9962A</span>
-            </div>
-            <span class="text-[13px] font-semibold text-[#1B5037] flex items-center gap-1">Open <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Theme 5 -->
-      <a href="theme-5/index.html" class="theme-card card p-0 overflow-hidden block no-underline">
-        <div class="h-[140px] flex items-center justify-center" style="background: linear-gradient(135deg, #B91C1C 0%, #7F1D1D 100%);">
-          <img src="logo.png" alt="ACE Haematology" class="h-12 w-auto brightness-0 invert">
-        </div>
-        <div class="p-6">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="text-[11px] font-semibold uppercase tracking-wide text-[#6A5A5A]">Theme 5</span>
-          </div>
-          <h3 class="text-[20px] font-bold tracking-tight text-[#1F1212]">Crimson & Slate</h3>
-          <p class="text-[14px] text-[#5A4A4A] mt-1 leading-6">Bold crimson primary with cool slate accent on a soft warm grey background. Urgent and authoritative.</p>
-          <div class="mt-4 flex items-center gap-2">
-            <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:#B91C1C" title="Primary #B91C1C"></div>
-            <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:#475569" title="Accent #475569"></div>
-            <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:#F5F3F4" title="Background #F5F3F4"></div>
-            <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:#1F1212" title="Text #1F1212"></div>
-          </div>
-          <div class="mt-5 flex items-center justify-between">
-            <div class="flex gap-1.5">
-              <span class="mono text-[11px] px-2 py-0.5 rounded bg-[#F5F3F4] text-[#4A3A3A]">#B91C1C</span>
-              <span class="mono text-[11px] px-2 py-0.5 rounded bg-[#F5F3F4] text-[#4A3A3A]">#475569</span>
-            </div>
-            <span class="text-[13px] font-semibold text-[#991B1B] flex items-center gap-1">Open <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Theme 6 -->
-      <a href="theme-6/index.html" class="theme-card card p-0 overflow-hidden block no-underline">
-        <div class="h-[140px] flex items-center justify-center" style="background: linear-gradient(135deg, #312E81 0%, #1A1860 100%);">
-          <img src="logo.png" alt="ACE Haematology" class="h-12 w-auto brightness-0 invert">
-        </div>
-        <div class="p-6">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="text-[11px] font-semibold uppercase tracking-wide text-[#5E5E7E]">Theme 6</span>
-          </div>
-          <h3 class="text-[20px] font-bold tracking-tight text-[#12122E]">Midnight Indigo & Burnt Orange</h3>
-          <p class="text-[14px] text-[#4E4E6E] mt-1 leading-6">Deep indigo primary with burnt orange accent on a cool lavender background. Authoritative and warm.</p>
-          <div class="mt-4 flex items-center gap-2">
-            <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:#312E81" title="Primary #312E81"></div>
-            <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:#C2410C" title="Accent #C2410C"></div>
-            <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:#F0F0F8" title="Background #F0F0F8"></div>
-            <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:#12122E" title="Text #12122E"></div>
-          </div>
-          <div class="mt-5 flex items-center justify-between">
-            <div class="flex gap-1.5">
-              <span class="mono text-[11px] px-2 py-0.5 rounded bg-[#F0F0F8] text-[#3E3E5E]">#312E81</span>
-              <span class="mono text-[11px] px-2 py-0.5 rounded bg-[#F0F0F8] text-[#3E3E5E]">#C2410C</span>
-            </div>
-            <span class="text-[13px] font-semibold text-[#26245E] flex items-center gap-1">Open <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Theme 7 -->
-      <a href="theme-7/index.html" class="theme-card card p-0 overflow-hidden block no-underline">
-        <div class="h-[140px] flex items-center justify-center" style="background: linear-gradient(135deg, #BE185D 0%, #831843 100%);">
-          <img src="logo.png" alt="ACE Haematology" class="h-12 w-auto brightness-0 invert">
-        </div>
-        <div class="p-6">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="text-[11px] font-semibold uppercase tracking-wide text-[#6A4A58]">Theme 7</span>
-          </div>
-          <h3 class="text-[20px] font-bold tracking-tight text-[#1F0F16]">Rose & Teal</h3>
-          <p class="text-[14px] text-[#5A3D4A] mt-1 leading-6">Vibrant rose primary with deep teal accent on a soft pink background. Bold and compassionate.</p>
-          <div class="mt-4 flex items-center gap-2">
-            <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:#BE185D" title="Primary #BE185D"></div>
-            <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:#0F766E" title="Accent #0F766E"></div>
-            <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:#FBF1F5" title="Background #FBF1F5"></div>
-            <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:#1F0F16" title="Text #1F0F16"></div>
-          </div>
-          <div class="mt-5 flex items-center justify-between">
-            <div class="flex gap-1.5">
-              <span class="mono text-[11px] px-2 py-0.5 rounded bg-[#FBF1F5] text-[#4A2D3A]">#BE185D</span>
-              <span class="mono text-[11px] px-2 py-0.5 rounded bg-[#FBF1F5] text-[#4A2D3A]">#0F766E</span>
-            </div>
-            <span class="text-[13px] font-semibold text-[#9D174B] flex items-center gap-1">Open <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Theme 8 -->
-      <a href="theme-8/index.html" class="theme-card card p-0 overflow-hidden block no-underline">
-        <div class="h-[140px] flex items-center justify-center" style="background: linear-gradient(135deg, #0E7490 0%, #0A4A62 100%);">
-          <img src="logo.png" alt="ACE Haematology" class="h-12 w-auto brightness-0 invert">
-        </div>
-        <div class="p-6">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="text-[11px] font-semibold uppercase tracking-wide text-[#5A7A8A]">Theme 8</span>
-          </div>
-          <h3 class="text-[20px] font-bold tracking-tight text-[#0A1F2E]">Ocean & Gold</h3>
-          <p class="text-[14px] text-[#4A6A7A] mt-1 leading-6">Cyan ocean primary with warm gold accent on a cool icy background. Fresh and authoritative.</p>
-          <div class="mt-4 flex items-center gap-2">
-            <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:#0E7490" title="Primary #0E7490"></div>
-            <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:#CA8A04" title="Accent #CA8A04"></div>
-            <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:#EFF7FA" title="Background #EFF7FA"></div>
-            <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:#0A1F2E" title="Text #0A1F2E"></div>
-          </div>
-          <div class="mt-5 flex items-center justify-between">
-            <div class="flex gap-1.5">
-              <span class="mono text-[11px] px-2 py-0.5 rounded bg-[#EFF7FA] text-[#3A5A6A]">#0E7490</span>
-              <span class="mono text-[11px] px-2 py-0.5 rounded bg-[#EFF7FA] text-[#3A5A6A]">#CA8A04</span>
-            </div>
-            <span class="text-[13px] font-semibold text-[#0E5A78] flex items-center gap-1">Open <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Theme 9 -->
-      <a href="theme-9/index.html" class="theme-card card p-0 overflow-hidden block no-underline">
-        <div class="h-[140px] flex items-center justify-center" style="background: linear-gradient(135deg, #334155 0%, #0F172A 100%);">
-          <img src="logo.png" alt="ACE Haematology" class="h-12 w-auto brightness-0 invert">
-        </div>
-        <div class="p-6">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="text-[11px] font-semibold uppercase tracking-wide text-[#5A6A7A]">Theme 9</span>
-          </div>
-          <h3 class="text-[20px] font-bold tracking-tight text-[#1A1F2E]">Slate & Emerald</h3>
-          <p class="text-[14px] text-[#4A5A6A] mt-1 leading-6">Dark slate primary with vibrant emerald accent on a cool grey background. Professional and modern.</p>
-          <div class="mt-4 flex items-center gap-2">
-            <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:#334155" title="Primary #334155"></div>
-            <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:#059669" title="Accent #059669"></div>
-            <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:#F4F5F8" title="Background #F4F5F8"></div>
-            <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:#1A1F2E" title="Text #1A1F2E"></div>
-          </div>
-          <div class="mt-5 flex items-center justify-between">
-            <div class="flex gap-1.5">
-              <span class="mono text-[11px] px-2 py-0.5 rounded bg-[#F4F5F8] text-[#3A4A5A]">#334155</span>
-              <span class="mono text-[11px] px-2 py-0.5 rounded bg-[#F4F5F8] text-[#3A4A5A]">#059669</span>
-            </div>
-            <span class="text-[13px] font-semibold text-[#1E293B] flex items-center gap-1">Open <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-          </div>
-        </div>
-      </a>
-    </div>
-
-    <!-- Tailwind Config Downloads -->
-    <div class="mt-12 card p-6 sm:p-8">
-      <div class="flex items-center gap-3 mb-6">
-        <div class="w-10 h-10 rounded-[10px] bg-[#007D6E]/10 flex items-center justify-center">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#007D6E" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-        </div>
+  <header class="site-header sticky top-0 z-40 backdrop-blur-xl">
+  <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="h-[68px] flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-[10px] bg-[var(--color-primary)] flex items-center justify-center text-white font-extrabold text-[18px] shadow-[inset_0_1px_0_rgba(255,255,255,0.2)]">A</div>
         <div>
-          <h2 class="text-[20px] font-bold tracking-tight text-[#0D1F1C]">Tailwind Config Files</h2>
-          <p class="text-[13px] text-[#5A6663] mt-0.5">Download the Tailwind configuration for any theme below.</p>
+          <div class="font-semibold tracking-tight leading-none text-[var(--color-text)]">ACE Haematology</div>
+          <div class="text-[11px] text-[var(--color-text-faint)] font-medium -mt-0.5">Design System — Theme Gallery</div>
         </div>
       </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-        <a href="theme-1/tailwind.config.js" download class="flex items-center justify-between p-3 rounded-xl border border-[#E0E5E2] hover:bg-[#F4F2EE] transition"><span class="text-[14px] font-medium text-[#0D1F1C]">Theme 1 — Teal & Amber</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#007D6E" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg></a>
-        <a href="theme-2/tailwind.config.js" download class="flex items-center justify-between p-3 rounded-xl border border-[#E0E5E2] hover:bg-[#F4F2EE] transition"><span class="text-[14px] font-medium text-[#0D1F1C]">Theme 2 — Clinical Blue & Coral</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1B5E9C" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg></a>
-        <a href="theme-3/tailwind.config.js" download class="flex items-center justify-between p-3 rounded-xl border border-[#E0E5E2] hover:bg-[#F4F2EE] transition"><span class="text-[14px] font-medium text-[#0D1F1C]">Theme 3 — Plum & Sage</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6B3A7A" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg></a>
-        <a href="theme-4/tailwind.config.js" download class="flex items-center justify-between p-3 rounded-xl border border-[#E0E5E2] hover:bg-[#F4F2EE] transition"><span class="text-[14px] font-medium text-[#0D1F1C]">Theme 4 — Forest & Gold</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg></a>
-        <a href="theme-5/tailwind.config.js" download class="flex items-center justify-between p-3 rounded-xl border border-[#E0E5E2] hover:bg-[#F4F2EE] transition"><span class="text-[14px] font-medium text-[#0D1F1C]">Theme 5 — Crimson & Slate</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg></a>
-        <a href="theme-6/tailwind.config.js" download class="flex items-center justify-between p-3 rounded-xl border border-[#E0E5E2] hover:bg-[#F4F2EE] transition"><span class="text-[14px] font-medium text-[#0D1F1C]">Theme 6 — Midnight Indigo & Burnt Orange</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#312E81" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg></a>
-        <a href="theme-7/tailwind.config.js" download class="flex items-center justify-between p-3 rounded-xl border border-[#E0E5E2] hover:bg-[#F4F2EE] transition"><span class="text-[14px] font-medium text-[#0D1F1C]">Theme 7 — Rose & Teal</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#BE185D" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg></a>
-        <a href="theme-8/tailwind.config.js" download class="flex items-center justify-between p-3 rounded-xl border border-[#E0E5E2] hover:bg-[#F4F2EE] transition"><span class="text-[14px] font-medium text-[#0D1F1C]">Theme 8 — Ocean & Gold</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0E7490" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg></a>
-        <a href="theme-9/tailwind.config.js" download class="flex items-center justify-between p-3 rounded-xl border border-[#E0E5E2] hover:bg-[#F4F2EE] transition"><span class="text-[14px] font-medium text-[#0D1F1C]">Theme 9 — Slate & Emerald</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#334155" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg></a>
+      <div class="flex items-center gap-3">
+        <span class="text-[13px] font-medium text-[var(--color-text-faint)] hidden sm:inline">Theme</span>
+        <div class="relative">
+          <select id="theme-select" class="appearance-none min-w-[200px] rounded-xl border border-[var(--color-surface-border)] bg-[var(--color-surface)] text-[var(--color-text)] text-[13px] font-medium pl-3 pr-9 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"></select>
+          <svg class="absolute right-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--color-text-faint)] pointer-events-none" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><title>Open theme options</title><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div id="theme-dot" class="w-3 h-3 rounded-full border border-[var(--color-surface-border)] shadow-sm" style="background: var(--color-primary);"></div>
+        <button id="download-config" class="btn-primary !py-2 !px-3 text-[13px] hidden sm:inline-flex items-center gap-1.5">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><title>Download Tailwind config</title><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          Config
+        </button>
       </div>
-    </div>
-
-    <div class="mt-16 text-center">
-      <p class="text-[13px] text-[#6A736F]">Each theme includes the full design system: colors, typography, spacing, components, sample layouts, and voice & tone guidelines.</p>
     </div>
   </div>
+</header>
+    <!-- THEME GALLERY -->
+    <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="mb-6">
+        <h1 class="text-[32px] sm:text-[40px] font-extrabold tracking-[-0.02em] text-[var(--color-text-heading)]">Design System Themes</h1>
+        <p class="mt-2 text-[var(--color-text-body)] max-w-[640px]">Choose a theme below to recolour the full design system. Your choice is saved and a Tailwind config can be downloaded.</p>
+      </div>
+      <div id="theme-gallery" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+    </div>
+
+
+  <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="lg:flex lg:gap-10 py-6 lg:py-10">
+      <aside class="hidden lg:block w-[240px] shrink-0">
+        <div class="sticky top-[92px]">
+          <nav class="space-y-1">
+            <a href="#overview" data-nav="overview" class="nav-link active">Overview</a>
+            <a href="#colors" data-nav="colors" class="nav-link">Color Palette</a>
+            <a href="#typography" data-nav="typography" class="nav-link">Typography</a>
+            <a href="#spacing" data-nav="spacing" class="nav-link">Spacing</a>
+            <a href="#components" data-nav="components" class="nav-link">Components</a>
+            <a href="#layouts" data-nav="layouts" class="nav-link">Sample Layouts</a>
+            <a href="#voice" data-nav="voice" class="nav-link">Voice & Tone</a>
+          </nav>
+          <div class="mt-8 p-4 card">
+            <div class="text-[12px] font-semibold text-[var(--color-primary-hover)] uppercase tracking-wide">Status</div>
+            <div class="mt-1 text-[13px] text-[var(--color-text-body)] leading-snug">Reviewed by UK consultants. For clinical education use.</div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="min-w-0 flex-1 relative">
+        <div class="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+          <div class="absolute -top-24 -right-24 w-[420px] h-[420px] rounded-full bg-glow-primary-lighter blur-[80px]"></div>
+          <div class="absolute top-[600px] -left-32 w-[360px] h-[360px] rounded-full bg-glow-primary blur-[80px]"></div>
+        </div>
+
+        <!-- Mobile tabs -->
+        <div class="lg:hidden -mx-4 px-4 mb-6">
+          <div class="mobile-tabs flex gap-2 overflow-x-auto">
+            <button data-nav="overview" class="nav-link active">Overview</button>
+            <button data-nav="colors" class="nav-link">Colors</button>
+            <button data-nav="typography" class="nav-link">Type</button>
+            <button data-nav="spacing" class="nav-link">Spacing</button>
+            <button data-nav="components" class="nav-link">Components</button>
+            <button data-nav="layouts" class="nav-link">Layouts</button>
+            <button data-nav="voice" class="nav-link">Voice</button>
+          </div>
+        
+        <!-- COLORS -->
+        <section id="colors" class="scroll-mt-24 mb-14">
+          <div class="mb-6">
+            <h2 class="text-[28px] sm:text-[36px] font-bold tracking-tight text-[var(--color-text-heading)]">Color Palette</h2>
+            <p class="text-[var(--color-text-muted)] mt-1 max-w-[720px]">Live tokens for the active theme. Click any swatch to copy the hex value.</p>
+          </div>
+          <div id="colors-root"></div>
+        </section>
+</div>
+
+        <!-- OVERVIEW -->
+        <section id="overview" class="scroll-mt-24 mb-14">
+          <div class="card p-6 sm:p-10">
+            <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8">
+              <div class="max-w-[640px]">
+                <div class="inline-flex items-center gap-2 mb-4">
+                  <span class="tag">Medical Education</span>
+                  <span class="tag" style="background:var(--color-info-bg); color:var(--color-info); border-color:var(--color-info-border)">UK Consultants</span>
+                </div>
+                <h1 class="text-[40px] sm:text-[56px] font-extrabold tracking-[-0.02em] leading-[1.05] text-[var(--color-text-heading)]">Design System</h1>
+                <p class="mt-4 text-[17px] leading-7 text-[var(--color-text-body)]">ACE Haematology is a medical education platform for haematology. Every module is evidence-based, concise, and reviewed by practising UK consultants for trainees, SAS doctors, and consultants.</p>
+                <div class="mt-6 flex flex-wrap gap-3">
+                  <button class="btn-primary">Explore guidelines</button>
+                  <button class="btn-secondary">View library</button>
+                </div>
+              </div>
+              <div class="lg:w-[320px] w-full">
+                <div class="card p-6 bg-[var(--color-bg-subtle)]">
+                  <div class="text-[12px] font-semibold uppercase tracking-wide text-[var(--color-text-faint)] mb-4">Logo Concept</div>
+                  <div class="flex items-center gap-4">
+                    <div class="w-[56px] h-[56px] rounded-[12px] bg-[var(--color-primary)] flex items-center justify-center text-white font-extrabold text-[28px] shadow-[inset_0_1px_0_rgba(255,255,255,0.2)]">A</div>
+                    <div>
+                      <div class="text-[22px] font-bold tracking-tight text-[var(--color-text)] leading-none">ACE</div>
+                      <div class="text-[22px] font-semibold tracking-tight text-[var(--color-text)] -mt-1">Haematology</div>
+                    </div>
+                  </div>
+                  <div class="mt-5 space-y-2 text-[13px]">
+                    <div class="flex justify-between"><span class="text-[var(--color-text-faint)]">Square</span><span class="mono font-medium">Primary</span></div>
+                    <div class="flex justify-between"><span class="text-[var(--color-text-faint)]">Mark</span><span class="mono font-medium">White</span></div>
+                    <div class="flex justify-between"><span class="text-[var(--color-text-faint)]">Wordmark</span><span class="mono font-medium">Text</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="grid sm:grid-cols-3 gap-4 mt-10 pt-8 border-t border-[var(--color-surface-border)]">
+              <div><div class="text-[13px] font-semibold text-[var(--color-text-heading)]">Clinical</div><p class="text-[14px] text-[var(--color-text-muted)] mt-1">Evidence-based, NICE & BSH aligned.</p></div>
+              <div><div class="text-[13px] font-semibold text-[var(--color-text-heading)]">Clear</div><p class="text-[14px] text-[var(--color-text-muted)] mt-1">Plain English, structured format.</p></div>
+              <div><div class="text-[13px] font-semibold text-[var(--color-text-heading)]">Supportive</div><p class="text-[14px] text-[var(--color-text-muted)] mt-1">Designed for busy clinicians.</p></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- COLORS -->
+        
+
+        <!-- TYPOGRAPHY -->
+        <section id="typography" class="scroll-mt-24 mb-14">
+          <div class="mb-6">
+            <h2 class="text-[28px] sm:text-[36px] font-bold tracking-tight">Typography</h2>
+            <p class="text-[var(--color-text-muted)] mt-1">Inter for UI. Georgia for long-form fallback.</p>
+          </div>
+          <div class="card p-6 sm:p-8">
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="code">Inter 400</span><span class="code">500</span><span class="code">600</span><span class="code">700</span><span class="code">800</span><span class="code">Georgia fallback</span>
+            </div>
+            <div class="grid md:grid-cols-5 gap-3 mb-8">
+              <div class="p-4 rounded-xl bg-[var(--color-bg-subtle)] border border-[var(--color-surface-border)]"><div class="text-[11px] text-[var(--color-text-faint)] mb-1">400 Regular</div><div class="text-[26px] leading-none">Aa</div></div>
+              <div class="p-4 rounded-xl bg-[var(--color-bg-subtle)] border border-[var(--color-surface-border)]"><div class="text-[11px] text-[var(--color-text-faint)] mb-1">500 Medium</div><div class="text-[26px] leading-none font-medium">Aa</div></div>
+              <div class="p-4 rounded-xl bg-[var(--color-bg-subtle)] border border-[var(--color-surface-border)]"><div class="text-[11px] text-[var(--color-text-faint)] mb-1">600 Semibold</div><div class="text-[26px] leading-none font-semibold">Aa</div></div>
+              <div class="p-4 rounded-xl bg-[var(--color-bg-subtle)] border border-[var(--color-surface-border)]"><div class="text-[11px] text-[var(--color-text-faint)] mb-1">700 Bold</div><div class="text-[26px] leading-none font-bold">Aa</div></div>
+              <div class="p-4 rounded-xl bg-[var(--color-bg-subtle)] border border-[var(--color-surface-border)]"><div class="text-[11px] text-[var(--color-text-faint)] mb-1">800 Extrabold</div><div class="text-[26px] leading-none font-extrabold">Aa</div></div>
+            </div>
+            <div class="space-y-8">
+              <div>
+                <div class="text-[11px] uppercase tracking-widest text-[var(--color-text-lighter)] mb-2">H1 / 48–56 • Extrabold</div>
+                <div class="text-[44px] sm:text-[56px] font-extrabold leading-[1.05] tracking-[-0.02em] text-[var(--color-text-heading)]">Haematology, made clear</div>
+              </div>
+              <div>
+                <div class="text-[11px] uppercase tracking-widest text-[var(--color-text-lighter)] mb-2">H2 / 32–40 • Semibold</div>
+                <div class="text-[30px] sm:text-[38px] font-semibold leading-[1.15] text-[var(--color-text)]">Consultant-reviewed learning pathways</div>
+              </div>
+              <div>
+                <div class="text-[11px] uppercase tracking-widest text-[var(--color-text-lighter)] mb-2">Body / 16 • Regular</div>
+                <p class="text-[16px] leading-7 text-[var(--color-text-body)] max-w-[70ch]">ACE delivers concise, evidence-based modules aligned to the UK curriculum. Each topic includes investigations, management, and exam-focused key points.</p>
+              </div>
+              <div>
+                <div class="text-[11px] uppercase tracking-widest text-[var(--color-text-lighter)] mb-2">Small / 14 • Medium</div>
+                <p class="text-[14px] leading-6 text-[var(--color-text-muted)] max-w-[70ch]">Used for captions, metadata, and secondary UI elements.</p>
+              </div>
+              <div>
+                <div class="text-[11px] uppercase tracking-widest text-[var(--color-text-lighter)] mb-2">Serif Fallback / Georgia</div>
+                <p class="georgia text-[18px] leading-8 text-[var(--color-text-body)] max-w-[70ch]">For long-form articles, Georgia improves reading comfort while maintaining clinical authority.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SPACING -->
+        <section id="spacing" class="scroll-mt-24 mb-14">
+          <div class="mb-6">
+            <h2 class="text-[28px] sm:text-[36px] font-bold tracking-tight">Spacing</h2>
+            <p class="text-[var(--color-text-muted)] mt-1">4px base scale for consistent rhythm.</p>
+          </div>
+          <div class="card p-6 sm:p-8">
+            <div class="grid sm:grid-cols-2 gap-6">
+              <div class="space-y-3">
+                <div class="flex items-center gap-4"><div class="w-10 text-right mono text-[13px] text-[var(--color-text-faint)]">4</div><div class="h-3 rounded-full bg-[var(--color-primary)]" style="width:4px"></div><div class="text-[13px] text-[var(--color-text-body)]">Tight – icon padding</div></div>
+                <div class="flex items-center gap-4"><div class="w-10 text-right mono text-[13px] text-[var(--color-text-faint)]">8</div><div class="h-3 rounded-full bg-[var(--color-primary)]" style="width:8px"></div><div class="text-[13px] text-[var(--color-text-body)]">XS – chip gaps</div></div>
+                <div class="flex items-center gap-4"><div class="w-10 text-right mono text-[13px] text-[var(--color-text-faint)]">12</div><div class="h-3 rounded-full bg-[var(--color-primary)]" style="width:12px"></div><div class="text-[13px] text-[var(--color-text-body)]">SM – form spacing</div></div>
+                <div class="flex items-center gap-4"><div class="w-10 text-right mono text-[13px] text-[var(--color-text-faint)]">16</div><div class="h-3 rounded-full bg-[var(--color-primary)]" style="width:16px"></div><div class="text-[13px] text-[var(--color-text-body)]">MD – default</div></div>
+              </div>
+              <div class="space-y-3">
+                <div class="flex items-center gap-4"><div class="w-10 text-right mono text-[13px] text-[var(--color-text-faint)]">24</div><div class="h-3 rounded-full bg-[var(--color-primary-hover)]" style="width:24px"></div><div class="text-[13px] text-[var(--color-text-body)]">LG – section padding</div></div>
+                <div class="flex items-center gap-4"><div class="w-10 text-right mono text-[13px] text-[var(--color-text-faint)]">32</div><div class="h-3 rounded-full bg-[var(--color-primary-hover)]" style="width:32px"></div><div class="text-[13px] text-[var(--color-text-body)]">XL – card gaps</div></div>
+                <div class="flex items-center gap-4"><div class="w-10 text-right mono text-[13px] text-[var(--color-text-faint)]">48</div><div class="h-3 rounded-full bg-[var(--color-primary-active)]" style="width:48px"></div><div class="text-[13px] text-[var(--color-text-body)]">2XL – page sections</div></div>
+                <div class="flex items-center gap-4"><div class="w-10 text-right mono text-[13px] text-[var(--color-text-faint)]">64</div><div class="h-3 rounded-full bg-[var(--color-primary-active)]" style="width:64px"></div><div class="text-[13px] text-[var(--color-text-body)]">3XL – hero spacing</div></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- COMPONENTS -->
+        <section id="components" class="scroll-mt-24 mb-14">
+          <div class="mb-6">
+            <h2 class="text-[28px] sm:text-[36px] font-bold tracking-tight text-[var(--color-text-heading)]">Components</h2>
+            <p class="text-[var(--color-text-muted)] mt-1 max-w-[720px]">Built for clarity, speed, and accessibility.</p>
+          </div>
+          <div class="grid lg:grid-cols-2 gap-6">
+            <!-- Buttons -->
+            <div class="card p-6 sm:p-8 lg:col-span-2">
+              <h3 class="font-semibold text-[var(--color-text)]">Buttons</h3>
+              <p class="text-[13px] text-[var(--color-text-muted)] mt-1">Primary teal, Amber warning CTA, and secondary actions.</p>
+              <div class="mt-6 grid sm:grid-cols-3 gap-6">
+                <div>
+                  <div class="text-[12px] font-medium text-[var(--color-text-faint)] mb-2.5">Primary / Teal</div>
+                  <div class="flex flex-wrap gap-2">
+                    <button class="btn-primary">Start Learning</button>
+                    <button class="btn-primary" disabled>Disabled</button>
+                  </div>
+                  <div class="mt-3 flex gap-1.5 flex-wrap"><span class="code">bg primary</span><span class="code">hover primary-hover</span><span class="code">active primary-active</span></div>
+                </div>
+                <div>
+                  <div class="text-[12px] font-medium text-[var(--color-text-faint)] mb-2.5">Accent / Warning CTA</div>
+                  <div class="flex flex-wrap gap-2">
+                    <button class="btn-accent">Explore platform</button>
+                    <button class="btn-accent" disabled>Disabled</button>
+                  </div>
+                  <div class="mt-3 flex gap-1.5 flex-wrap"><span class="code">bg accent</span><span class="code">hover accent-hover</span><span class="code">active accent-active</span></div>
+                </div>
+                <div>
+                  <div class="text-[12px] font-medium text-[var(--color-text-faint)] mb-2.5">Secondary</div>
+                  <div class="flex flex-wrap gap-2">
+                    <button class="btn-secondary">View details</button>
+                    <button class="btn-secondary" style="background:transparent; border:1px solid var(--color-surface-border);">Cancel</button>
+                  </div>
+                  <div class="mt-3"><span class="code">bg surface-subtle</span></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card -->
+            <div class="card p-6 sm:p-8">
+              <h3 class="font-semibold text-[var(--color-text)]">Card</h3>
+              <p class="text-[13px] text-[var(--color-text-muted)] mt-1">White bg, border surface-border, radius 16px.</p>
+              <div class="mt-5">
+                <div class="card p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+                  <div class="flex items-start justify-between gap-3">
+                    <div>
+                      <div class="font-semibold text-[var(--color-text)]">Iron Deficiency Anaemia</div>
+                      <p class="text-[14px] text-[var(--color-text-muted)] mt-1">Core module • 24 mins • CPD</p>
+                    </div>
+                    <span class="tag">Updated</span>
+                  </div>
+                  <div class="mt-4 flex gap-2">
+                    <span class="tag" style="background:var(--color-bg); color:var(--color-text-body); border-color:var(--color-surface-border)">Beginner</span>
+                    <span class="tag">UK reviewed</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tag -->
+            <div class="card p-6 sm:p-8">
+              <h3 class="font-semibold text-[var(--color-text)]">Tag / Pill</h3>
+              <p class="text-[13px] text-[var(--color-text-muted)] mt-1">Status and metadata.</p>
+              <div class="mt-5 flex flex-wrap gap-2">
+                <span class="tag">Consultant Reviewed</span>
+                <span class="tag" style="background:var(--color-info-bg); color:var(--color-info); border-color:var(--color-info-border)">NICE-aligned</span>
+                <span class="tag" style="background:var(--color-warning-bg); color:var(--color-accent); border-color:var(--color-warning-border)">New</span>
+                <span class="tag" style="background:var(--color-error-bg); color:var(--color-error-icon); border-color:var(--color-error-border)">Haemostasis</span>
+              </div>
+            </div>
+
+            <!-- Navigation Bar -->
+            <div class="card p-6 sm:p-8 lg:col-span-2">
+              <h3 class="font-semibold">Navigation Bar</h3>
+              <p class="text-[13px] text-[var(--color-text-muted)] mt-1">Sticky, blurred, warm neutral.</p>
+              <div class="mt-5 border border-[var(--color-surface-border)] rounded-[16px] overflow-hidden">
+                <div class="h-[64px] bg-[var(--color-bg-subtle)] backdrop-blur flex items-center justify-between px-4 sm:px-6">
+                  <div class="flex items-center gap-6">
+                    <div class="flex items-center gap-2.5">
+                      <div class="w-8 h-8 rounded-[9px] bg-[var(--color-primary)] flex items-center justify-center text-white font-extrabold">A</div>
+                      <span class="font-semibold text-[var(--color-text)] hidden sm:block">ACE Haematology</span>
+                    </div>
+                    <nav class="hidden md:flex items-center gap-5 text-[14px] font-medium text-[var(--color-text-body)]">
+                      <a class="text-[var(--color-text)]">Learn</a>
+                      <a class="hover:text-[var(--color-text)]">Cases</a>
+                      <a class="hover:text-[var(--color-text)]">CPD</a>
+                      <a class="hover:text-[var(--color-text)]">Guidelines</a>
+                    </nav>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <button class="hidden sm:inline-flex text-[13px] font-medium text-[var(--color-text-body)] px-3 py-1.5 rounded-lg hover:bg-[var(--color-bg)]">Sign in</button>
+                    <button class="btn-primary !py-[8px] !px-[14px] text-[13px]">Start free</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Alerts -->
+            <div class="card p-6 sm:p-8 lg:col-span-2">
+              <h3 class="font-semibold text-[var(--color-text)]">Alert Banners</h3>
+              <p class="text-[13px] text-[var(--color-text-muted)] mt-1">Contextual feedback for clinical workflows.</p>
+              <div class="mt-5 space-y-3">
+                <div class="flex items-start gap-3 p-4 rounded-xl border" style="background:var(--color-success-bg); border-color:var(--color-success-border);">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" class="mt-0.5 shrink-0"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+                  <div>
+                    <div class="text-[13px] font-semibold text-[var(--color-primary-hover)]">Info • NICE guidance</div>
+                    <div class="text-[13px] text-[var(--color-primary-hover)] mt-0.5">BSH 2024 iron deficiency pathway now includes hepcidin testing.</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 p-4 rounded-xl border" style="background:var(--color-success-bg); border-color:var(--color-success-border);">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" class="mt-0.5 shrink-0"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+                  <div>
+                    <div class="text-[13px] font-semibold" style="color:var(--color-primary)">Success • Mock saved</div>
+                    <div class="text-[13px] mt-0.5" style="color:var(--color-primary-hover)">Your SCE mock has been submitted and added to CPD log.</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 p-4 rounded-xl border" style="background:var(--color-warning-bg); border-color:var(--color-warning-border);">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" class="mt-0.5 shrink-0"><path d="M12 9v4M12 17h.01"/><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+                  <div>
+                    <div class="text-[13px] font-semibold" style="color:var(--color-accent-hover)">Warning • Subscription</div>
+                    <div class="text-[13px] mt-0.5" style="color:var(--color-accent-active)">Your trial expires in 3 days. Upgrade to keep access.</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 p-4 rounded-xl border" style="background:var(--color-error-bg); border-color:var(--color-error-border);">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-error-icon)" stroke-width="2" class="mt-0.5 shrink-0"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg>
+                  <div>
+                    <div class="text-[13px] font-semibold" style="color:var(--color-error-icon)">Error • Sync failed</div>
+                    <div class="text-[13px] mt-0.5" style="color:var(--color-error-icon)">Unable to save progress. Check your connection.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Form Inputs -->
+            <div class="card p-6 sm:p-8 lg:col-span-2">
+              <h3 class="font-semibold text-[var(--color-text)]">Form Inputs</h3>
+              <p class="text-[13px] text-[var(--color-text-muted)] mt-1">Focus ring uses the primary colour for accessibility.</p>
+              <div class="mt-5 grid sm:grid-cols-2 gap-5">
+                <div>
+                  <label class="text-[12px] font-medium text-[var(--color-text-body)]">NHS Email</label>
+                  <input type="email" placeholder="name@nhs.uk" class="mt-1.5 w-full rounded-xl border border-[var(--color-surface-border)] bg-white px-3.5 py-2.5 text-[14px] outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:border-[var(--color-primary)] transition">
+                </div>
+                <div>
+                  <label class="text-[12px] font-medium text-[var(--color-text-body)]">Grade</label>
+                  <select class="mt-1.5 w-full rounded-xl border border-[var(--color-surface-border)] bg-white px-3.5 py-2.5 text-[14px] outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:border-[var(--color-primary)]">
+                    <option>FY2</option><option>IMT</option><option selected>ST3+</option><option>Consultant</option>
+                  </select>
+                </div>
+                <div class="sm:col-span-2">
+                  <label class="text-[12px] font-medium text-[var(--color-text-body)]">Learning goal</label>
+                  <textarea rows="3" placeholder="e.g., Revise myeloma for SCE..." class="mt-1.5 w-full rounded-xl border border-[var(--color-surface-border)] bg-white px-3.5 py-2.5 text-[14px] outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:border-[var(--color-primary)]"></textarea>
+                </div>
+                <div class="flex flex-wrap items-center gap-5">
+                  <label class="flex items-center gap-2 cursor-pointer">
+                    <input type="checkbox" checked class="w-4 h-4 rounded border-[var(--color-surface-border)] text-[var(--color-primary)] focus:ring-[var(--color-primary)]">
+                    <span class="text-[14px] text-[var(--color-text-body)]">Email CPD summary</span>
+                  </label>
+                  <label class="flex items-center gap-2 cursor-pointer">
+                    <input type="radio" name="track" checked class="w-4 h-4 text-[var(--color-primary)] border-[var(--color-surface-border)] focus:ring-[var(--color-primary)]">
+                    <span class="text-[14px] text-[var(--color-text-body)]">Haematology</span>
+                  </label>
+                  <label class="flex items-center gap-2 cursor-pointer">
+                    <input type="radio" name="track" class="w-4 h-4 text-[var(--color-primary)] border-[var(--color-surface-border)] focus:ring-[var(--color-primary)]">
+                    <span class="text-[14px] text-[var(--color-text-body)]">Transfusion</span>
+                  </label>
+                </div>
+                <div class="flex items-center justify-between sm:justify-end gap-3">
+                  <span class="text-[14px] text-[var(--color-text-body)]">Weekly reminders</span>
+                  <button id="toggle" aria-pressed="false" class="relative w-11 h-6 rounded-full toggle transition">
+                    <span class="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow-sm transition"></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Data Table -->
+            <div class="card p-6 sm:p-8 lg:col-span-2">
+              <h3 class="font-semibold text-[var(--color-text)]">Data Table • Question Bank</h3>
+              <p class="text-[13px] text-[var(--color-text-muted)] mt-1">Sortable, compact, clinical.</p>
+              <div class="mt-4 overflow-x-auto -mx-6 sm:mx-0">
+                <div class="min-w-[640px] px-6 sm:px-0">
+                  <table class="w-full text-[13px]">
+                    <thead>
+                      <tr class="text-left text-[var(--color-text-faint)] border-b border-[var(--color-surface-border)]">
+                        <th class="py-2.5 font-medium">Topic</th>
+                        <th class="py-2.5 font-medium">Questions</th>
+                        <th class="py-2.5 font-medium">Last Updated</th>
+                        <th class="py-2.5 font-medium">Difficulty</th>
+                        <th class="py-2.5 font-medium text-right">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody class="divide-y divide-[var(--color-surface-border)]">
+                      <tr class="hover:bg-[var(--color-bg-subtle)]">
+                        <td class="py-3 font-medium text-[var(--color-text)]">Iron Deficiency Anaemia</td>
+                        <td class="py-3 text-[var(--color-text-body)]">342</td>
+                        <td class="py-3 text-[var(--color-text-body)]">12 Dec 2024</td>
+                        <td class="py-3"><span class="tag" style="background:var(--color-success-bg)">Core</span></td>
+                        <td class="py-3 text-right"><button class="text-[var(--color-primary-hover)] hover:underline font-medium">Practice</button></td>
+                      </tr>
+                      <tr class="hover:bg-[var(--color-bg-subtle)]">
+                        <td class="py-3 font-medium text-[var(--color-text)]">Myeloma</td>
+                        <td class="py-3 text-[var(--color-text-body)]">278</td>
+                        <td class="py-3 text-[var(--color-text-body)]">28 Nov 2024</td>
+                        <td class="py-3"><span class="tag" style="background:var(--color-info-bg); color:var(--color-info); border-color:var(--color-info-border)">Advanced</span></td>
+                        <td class="py-3 text-right"><button class="text-[var(--color-primary-hover)] hover:underline font-medium">Practice</button></td>
+                      </tr>
+                      <tr class="hover:bg-[var(--color-bg-subtle)]">
+                        <td class="py-3 font-medium text-[var(--color-text)]">ITP</td>
+                        <td class="py-3 text-[var(--color-text-body)]">156</td>
+                        <td class="py-3 text-[var(--color-text-body)]">05 Jan 2025</td>
+                        <td class="py-3"><span class="tag" style="background:var(--color-success-bg)">Core</span></td>
+                        <td class="py-3 text-right"><button class="text-[var(--color-primary-hover)] hover:underline font-medium">Practice</button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- Breadcrumb & Pagination -->
+            <div class="card p-6 sm:p-8">
+              <h3 class="font-semibold text-[var(--color-text)]">Breadcrumb</h3>
+              <nav class="mt-4 text-[13px] text-[var(--color-text-muted)] flex items-center gap-1.5 flex-wrap">
+                <a class="hover:text-[var(--color-text)] cursor-pointer">Learn</a>
+                <span class="text-[var(--color-surface-border)]">/</span>
+                <a class="hover:text-[var(--color-text)] cursor-pointer">Anaemia</a>
+                <span class="text-[var(--color-surface-border)]">/</span>
+                <span class="text-[var(--color-text)] font-medium">Iron Deficiency</span>
+              </nav>
+              <h3 class="font-semibold text-[var(--color-text)] mt-8">Pagination</h3>
+              <div class="mt-3 flex items-center gap-1.5">
+                <button class="w-8 h-8 rounded-lg border border-[var(--color-surface-border)] text-[var(--color-text-faint)] hover:bg-[var(--color-bg)]">‹</button>
+                <button class="w-8 h-8 rounded-lg bg-[var(--color-primary)] text-white font-medium">1</button>
+                <button class="w-8 h-8 rounded-lg hover:bg-[var(--color-bg)] text-[var(--color-text-body)]">2</button>
+                <button class="w-8 h-8 rounded-lg hover:bg-[var(--color-bg)] text-[var(--color-text-body)]">3</button>
+                <span class="px-1 text-[var(--color-text-lighter)]">…</span>
+                <button class="w-8 h-8 rounded-lg hover:bg-[var(--color-bg)] text-[var(--color-text-body)]">12</button>
+                <button class="w-8 h-8 rounded-lg border border-[var(--color-surface-border)] text-[var(--color-text-faint)] hover:bg-[var(--color-bg)]">›</button>
+              </div>
+            </div>
+
+            <!-- Feedback -->
+            <div class="card p-6 sm:p-8">
+              <h3 class="font-semibold text-[var(--color-text)]">Toast • Avatars • Progress</h3>
+              <div class="mt-4 space-y-5">
+                <div>
+                  <div class="text-[12px] text-[var(--color-text-faint)] mb-2">Toast Notification</div>
+                  <button onclick="showToast('Progress saved to CPD')" class="btn-secondary !py-1.5 text-[13px]">Trigger toast</button>
+                </div>
+                <div>
+                  <div class="text-[12px] text-[var(--color-text-faint)] mb-2">Avatar Stack • Community</div>
+                  <div class="flex -space-x-2">
+                    <div class="w-8 h-8 rounded-full bg-[var(--color-primary)] border-2 border-white flex items-center justify-center text-[11px] text-white font-bold">AK</div>
+                    <div class="w-8 h-8 rounded-full bg-[var(--color-primary-light)] border-2 border-white flex items-center justify-center text-[11px] text-white font-bold">SR</div>
+                    <div class="w-8 h-8 rounded-full bg-[var(--color-info)] border-2 border-white flex items-center justify-center text-[11px] text-white font-bold">ML</div>
+                    <div class="w-8 h-8 rounded-full bg-[var(--color-bg)] border-2 border-white flex items-center justify-center text-[11px] text-[var(--color-text-body)] font-medium">+12</div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between mb-1.5">
+                    <span class="text-[12px] text-[var(--color-text-faint)]">Study Planner</span>
+                    <span class="text-[12px] font-medium text-[var(--color-primary-hover)]">68%</span>
+                  </div>
+                  <div class="h-2 rounded-full bg-[var(--color-surface-subtle)] overflow-hidden">
+                    <div class="h-full w-[68%] bg-[var(--color-primary)] rounded-full"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tabs -->
+            <div class="card p-6 sm:p-8">
+              <h3 class="font-semibold text-[var(--color-text)]">Tabs</h3>
+              <div class="mt-4">
+                <div class="flex gap-1.5 p-1 bg-[var(--color-bg)] rounded-xl w-fit">
+                  <button data-tab="overview" class="active-tab px-3.5 py-1.5 rounded-lg text-[13px] font-medium transition">Overview</button>
+                  <button data-tab="investigations" class="px-3.5 py-1.5 rounded-lg text-[13px] font-medium text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition">Investigations</button>
+                  <button data-tab="management" class="px-3.5 py-1.5 rounded-lg text-[13px] font-medium text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition">Management</button>
+                </div>
+                <div class="mt-4 text-[14px] text-[var(--color-text-body)] min-h-[60px]">
+                  <div data-panel="overview">Covers epidemiology, pathophysiology and classification of iron deficiency.</div>
+                  <div data-panel="investigations" class="hidden">Ferritin, CRP, transferrin saturation, reticulocyte haemoglobin.</div>
+                  <div data-panel="management" class="hidden">Oral iron first-line, IV iron indications, monitoring response at 2-4 weeks.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Modal -->
+            <div class="card p-6 sm:p-8">
+              <h3 class="font-semibold text-[var(--color-text)]">Modal Dialog</h3>
+              <p class="text-[13px] text-[var(--color-text-muted)] mt-1">Confirm critical actions.</p>
+              <div class="mt-4">
+                <button id="openModal" class="btn-primary !py-2">Open modal</button>
+              </div>
+            </div>
+
+            <!-- Empty State -->
+            <div class="card p-6 sm:p-8 lg:col-span-2">
+              <h3 class="font-semibold text-[var(--color-text)]">Empty State</h3>
+              <div class="mt-4 border-2 border-dashed border-[var(--color-surface-border)] rounded-2xl p-10 text-center bg-[var(--color-bg-subtle)]">
+                <div class="w-12 h-12 mx-auto rounded-xl bg-[var(--color-success-bg)] flex items-center justify-center mb-3">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M9 10h.01M15 10h.01M9.5 14c1 .8 2.5.8 3.5 0"/></svg>
+                </div>
+                <div class="font-medium text-[var(--color-text)]">No mocks taken yet</div>
+                <p class="text-[13px] text-[var(--color-text-muted)] mt-1 max-w-[360px] mx-auto">Start your first timed assessment to track progress against the UK curriculum.</p>
+                <button class="btn-primary mt-4 !py-2">Start mock exam</button>
+              </div>
+            </div>
+
+            <!-- Breadcrumbs -->
+            <div class="card p-6 sm:p-8 lg:col-span-2">
+              <h3 class="font-semibold text-[var(--color-text)]">Breadcrumbs</h3>
+              <p class="text-[13px] text-[var(--color-text-muted)] mt-1">Navigation trail for hierarchical pages.</p>
+              <div class="mt-6 flex flex-wrap gap-2 items-center text-[14px]">
+                <a href="#" class="text-[var(--color-primary)] hover:underline font-medium">Home</a>
+                <span class="text-[var(--color-text-lighter)]">/</span>
+                <a href="#" class="text-[var(--color-primary)] hover:underline font-medium">Haematology</a>
+                <span class="text-[var(--color-text-lighter)]">/</span>
+                <a href="#" class="text-[var(--color-primary)] hover:underline font-medium">Red Cell Disorders</a>
+                <span class="text-[var(--color-text-lighter)]">/</span>
+                <span class="text-[var(--color-text)] font-semibold">Sickle Cell Disease</span>
+              </div>
+              <div class="mt-4 flex flex-wrap gap-1.5"><span class="code">link primary</span><span class="code">separator text-lighter</span><span class="code">current text</span></div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="card p-6 sm:p-8 lg:col-span-2">
+              <h3 class="font-semibold text-[var(--color-text)]">Pagination</h3>
+              <p class="text-[13px] text-[var(--color-text-muted)] mt-1">Page navigation for long content lists.</p>
+              <div class="mt-6 flex items-center gap-2">
+                <button class="w-9 h-9 rounded-[10px] border border-[var(--color-surface-border)] flex items-center justify-center text-[var(--color-text-muted)] hover:bg-[var(--color-bg)] transition" disabled>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+                </button>
+                <button class="w-9 h-9 rounded-[10px] bg-[var(--color-primary)] text-white font-semibold text-[14px] flex items-center justify-center">1</button>
+                <button class="w-9 h-9 rounded-[10px] border border-[var(--color-surface-border)] text-[var(--color-text)] font-medium text-[14px] flex items-center justify-center hover:bg-[var(--color-bg)] transition">2</button>
+                <button class="w-9 h-9 rounded-[10px] border border-[var(--color-surface-border)] text-[var(--color-text)] font-medium text-[14px] flex items-center justify-center hover:bg-[var(--color-bg)] transition">3</button>
+                <span class="text-[var(--color-text-lighter)] px-1">…</span>
+                <button class="w-9 h-9 rounded-[10px] border border-[var(--color-surface-border)] text-[var(--color-text)] font-medium text-[14px] flex items-center justify-center hover:bg-[var(--color-bg)] transition">12</button>
+                <button class="w-9 h-9 rounded-[10px] border border-[var(--color-surface-border)] flex items-center justify-center text-[var(--color-text-muted)] hover:bg-[var(--color-bg)] transition">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                </button>
+              </div>
+              <div class="mt-4 flex flex-wrap gap-1.5"><span class="code">active bg primary</span><span class="code">border surface-border</span><span class="code">text text</span></div>
+            </div>
+
+            <!-- Alert Banner -->
+            <div class="card p-6 sm:p-8 lg:col-span-2">
+              <h3 class="font-semibold text-[var(--color-text)]">Alert Banner</h3>
+              <p class="text-[13px] text-[var(--color-text-muted)] mt-1">Contextual feedback messages for users.</p>
+              <div class="mt-6 space-y-4">
+                <div class="flex items-start gap-3 p-4 rounded-xl bg-[var(--color-success-bg)] border border-[var(--color-success-border)]">
+                  <div class="w-5 h-5 rounded-full bg-[var(--color-primary)] flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+                  </div>
+                  <div>
+                    <div class="font-semibold text-[var(--color-text)] text-[14px]">Success</div>
+                    <p class="text-[13px] text-[var(--color-text-body)] mt-0.5">Your changes have been saved successfully.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 p-4 rounded-xl bg-[var(--color-warning-bg)] border border-[var(--color-warning-border)]">
+                  <div class="w-5 h-5 rounded-full bg-[var(--color-accent)] flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg>
+                  </div>
+                  <div>
+                    <div class="font-semibold text-[var(--color-text)] text-[14px]">Warning</div>
+                    <p class="text-[13px] text-[var(--color-text-body)] mt-0.5">This module has been updated. Please review the changes.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 p-4 rounded-xl bg-[var(--color-error-bg)] border border-[var(--color-error-border)]">
+                  <div class="w-5 h-5 rounded-full bg-[var(--color-error-icon)] flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg>
+                  </div>
+                  <div>
+                    <div class="font-semibold text-[var(--color-text)] text-[14px]">Error</div>
+                    <p class="text-[13px] text-[var(--color-text-body)] mt-0.5">Unable to submit. Please check your connection and try again.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-4 flex flex-wrap gap-1.5"><span class="code">success bg success-bg</span><span class="code">warning bg warning-bg</span><span class="code">error bg error-bg</span></div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="card p-6 sm:p-8 lg:col-span-2">
+              <h3 class="font-semibold text-[var(--color-text)]">Progress Bar</h3>
+              <p class="text-[13px] text-[var(--color-text-muted)] mt-1">Visual indicator for completion or loading states.</p>
+              <div class="mt-6 space-y-5">
+                <div>
+                  <div class="flex justify-between text-[13px] mb-2">
+                    <span class="font-medium text-[var(--color-text)]">Course Progress</span>
+                    <span class="mono text-[var(--color-text-muted)]">75%</span>
+                  </div>
+                  <div class="h-2.5 rounded-full bg-[var(--color-surface-subtle)] overflow-hidden">
+                    <div class="h-full rounded-full bg-[var(--color-primary)]" style="width: 75%"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-[13px] mb-2">
+                    <span class="font-medium text-[var(--color-text)]">Assessment Score</span>
+                    <span class="mono text-[var(--color-text-muted)]">92%</span>
+                  </div>
+                  <div class="h-2.5 rounded-full bg-[var(--color-surface-subtle)] overflow-hidden">
+                    <div class="h-full rounded-full bg-[var(--color-accent)]" style="width: 92%"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-[13px] mb-2">
+                    <span class="font-medium text-[var(--color-text)]">Reading Time</span>
+                    <span class="mono text-[var(--color-text-muted)]">40%</span>
+                  </div>
+                  <div class="h-2.5 rounded-full bg-[var(--color-surface-subtle)] overflow-hidden">
+                    <div class="h-full rounded-full bg-[var(--color-primary-light)]" style="width: 40%"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-4 flex flex-wrap gap-1.5"><span class="code">track surface-subtle</span><span class="code">primary primary</span><span class="code">accent accent</span></div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- SAMPLE LAYOUTS -->
+        <section id="layouts" class="scroll-mt-24 mb-14">
+          <div class="mb-6">
+            <h2 class="text-[28px] sm:text-[36px] font-bold tracking-tight text-[var(--color-text-heading)]">Sample Layouts</h2>
+            <p class="text-[var(--color-text-muted)] mt-1 max-w-[720px]">Real screens built with the system.</p>
+          </div>
+
+          <!-- Layout 1: Homepage Hero -->
+          <div class="card p-0 overflow-hidden mb-6">
+            <div class="bg-[var(--color-bg)]">
+              <div class="px-6 sm:px-10 lg:px-14 py-14 sm:py-20">
+                <div class="max-w-[840px]">
+                  <div class="inline-flex items-center gap-2 mb-4">
+                    <span class="tag">New</span>
+                    <span class="text-[12px] text-[var(--color-text-faint)]">Reviewed by UK consultant haematologists</span>
+                  </div>
+                  <h3 class="text-[34px] sm:text-[48px] lg:text-[56px] font-extrabold tracking-[-0.02em] leading-[1.05] text-[var(--color-text-heading)]">From exam prep to a haematology community — all in one place</h3>
+                  <p class="mt-5 text-[17px] sm:text-[18px] leading-7 text-[var(--color-text-body)] max-w-[640px]">Evidence-based modules, 2,000+ SBA questions, and consultant-led discussions. Built for UK trainees.</p>
+                  <div class="mt-8 flex flex-wrap gap-3">
+                    <button class="btn-primary text-[15px] !py-3 !px-6">Start free trial</button>
+                    <button class="btn-accent text-[15px] !py-3 !px-6">Explore the platform</button>
+                  </div>
+                  <div class="mt-8 flex items-center gap-5 text-[13px] text-[var(--color-text-muted)]">
+                    <div class="flex -space-x-2">
+                      <div class="w-7 h-7 rounded-full bg-[var(--color-primary)] border-2 border-[var(--color-bg)]"></div>
+                      <div class="w-7 h-7 rounded-full bg-[var(--color-primary-light)] border-2 border-[var(--color-bg)]"></div>
+                      <div class="w-7 h-7 rounded-full bg-[var(--color-info)] border-2 border-[var(--color-bg)]"></div>
+                    </div>
+                    <span>Trusted by 1,200+ UK trainees</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Layout 2: Question Bank -->
+          <div class="card p-6 sm:p-8 mb-6">
+            <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-6">
+              <div>
+                <h3 class="text-[22px] font-semibold text-[var(--color-text)]">Question Bank</h3>
+                <p class="text-[14px] text-[var(--color-text-muted)] mt-0.5">2,000+ questions • BSH & NICE aligned • SCE mapped</p>
+              </div>
+              <div class="flex gap-2">
+                <button class="btn-secondary !py-1.5 text-[13px]">Filters</button>
+                <button class="btn-primary !py-1.5 text-[13px]">Custom mock</button>
+              </div>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div class="card p-5 hover:shadow-md transition hover:-translate-y-0.5">
+                <div class="flex items-start justify-between">
+                  <div class="w-10 h-10 rounded-lg bg-[var(--color-success-bg)] flex items-center justify-center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div>
+                  <span class="tag">Core</span>
+                </div>
+                <div class="mt-3 font-semibold text-[var(--color-text)]">Iron Deficiency Anaemia</div>
+                <div class="text-[13px] text-[var(--color-text-muted)] mt-1">342 questions • 94% pass rate</div>
+                <div class="mt-3 flex gap-1.5"><span class="code !text-[11px]">Anaemia</span><span class="code !text-[11px]">BSH</span></div>
+              </div>
+              <div class="card p-5 hover:shadow-md transition hover:-translate-y-0.5">
+                <div class="flex items-start justify-between">
+                  <div class="w-10 h-10 rounded-lg bg-[var(--color-info-bg)] flex items-center justify-center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-info)" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg></div>
+                  <span class="tag" style="background:var(--color-info-bg); color:var(--color-info); border-color:var(--color-info-border)">Advanced</span>
+                </div>
+                <div class="mt-3 font-semibold text-[var(--color-text)]">Myeloma & MGUS</div>
+                <div class="text-[13px] text-[var(--color-text-muted)] mt-1">278 questions • Updated Jan 2025</div>
+                <div class="mt-3 flex gap-1.5"><span class="code !text-[11px]">Malignant</span><span class="code !text-[11px]">NICE</span></div>
+              </div>
+              <div class="card p-5 hover:shadow-md transition hover:-translate-y-0.5">
+                <div class="flex items-start justify-between">
+                  <div class="w-10 h-10 rounded-lg bg-[var(--color-error-bg)] flex items-center justify-center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-error-icon)" stroke-width="2"><path d="M12 8v8M8 12h8"/></svg></div>
+                  <span class="tag">Core</span>
+                </div>
+                <div class="mt-3 font-semibold text-[var(--color-text)]">ITP & Thrombocytopenia</div>
+                <div class="text-[13px] text-[var(--color-text-muted)] mt-1">156 questions • 2,000+ attempts</div>
+                <div class="mt-3 flex gap-1.5"><span class="code !text-[11px]">Haemostasis</span><span class="code !text-[11px]">SCE</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Layout 3: Dashboard -->
+          <div class="card p-0 overflow-hidden">
+            <div class="grid lg:grid-cols-[240px_1fr]">
+              <div class="hidden lg:block border-r border-[var(--color-surface-border)] bg-[var(--color-bg-subtle)] p-5">
+                <div class="flex items-center gap-2 mb-6">
+                  <div class="w-8 h-8 rounded-[8px] bg-[var(--color-primary)] flex items-center justify-center text-white font-bold">A</div>
+                  <span class="font-semibold text-[14px]">ACE</span>
+                </div>
+                <nav class="space-y-1 text-[14px]">
+                  <a class="flex items-center gap-2 px-3 py-2 rounded-lg bg-[var(--color-success-bg)] text-[var(--color-primary-hover)] font-medium"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l9-9 9 9"/><path d="M9 21V9h6v12"/></svg>Dashboard</a>
+                  <a class="flex items-center gap-2 px-3 py-2 rounded-lg text-[var(--color-text-body)] hover:bg-[var(--color-bg)]">Learn</a>
+                  <a class="flex items-center gap-2 px-3 py-2 rounded-lg text-[var(--color-text-body)] hover:bg-[var(--color-bg)]">Question Bank</a>
+                  <a class="flex items-center gap-2 px-3 py-2 rounded-lg text-[var(--color-text-body)] hover:bg-[var(--color-bg)]">Mocks</a>
+                  <a class="flex items-center gap-2 px-3 py-2 rounded-lg text-[var(--color-text-body)] hover:bg-[var(--color-bg)]">CPD</a>
+                </nav>
+              </div>
+              <div class="p-6 sm:p-8">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
+                  <div>
+                    <h3 class="text-[22px] font-semibold text-[var(--color-text)]">Good morning, Dr Sharma</h3>
+                    <p class="text-[13px] text-[var(--color-text-muted)]">ST4 Haematology • SCE 68 days away</p>
+                  </div>
+                  <button class="btn-accent !py-2 self-start">Continue learning</button>
+                </div>
+                <div class="grid sm:grid-cols-3 gap-4 mb-6">
+                  <div class="card p-4">
+                    <div class="text-[12px] text-[var(--color-text-faint)]">Overall Progress</div>
+                    <div class="mt-2 flex items-center gap-3">
+                      <div class="relative w-12 h-12">
+                        <svg class="transform -rotate-90" width="48" height="48" viewBox="0 0 48 48"><circle cx="24" cy="24" r="20" stroke="var(--color-surface-subtle)" stroke-width="4" fill="none"/><circle cx="24" cy="24" r="20" stroke="var(--color-primary)" stroke-width="4" fill="none" stroke-dasharray="125.6" stroke-dashoffset="37.7" stroke-linecap="round"/></svg>
+                        <span class="absolute inset-0 flex items-center justify-center text-[12px] font-semibold text-[var(--color-primary-hover)]">70%</span>
+                      </div>
+                      <div class="text-[13px] text-[var(--color-text-body)]">1,420 / 2,047 questions</div>
+                    </div>
+                  </div>
+                  <div class="card p-4">
+                    <div class="text-[12px] text-[var(--color-text-faint)]">Weak Areas</div>
+                    <div class="mt-2 font-medium text-[var(--color-error-icon)]">Coagulation</div>
+                    <div class="text-[13px] text-[var(--color-text-muted)]">58% accuracy • 12 topics</div>
+                  </div>
+                  <div class="card p-4">
+                    <div class="text-[12px] text-[var(--color-text-faint)]">Next Mock</div>
+                    <div class="mt-2 font-medium text-[var(--color-text)]">SCE Paper 1</div>
+                    <div class="text-[13px] text-[var(--color-text-muted)]">Scheduled • Tomorrow 8am</div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex items-center justify-between mb-3">
+                    <h4 class="font-semibold text-[var(--color-text)]">Recent Mocks</h4>
+                    <a class="text-[13px] text-[var(--color-primary-hover)] hover:underline cursor-pointer">View all</a>
+                  </div>
+                  <div class="overflow-x-auto -mx-6 sm:mx-0">
+                    <div class="min-w-[560px] px-6 sm:px-0">
+                      <table class="w-full text-[13px]">
+                        <thead class="text-[var(--color-text-faint)] border-b border-[var(--color-surface-border)]">
+                          <tr><th class="text-left py-2 font-medium">Exam</th><th class="text-left py-2 font-medium">Score</th><th class="text-left py-2 font-medium">Date</th><th class="text-left py-2 font-medium">Time</th></tr>
+                        </thead>
+                        <tbody class="divide-y divide-[var(--color-surface-border)]">
+                          <tr><td class="py-2.5">Haemostasis Mock #4</td><td class="py-2.5 text-[var(--color-primary)] font-medium">78%</td><td class="py-2.5">12 Jan</td><td class="py-2.5">52m</td></tr>
+                          <tr><td class="py-2.5">Anaemia Essentials</td><td class="py-2.5 text-[var(--color-primary)] font-medium">84%</td><td class="py-2.5">09 Jan</td><td class="py-2.5">41m</td></tr>
+                          <tr><td class="py-2.5">Myeloid Malignancy</td><td class="py-2.5 text-[var(--color-accent)] font-medium">66%</td><td class="py-2.5">05 Jan</td><td class="py-2.5">63m</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- VOICE -->
+        <section id="voice" class="scroll-mt-24 mb-20">
+          <div class="mb-6">
+            <h2 class="text-[28px] sm:text-[36px] font-bold tracking-tight">Voice & Tone</h2>
+            <p class="text-[var(--color-text-muted)] mt-1">Clinical, clear, supportive — for UK haematology practice.</p>
+          </div>
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="card p-6">
+              <div class="w-10 h-10 rounded-xl bg-[var(--color-success-bg)] flex items-center justify-center mb-3"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary-hover)" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg></div>
+              <h3 class="font-semibold text-[var(--color-text)]">Clinical</h3>
+              <p class="text-[14px] text-[var(--color-text-muted)] mt-1 leading-6">Evidence-based, precise, never speculative. Reference BSH, NICE, WHO.</p>
+              <div class="mt-4 p-3 rounded-lg bg-[var(--color-bg-subtle)] border border-[var(--color-surface-border)] text-[13px]"><span class="text-[var(--color-primary)] font-medium">Do:</span> "First-line investigation is ferritin and CRP."<br><span class="text-[var(--color-error-icon)] font-medium">Don't:</span> "You might want to check iron studies."</div>
+            </div>
+            <div class="card p-6">
+              <div class="w-10 h-10 rounded-xl bg-[var(--color-info-bg)] flex items-center justify-center mb-3"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-info)" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg></div>
+              <h3 class="font-semibold text-[var(--color-text)]">Clear</h3>
+              <p class="text-[14px] text-[var(--color-text-muted)] mt-1 leading-6">Plain English, active voice, short sentences. Define acronyms first use.</p>
+              <div class="mt-4 p-3 rounded-lg bg-[var(--color-bg-subtle)] border border-[var(--color-surface-border)] text-[13px]"><span class="text-[var(--color-primary)] font-medium">Do:</span> "Start oral iron if ferritin &lt;30 µg/L."<br><span class="text-[var(--color-error-icon)] font-medium">Don't:</span> "Consideration could be given to iron replacement therapy."</div>
+            </div>
+            <div class="card p-6">
+              <div class="w-10 h-10 rounded-xl bg-[var(--color-warning-bg)] flex items-center justify-center mb-3"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2"><path d="M12 21c4.97 0 9-4.03 9-9s-4.03-9-9-9-9 4.03-9 9 4.03 9 9z"/><path d="M8 14s1.5 2 4 2 4-2"/></svg></div>
+              <h3 class="font-semibold text-[var(--color-text)]">Supportive</h3>
+              <p class="text-[14px] text-[var(--color-text-muted)] mt-1 leading-6">Encouraging and non-judgemental. Built for time-poor clinicians.</p>
+              <div class="mt-4 p-3 rounded-lg bg-[var(--color-bg-subtle)] border border-[var(--color-surface-border)] text-[13px]"><span class="text-[var(--color-primary)] font-medium">Do:</span> "Revise key differentials in 5 minutes."<br><span class="text-[var(--color-error-icon)] font-medium">Don't:</span> "You should already know this."</div>
+            </div>
+          </div>
+          <div class="mt-8 card p-6 sm:p-8 bg-[var(--color-text)] text-white border-[var(--color-text-heading)]">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <div>
+                <div class="text-[13px] uppercase tracking-wide text-[var(--color-primary-lighter)] font-semibold">Principles</div>
+                <div class="text-[20px] font-semibold mt-1">Accuracy over speed. Clarity over cleverness. Kindness over ego.</div>
+              </div>
+              <button class="btn-primary !bg-white !text-[var(--color-text)] hover:!bg-[var(--color-surface-subtle)] self-start">Download brand kit</button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="fixed inset-0 z-[100] hidden">
+    <div class="absolute inset-0 modal-backdrop backdrop-blur-sm" data-close></div>
+    <div class="relative z-10 max-w-[460px] mx-4 sm:mx-auto mt-[20vh] card p-6 shadow-2xl">
+      <h4 class="text-[18px] font-semibold text-[var(--color-text)]">Confirm action</h4>
+      <p class="text-[14px] text-[var(--color-text-muted)] mt-2">This will permanently delete your mock exam results. This cannot be undone.</p>
+      <div class="mt-6 flex justify-end gap-2.5">
+        <button data-close class="btn-secondary !py-2">Cancel</button>
+        <button class="px-4 py-2 rounded-xl bg-[var(--color-error-icon)] text-white text-[14px] font-semibold hover:bg-[var(--color-error-icon)] transition">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-[var(--color-text)] text-white text-[13px] font-medium px-4 py-2 rounded-full shadow-xl opacity-0 pointer-events-none transition-all duration-300 z-50">Copied</div>
+
+  <script>
+const THEMES = [{"id": "theme-1", "name": "Teal & Amber", "description": "Warm neutrals with teal primary and amber accent. The original clinical palette.", "colors": {"primary": "#007D6E", "primaryHover": "#005A4E", "primaryActive": "#003D36", "primaryLight": "#2FB39B", "primaryLighter": "#5FD3BB", "accent": "#A85A18", "accentHover": "#8F4C14", "accentActive": "#7A3F10", "bg": "#F4F2EE", "bgSubtle": "#FBFAF8", "surface": "#FFFFFF", "surfaceBorder": "#E0E5E2", "surfaceSubtle": "#E8EEEC", "text": "#0D1F1C", "textHeading": "#0A1714", "textBody": "#4A5754", "textMuted": "#5A6663", "textFaint": "#6A736F", "textLighter": "#8A938F", "successBg": "#E8F5F2", "successBorder": "#C7E7DF", "warningBg": "#FDF4EC", "warningBorder": "#F5E0C9", "errorBg": "#F7F0F4", "errorBorder": "#E8D5DF", "errorIcon": "#7A2E4A", "info": "#1F3A5F", "infoBg": "#F0F4F9", "infoBorder": "#D6E2F0"}}, {"id": "theme-2", "name": "Clinical Blue & Coral", "description": "Cool grey backgrounds with royal blue primary and coral accent for warnings.", "colors": {"primary": "#1B5E9C", "primaryHover": "#154A7A", "primaryActive": "#0E3A60", "primaryLight": "#4A8FB8", "primaryLighter": "#7AB5D8", "accent": "#D9534F", "accentHover": "#C94541", "accentActive": "#A83A37", "bg": "#EEF1F4", "bgSubtle": "#F7F8FB", "surface": "#FFFFFF", "surfaceBorder": "#D5D8E0", "surfaceSubtle": "#E2E5EC", "text": "#0E1F2E", "textHeading": "#0A1520", "textBody": "#3E5566", "textMuted": "#52677A", "textFaint": "#62768A", "textLighter": "#8A9AAB", "successBg": "#E8EFF4", "successBorder": "#C3D5E8", "warningBg": "#FCEEEA", "warningBorder": "#F0CFC8", "errorBg": "#F0EAF2", "errorBorder": "#D8D0E0", "errorIcon": "#8B2E3A", "info": "#2C5F8A", "infoBg": "#E8EFF7", "infoBorder": "#C3D5E8"}}, {"id": "theme-3", "name": "Plum & Sage", "description": "Soft lilac backgrounds with plum primary and sage green accent. Distinctive and calming.", "colors": {"primary": "#6B3A7A", "primaryHover": "#522C5E", "primaryActive": "#3D2047", "primaryLight": "#9D6BAA", "primaryLighter": "#B88FC5", "accent": "#5C8A4F", "accentHover": "#4A7A3D", "accentActive": "#3A6A2D", "bg": "#F3EFF4", "bgSubtle": "#F8F5FA", "surface": "#FFFFFF", "surfaceBorder": "#D8D0DC", "surfaceSubtle": "#E2DCE8", "text": "#1F1024", "textHeading": "#1A0E1E", "textBody": "#4A3D52", "textMuted": "#5A4D63", "textFaint": "#6A5C72", "textLighter": "#8A7B92", "successBg": "#E8DFF0", "successBorder": "#D0C0DC", "warningBg": "#F0EDE0", "warningBorder": "#DCE8C8", "errorBg": "#EDEAF2", "errorBorder": "#D8D0E0", "errorIcon": "#5C2237", "info": "#4A2D6B", "infoBg": "#EDE8F2", "infoBorder": "#D0C5E0"}}, {"id": "theme-4", "name": "Forest & Gold", "description": "Natural green primary with warm gold accent on a fresh sage background. Grounded and organic.", "colors": {"primary": "#2D6A4F", "primaryHover": "#1B5037", "primaryActive": "#0F3A24", "primaryLight": "#4A9A6A", "primaryLighter": "#6BB888", "accent": "#C9962A", "accentHover": "#B07602", "accentActive": "#966400", "bg": "#F2F5F1", "bgSubtle": "#F7FAF5", "surface": "#FFFFFF", "surfaceBorder": "#C8DCC8", "surfaceSubtle": "#DCE8DC", "text": "#0F1F15", "textHeading": "#0A1A10", "textBody": "#3A5A42", "textMuted": "#4A6A52", "textFaint": "#5A7A62", "textLighter": "#8AA898", "successBg": "#E0F0E0", "successBorder": "#C0D8C0", "warningBg": "#F5EDE0", "warningBorder": "#E8D8B8", "errorBg": "#EDEEE2", "errorBorder": "#D0D8C8", "errorIcon": "#5C3A22", "info": "#1A4A5F", "infoBg": "#E8F0EC", "infoBorder": "#C5D8CE"}}, {"id": "theme-5", "name": "Crimson & Slate", "description": "Bold crimson primary with cool slate accent on a soft warm grey background. Urgent and authoritative.", "colors": {"primary": "#B91C1C", "primaryHover": "#991B1B", "primaryActive": "#7F1D1D", "primaryLight": "#D94A4A", "primaryLighter": "#E87070", "accent": "#475569", "accentHover": "#334155", "accentActive": "#1E293B", "bg": "#F5F3F4", "bgSubtle": "#FAF8F9", "surface": "#FFFFFF", "surfaceBorder": "#D8D0D0", "surfaceSubtle": "#E2DCDC", "text": "#1F1212", "textHeading": "#1A0E0E", "textBody": "#4A3A3A", "textMuted": "#5A4A4A", "textFaint": "#6A5A5A", "textLighter": "#8A7A7A", "successBg": "#F0E0E0", "successBorder": "#D8C0C0", "warningBg": "#F0E8E8", "warningBorder": "#D8D0D8", "errorBg": "#EDE8E8", "errorBorder": "#D8C8C8", "errorIcon": "#5C2222", "info": "#3A2A4A", "infoBg": "#F0EBF2", "infoBorder": "#D8CDE0"}}, {"id": "theme-6", "name": "Midnight Indigo & Burnt Orange", "description": "Deep indigo primary with burnt orange accent on a cool lavender background. Authoritative and warm.", "colors": {"primary": "#312E81", "primaryHover": "#26245E", "primaryActive": "#1A1860", "primaryLight": "#5B5BAE", "primaryLighter": "#8080CC", "accent": "#C2410C", "accentHover": "#9A3408", "accentActive": "#7A2806", "bg": "#F0F0F8", "bgSubtle": "#F5F5FA", "surface": "#FFFFFF", "surfaceBorder": "#D5D5E5", "surfaceSubtle": "#DCE0EC", "text": "#12122E", "textHeading": "#0E0E22", "textBody": "#3E3E5E", "textMuted": "#4E4E6E", "textFaint": "#5E5E7E", "textLighter": "#8A8AAB", "successBg": "#E0E0F0", "successBorder": "#C0C0E0", "warningBg": "#F0E8E0", "warningBorder": "#D8C8B8", "errorBg": "#EDE8F0", "errorBorder": "#D0D0E0", "errorIcon": "#4A2E5E", "info": "#1E2A5F", "infoBg": "#E8E8F5", "infoBorder": "#C8C8E8"}}, {"id": "theme-7", "name": "Rose & Teal", "description": "Vibrant rose primary with deep teal accent on a soft pink background. Bold and compassionate.", "colors": {"primary": "#BE185D", "primaryHover": "#9D174B", "primaryActive": "#831843", "primaryLight": "#D94A8A", "primaryLighter": "#E870A8", "accent": "#0F766E", "accentHover": "#0A5A54", "accentActive": "#064A44", "bg": "#FBF1F5", "bgSubtle": "#FDF6F9", "surface": "#FFFFFF", "surfaceBorder": "#D8C8D2", "surfaceSubtle": "#ECDCE4", "text": "#1F0F16", "textHeading": "#1A0C12", "textBody": "#4A2D3A", "textMuted": "#5A3D4A", "textFaint": "#6A4A58", "textLighter": "#8A6A78", "successBg": "#F0DCE6", "successBorder": "#D8B8C8", "warningBg": "#F0E8E0", "warningBorder": "#C8E0D8", "errorBg": "#EDE0E8", "errorBorder": "#D8C0D0", "errorIcon": "#831843", "info": "#3A1A4A", "infoBg": "#F5E8F0", "infoBorder": "#E0C8D8"}}, {"id": "theme-8", "name": "Ocean & Gold", "description": "Cyan ocean primary with warm gold accent on a cool icy background. Fresh and authoritative.", "colors": {"primary": "#0E7490", "primaryHover": "#0E5A78", "primaryActive": "#0A4A62", "primaryLight": "#22D3EE", "primaryLighter": "#67E8F9", "accent": "#CA8A04", "accentHover": "#B07602", "accentActive": "#966400", "bg": "#EFF7FA", "bgSubtle": "#F2F9FB", "surface": "#FFFFFF", "surfaceBorder": "#C8DDE6", "surfaceSubtle": "#DCEAF0", "text": "#0A1F2E", "textHeading": "#06141E", "textBody": "#3A5A6A", "textMuted": "#4A6A7A", "textFaint": "#5A7A8A", "textLighter": "#8AAAB8", "successBg": "#D0EBF5", "successBorder": "#A8D0E6", "warningBg": "#F5EDE0", "warningBorder": "#E8D8B8", "errorBg": "#F0EAF2", "errorBorder": "#D8D0E0", "errorIcon": "#5A2E6A", "info": "#1A3A5A", "infoBg": "#E8F2F8", "infoBorder": "#C0D8E8"}}, {"id": "theme-9", "name": "Slate & Emerald", "description": "Dark slate primary with vibrant emerald accent on a cool grey background. Professional and modern.", "colors": {"primary": "#334155", "primaryHover": "#1E293B", "primaryActive": "#0F172A", "primaryLight": "#10B981", "primaryLighter": "#34D399", "accent": "#059669", "accentHover": "#047857", "accentActive": "#03624A", "bg": "#F4F5F8", "bgSubtle": "#F7F8FB", "surface": "#FFFFFF", "surfaceBorder": "#D5D8E0", "surfaceSubtle": "#E2E5EC", "text": "#1A1F2E", "textHeading": "#10141E", "textBody": "#3A4A5A", "textMuted": "#4A5A6A", "textFaint": "#5A6A7A", "textLighter": "#8A9AAB", "successBg": "#E2E5EC", "successBorder": "#C0C5D2", "warningBg": "#E8F0EC", "warningBorder": "#D0E0D8", "errorBg": "#EDEEF2", "errorBorder": "#D8D0E0", "errorIcon": "#5A2E4A", "info": "#2A3A5A", "infoBg": "#EDEEF2", "infoBorder": "#D0D4DE"}}];
+
+const STORAGE_KEY = 'ace-theme';
+
+function hexToRgb(hex) {
+  const m = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  if (!m) return '0,0,0';
+  return `${parseInt(m[1], 16)},${parseInt(m[2], 16)},${parseInt(m[3], 16)}`;
+}
+
+function getActiveTheme() {
+  const id = document.documentElement.getAttribute('data-theme') || 'theme-1';
+  return THEMES.find(t => t.id === id) || THEMES[0];
+}
+
+function applyTheme(theme) {
+  const c = theme.colors;
+  const root = document.documentElement;
+  const set = (name, val) => root.style.setProperty(name, val);
+  set('--color-primary', c.primary);
+  set('--color-primary-hover', c.primaryHover);
+  set('--color-primary-active', c.primaryActive);
+  set('--color-primary-light', c.primaryLight);
+  set('--color-primary-lighter', c.primaryLighter);
+  set('--color-primary-rgb', hexToRgb(c.primary));
+  set('--color-primary-lighter-rgb', hexToRgb(c.primaryLighter));
+  set('--color-accent', c.accent);
+  set('--color-accent-hover', c.accentHover);
+  set('--color-accent-active', c.accentActive);
+  set('--color-accent-rgb', hexToRgb(c.accent));
+  set('--color-bg', c.bg);
+  set('--color-bg-rgb', hexToRgb(c.bg));
+  set('--color-bg-subtle', c.bgSubtle);
+  set('--color-bg-subtle-rgb', hexToRgb(c.bgSubtle));
+  set('--color-surface', c.surface);
+  set('--color-surface-border', c.surfaceBorder);
+  set('--color-surface-border-rgb', hexToRgb(c.surfaceBorder));
+  set('--color-surface-subtle', c.surfaceSubtle);
+  set('--color-text', c.text);
+  set('--color-text-rgb', hexToRgb(c.text));
+  set('--color-text-heading', c.textHeading);
+  set('--color-text-body', c.textBody);
+  set('--color-text-muted', c.textMuted);
+  set('--color-text-faint', c.textFaint);
+  set('--color-text-lighter', c.textLighter);
+  set('--color-success-bg', c.successBg);
+  set('--color-success-border', c.successBorder);
+  set('--color-warning-bg', c.warningBg);
+  set('--color-warning-border', c.warningBorder);
+  set('--color-error-bg', c.errorBg);
+  set('--color-error-border', c.errorBorder);
+  set('--color-error-icon', c.errorIcon);
+  set('--color-info', c.info);
+  set('--color-info-bg', c.infoBg);
+  set('--color-info-border', c.infoBorder);
+  root.setAttribute('data-theme', theme.id);
+}
+
+function setTheme(id) {
+  const theme = THEMES.find(t => t.id === id);
+  if (!theme) return;
+  applyTheme(theme);
+  localStorage.setItem(STORAGE_KEY, id);
+  const select = document.getElementById('theme-select');
+  if (select) select.value = id;
+  const dot = document.getElementById('theme-dot');
+  if (dot) dot.style.background = theme.colors.primary;
+  document.querySelectorAll('[data-theme-id]').forEach(el => {
+    el.classList.toggle('theme-card-active', el.dataset.themeId === id);
+  });
+  renderColors();
+}
+
+function loadTheme() {
+  const params = new URLSearchParams(location.search);
+  const id = params.get('theme') || localStorage.getItem(STORAGE_KEY) || 'theme-1';
+  setTheme(id);
+}
+
+function copyToClipboard(text) {
+  navigator.clipboard.writeText(text).then(() => showToast('Copied ' + text)).catch(() => showToast(text));
+}
+
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.style.opacity = '1';
+  toast.style.transform = 'translate(-50%, -4px)';
+  setTimeout(() => { toast.style.opacity = '0'; toast.style.transform = 'translate(-50%, 0px)'; }, 1600);
+}
+
+function buildConfig(theme) {
+  const c = theme.colors;
+  return `/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./index.html", "./*.html"],
+  theme: {
+    extend: {
+      colors: {
+        primary: { DEFAULT: "${c.primary}", hover: "${c.primaryHover}", active: "${c.primaryActive}", light: "${c.primaryLight}", lighter: "${c.primaryLighter}" },
+        accent: { DEFAULT: "${c.accent}", hover: "${c.accentHover}", active: "${c.accentActive}" },
+        bg: { DEFAULT: "${c.bg}", subtle: "${c.bgSubtle}" },
+        surface: { DEFAULT: "${c.surface}", border: "${c.surfaceBorder}", subtle: "${c.surfaceSubtle}" },
+        text: { DEFAULT: "${c.text}", heading: "${c.textHeading}", body: "${c.textBody}", muted: "${c.textMuted}", faint: "${c.textFaint}", lighter: "${c.textLighter}" },
+        success: { bg: "${c.successBg}", border: "${c.successBorder}" },
+        warning: { bg: "${c.warningBg}", border: "${c.warningBorder}" },
+        error: { bg: "${c.errorBg}", border: "${c.errorBorder}", icon: "${c.errorIcon}" },
+      },
+      fontFamily: {
+        sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
+        serif: ['Georgia', 'Times New Roman', 'Times', 'serif'],
+        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
+      },
+      borderRadius: { card: '16px', btn: '12px', pill: '999px' },
+      boxShadow: {
+        btn: '0 1px 2px rgba(0,0,0,.05)',
+        'btn-hover': '0 4px 12px rgba(${hexToRgb(c.primary)},.25)',
+        card: '0 1px 3px rgba(0,0,0,.04)',
+        'card-hover': '0 8px 24px rgba(${hexToRgb(c.primary)},.08)',
+      },
+    },
+  },
+  plugins: [],
+}
+`;
+}
+
+function downloadConfig() {
+  const theme = getActiveTheme();
+  const blob = new Blob([buildConfig(theme)], { type: 'application/javascript' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `tailwind-${theme.id}.config.js`;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+}
+
+function renderGallery() {
+  const gallery = document.getElementById('theme-gallery');
+  if (!gallery) return;
+  gallery.innerHTML = THEMES.map(t => {
+    const c = t.colors;
+    return `<button type="button" data-theme-id="${t.id}" class="theme-card card p-0 overflow-hidden text-left block w-full no-underline rounded-2xl focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]">
+      <div class="h-[120px] flex items-center justify-center" style="background: linear-gradient(135deg, ${c.primary} 0%, ${c.primaryActive} 100%);">
+        <img src="logo.png" alt="ACE Haematology" class="h-12 w-auto brightness-0 invert">
+      </div>
+      <div class="p-5">
+        <div class="text-[11px] font-semibold uppercase tracking-wide text-[var(--color-text-faint)] mb-1">Theme</div>
+        <h3 class="text-[18px] font-bold tracking-tight text-[var(--color-text)]">${t.name}</h3>
+        <p class="text-[13px] text-[var(--color-text-muted)] mt-1 leading-6">${t.description}</p>
+        <div class="mt-4 flex items-center gap-2">
+          <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:${c.primary}" title="Primary ${c.primary}"></div>
+          <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:${c.accent}" title="Accent ${c.accent}"></div>
+          <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:${c.bg}" title="Background ${c.bg}"></div>
+          <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:${c.text}" title="Text ${c.text}"></div>
+        </div>
+      </div>
+    </button>`;
+  }).join('');
+  gallery.querySelectorAll('[data-theme-id]').forEach(btn => {
+    btn.addEventListener('click', () => setTheme(btn.dataset.themeId));
+  });
+}
+
+function renderColors() {
+  const root = document.getElementById('colors-root');
+  if (!root) return;
+  const t = getActiveTheme();
+  const c = t.colors;
+  const swatch = (hex, label, description = '') => {
+    const textColor = isLight(hex) ? 'var(--color-text)' : 'white';
+    return `<div class="swatch">
+      <div class="h-[88px] flex items-end justify-start p-3" style="background:${hex}">
+        <span class="mono text-[13px] font-semibold" style="color:${textColor}">${hex}</span>
+      </div>
+      <div class="p-4">
+        <div class="flex justify-between items-center mb-1">
+          <span class="text-[13px] font-semibold text-[var(--color-text)]">${label}</span>
+          <button data-hex="${hex}" class="copy-btn text-[11px] px-2 py-1 rounded-md bg-[var(--color-bg)] hover:bg-[var(--color-surface-border)] text-[var(--color-text-body)]">Copy</button>
+        </div>
+        ${description ? `<div class="text-[12px] text-[var(--color-text-muted)]">${description}</div>` : ''}
+      </div>
+    </div>`;
+  };
+  function isLight(hex) {
+    const m = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    if (!m) return true;
+    const r = parseInt(m[1], 16), g = parseInt(m[2], 16), b = parseInt(m[3], 16);
+    return (r * 0.299 + g * 0.587 + b * 0.114) > 140;
+  }
+  root.innerHTML = `
+    <div class="card p-6 sm:p-8 mb-6">
+      <h3 class="font-semibold text-[var(--color-text)] mb-1">Primary</h3>
+      <p class="text-sm text-[var(--color-text-muted)] mb-5">Core brand, primary actions, links, focus.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        ${swatch(c.primary, 'Default', 'Primary buttons, links, active nav')}
+        ${swatch(c.primaryHover, 'Hover', 'Hover states, emphasis')}
+        ${swatch(c.primaryActive, 'Active', 'Pressed, deep backgrounds')}
+      </div>
+    </div>
+    <div class="card p-6 sm:p-8 mb-6">
+      <h3 class="font-semibold text-[var(--color-text)] mb-1">Secondary / Light</h3>
+      <p class="text-sm text-[var(--color-text-muted)] mb-5">Support, success, highlights, charts.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        ${swatch(c.primaryLight, 'Light', 'Secondary actions, illustrations')}
+        ${swatch(c.primaryLighter, 'Lighter', 'Highlights, charts, backgrounds')}
+        ${swatch(c.accent, 'Accent', 'CTA, warnings, premium actions')}
+      </div>
+    </div>
+    <div class="grid lg:grid-cols-2 gap-6 mb-6">
+      <div class="card p-6 sm:p-8">
+        <h3 class="font-semibold mb-1 text-[var(--color-text)]">Neutrals / Surface</h3>
+        <p class="text-sm text-[var(--color-text-muted)] mb-5">Backgrounds, borders, subtle surfaces.</p>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          ${swatch(c.bg, 'App bg')}
+          ${swatch(c.bgSubtle, 'Subtle bg')}
+          ${swatch(c.surface, 'Surface')}
+          ${swatch(c.surfaceBorder, 'Border')}
+          ${swatch(c.surfaceSubtle, 'Subtle surface')}
+          ${swatch(c.text, 'Text')}
+        </div>
+      </div>
+      <div class="card p-6 sm:p-8">
+        <h3 class="font-semibold mb-1 text-[var(--color-text)]">Text</h3>
+        <p class="text-sm text-[var(--color-text-muted)] mb-5">Hierarchy for clinical readability.</p>
+        <div class="space-y-3">
+          ${swatch(c.textHeading, 'Headings')}
+          ${swatch(c.text, 'Primary text')}
+          ${swatch(c.textBody, 'Body')}
+          ${swatch(c.textMuted, 'Muted')}
+          ${swatch(c.textFaint, 'Faint')}
+          ${swatch(c.textLighter, 'Lighter')}
+        </div>
+      </div>
+    </div>
+    <div class="card p-6 sm:p-8 mb-6">
+      <h3 class="font-semibold text-[var(--color-text)] mb-1">Status & Accents</h3>
+      <p class="text-sm text-[var(--color-text-muted)] mb-5">Use sparingly for status and categorisation.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        ${swatch(c.info, 'Info', 'Links, badges, guidance')}
+        ${swatch(c.errorIcon, 'Error / Critical', 'Errors, alerts, critical actions')}
+        ${swatch(c.accent, 'Accent', 'Warnings, premium actions')}
+      </div>
+    </div>
+    <div class="grid lg:grid-cols-3 gap-6">
+      <div class="card p-6 sm:p-8">
+        <h3 class="font-semibold text-[var(--color-text)] mb-1">Success</h3>
+        <div class="space-y-3">
+          ${swatch(c.successBg, 'Background')}
+          ${swatch(c.successBorder, 'Border')}
+        </div>
+      </div>
+      <div class="card p-6 sm:p-8">
+        <h3 class="font-semibold text-[var(--color-text)] mb-1">Warning</h3>
+        <div class="space-y-3">
+          ${swatch(c.warningBg, 'Background')}
+          ${swatch(c.warningBorder, 'Border')}
+        </div>
+      </div>
+      <div class="card p-6 sm:p-8">
+        <h3 class="font-semibold text-[var(--color-text)] mb-1">Error</h3>
+        <div class="space-y-3">
+          ${swatch(c.errorBg, 'Background')}
+          ${swatch(c.errorBorder, 'Border')}
+          ${swatch(c.errorIcon, 'Icon')}
+        </div>
+      </div>
+    </div>
+  `;
+  root.querySelectorAll('[data-hex]').forEach(btn => {
+    btn.addEventListener('click', () => copyToClipboard(btn.dataset.hex));
+  });
+}
+
+function init() {
+  // Theme selector dropdown
+  const select = document.getElementById('theme-select');
+  if (select) {
+    select.innerHTML = THEMES.map(t => `<option value="${t.id}">${t.name}</option>`).join('');
+    select.addEventListener('change', () => setTheme(select.value));
+  }
+
+  document.getElementById('download-config')?.addEventListener('click', downloadConfig);
+
+  renderGallery();
+  loadTheme();
+
+  // Navigation active state
+  const navLinks = document.querySelectorAll('[data-nav]');
+  const sections = [...document.querySelectorAll('main section[id]')];
+  function setActive(id) {
+    navLinks.forEach(l => l.classList.toggle('active', l.dataset.nav === id));
+  }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) setActive(entry.target.id); });
+  }, { rootMargin: '-40% 0px -55% 0px', threshold: 0.01 });
+  sections.forEach(s => observer.observe(s));
+  navLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const id = link.dataset.nav;
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setActive(id);
+    });
+  });
+
+  // Copy buttons
+  document.addEventListener('click', e => {
+    const btn = e.target.closest('[data-hex]');
+    if (btn) copyToClipboard(btn.dataset.hex);
+  });
+
+  // Toggle
+  const toggle = document.getElementById('toggle');
+  if (toggle) {
+    toggle.addEventListener('click', () => {
+      const pressed = toggle.getAttribute('aria-pressed') === 'true';
+      toggle.setAttribute('aria-pressed', String(!pressed));
+      toggle.classList.toggle('on', !pressed);
+      const knob = toggle.querySelector('span');
+      if (knob) knob.style.transform = !pressed ? 'translateX(20px)' : 'translateX(0)';
+    });
+  }
+
+  // Modal
+  const modal = document.getElementById('modal');
+  document.getElementById('openModal')?.addEventListener('click', () => modal.classList.remove('hidden'));
+  modal?.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', () => modal.classList.add('hidden')));
+
+  // Tabs
+  const tabs = document.querySelectorAll('[data-tab]');
+  const panels = document.querySelectorAll('[data-panel]');
+  tabs.forEach(t => t.addEventListener('click', () => {
+    tabs.forEach(x => x.classList.remove('active-tab'));
+    t.classList.add('active-tab');
+    panels.forEach(p => p.classList.toggle('hidden', p.dataset.panel !== t.dataset.tab));
+  }));
+
+  // Artifact link click handler
+  document.addEventListener('click', e => {
+    const a = e.target.closest('[data-product-id]');
+    if (!a) return;
+    e.preventDefault();
+    const pid = a.getAttribute('data-product-id');
+    if (pid) parent.postMessage({ type: 'ecto-artifact-link-click', productId: pid }, '*');
+  });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
+</script>
 </body>
 </html>
