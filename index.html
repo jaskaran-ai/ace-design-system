@@ -113,9 +113,10 @@
   <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
     <div class="h-[68px] flex items-center justify-between gap-4">
       <div class="flex items-center gap-3">
-        <div class="w-9 h-9 rounded-[10px] bg-[var(--color-primary)] flex items-center justify-center text-white font-extrabold text-[18px] shadow-[inset_0_1px_0_rgba(255,255,255,0.2)]">A</div>
         <div>
-          <div class="font-semibold tracking-tight leading-none text-[var(--color-text)]">ACE Haematology</div>
+          <div class="font-semibold tracking-tight leading-none text-[var(--color-text)]">
+            <img src="logo.png" alt="ACE Haematology" class="h-8 w-auto brightness-0">
+          </div>
           <div class="text-[11px] text-[var(--color-text-faint)] font-medium -mt-0.5">Design System — Theme Gallery</div>
         </div>
       </div>
@@ -1159,19 +1160,20 @@ function renderGallery() {
   gallery.innerHTML = THEMES.map(t => {
     const c = t.colors;
     return `<button type="button" data-theme-id="${t.id}" class="theme-card card p-0 overflow-hidden text-left block w-full no-underline rounded-2xl focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]">
-      <div class="h-[120px] flex items-center justify-center" style="background: linear-gradient(135deg, ${c.primary} 0%, ${c.primaryActive} 100%);">
-        <img src="logo.png" alt="ACE Haematology" class="h-12 w-auto brightness-0 invert">
+      <div class="h-[80px] flex items-center justify-center" style="background: linear-gradient(135deg, ${c.primary} 0%, ${c.primaryActive} 100%);">
+        <img src="logo.png" alt="ACE Haematology" class="h-10 w-auto brightness-0 invert">
       </div>
       <div class="p-5">
-        <div class="text-[11px] font-semibold uppercase tracking-wide text-[var(--color-text-faint)] mb-1">Theme</div>
-        <h3 class="text-[18px] font-bold tracking-tight text-[var(--color-text)]">${t.name}</h3>
-        <p class="text-[13px] text-[var(--color-text-muted)] mt-1 leading-6">${t.description}</p>
-        <div class="mt-4 flex items-center gap-2">
-          <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:${c.primary}" title="Primary ${c.primary}"></div>
-          <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:${c.accent}" title="Accent ${c.accent}"></div>
-          <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:${c.bg}" title="Background ${c.bg}"></div>
-          <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:${c.text}" title="Text ${c.text}"></div>
+        <div class="flex items-center justify-between gap-2">
+            <h3 class="text-[18px] font-bold tracking-tight text-[var(--color-text)]">${t.name}</h3>
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:${c.primary}" title="Primary ${c.primary}"></div>
+              <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:${c.accent}" title="Accent ${c.accent}"></div>
+              <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:${c.bg}" title="Background ${c.bg}"></div>
+              <div class="w-7 h-7 rounded-full border-2 border-white shadow-sm" style="background:${c.text}" title="Text ${c.text}"></div>
+          </div>
         </div>
+        <p class="text-[13px] text-[var(--color-text-muted)] mt-2 leading-6">${t.description}</p>
       </div>
     </button>`;
   }).join('');
