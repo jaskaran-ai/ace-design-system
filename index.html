@@ -738,7 +738,7 @@
                 <h3 class="text-[22px] font-semibold text-[var(--color-text)]">Homepage demo</h3>
                 <p class="text-[14px] text-[var(--color-text-muted)] mt-0.5 max-w-[640px]">A full-page homepage layout using the design system: hero, stat bar, audience cards, ACE Intelligence, Essay Analyser spotlight, platform grid, Social Hub, roadmap, final CTA and footer.</p>
               </div>
-              <a href="homepage.html" target="_blank" class="btn-primary text-[13px] inline-flex items-center gap-1.5 self-start">
+              <a id="homepage-demo-link" href="homepage.html?theme=theme-1" target="_blank" class="btn-primary text-[13px] inline-flex items-center gap-1.5 self-start">
                 Open homepage demo
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><title>External link icon</title><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
               </a>
@@ -1076,6 +1076,8 @@ function setTheme(id) {
   if (select) select.value = id;
   const dot = document.getElementById('theme-dot');
   if (dot) dot.style.background = theme.colors.primary;
+  const demoLink = document.getElementById('homepage-demo-link');
+  if (demoLink) demoLink.href = `homepage.html?theme=${id}`;
   document.querySelectorAll('[data-theme-id]').forEach(el => {
     el.classList.toggle('theme-card-active', el.dataset.themeId === id);
   });
