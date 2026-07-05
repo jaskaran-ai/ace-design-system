@@ -117,7 +117,11 @@ function populateThemeSelector() {
 }
 
 loadTheme();
-populateThemeSelector();
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', populateThemeSelector);
+} else {
+  populateThemeSelector();
+}
 </script>
 </head>
 <body>
