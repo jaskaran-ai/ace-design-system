@@ -89,13 +89,50 @@ function loadTheme() {
   applyTheme(theme);
 }
 
+function setTheme(id) {
+  const theme = THEMES.find(t => t.id === id);
+  if (!theme) return;
+  applyTheme(theme);
+  localStorage.setItem("ace-theme", id);
+  const select = document.getElementById('theme-select');
+  if (select) select.value = id;
+  const dot = document.getElementById('theme-dot');
+  if (dot) dot.style.background = theme.colors.primary;
+  const url = new URL(location.href);
+  url.searchParams.set('theme', id);
+  history.replaceState(null, '', url);
+}
+
+function populateThemeSelector() {
+  const select = document.getElementById('theme-select');
+  if (!select) return;
+  select.innerHTML = THEMES.map(t => `<option value="${t.id}">${t.name}</option>`).join('');
+  const params = new URLSearchParams(location.search);
+  const id = params.get('theme') || localStorage.getItem("ace-theme") || 'theme-1';
+  select.value = THEMES.some(t => t.id === id) ? id : 'theme-1';
+  select.addEventListener('change', () => setTheme(select.value));
+  const dot = document.getElementById('theme-dot');
+  const current = THEMES.find(t => t.id === select.value);
+  if (dot && current) dot.style.background = current.colors.primary;
+}
+
 loadTheme();
+populateThemeSelector();
 </script>
 </head>
 <body>
 
-
-
+<!-- Theme selector bar -->
+<div style="position:relative;z-index:300;background:var(--color-bg);border-bottom:1px solid var(--color-surface-border);">
+  <div style="max-width:1200px;margin:0 auto;padding:10px 24px;display:flex;align-items:center;justify-content:flex-end;gap:12px;">
+    <span style="font-family:Inter,sans-serif;font-size:13px;font-weight:600;color:var(--color-text-muted);">Theme</span>
+    <div style="position:relative;">
+      <select id="theme-select" style="appearance:none;min-width:180px;border-radius:8px;border:1px solid var(--color-surface-border);background:var(--color-surface);color:var(--color-text);font-family:Inter,sans-serif;font-size:13px;font-weight:500;padding:8px 28px 8px 12px;cursor:pointer;"></select>
+      <svg style="position:absolute;right:8px;top:50%;transform:translateY(-50%);width:14px;height:14px;pointer-events:none;color:var(--color-text-faint);" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><title>Theme dropdown</title><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div id="theme-dot" style="width:12px;height:12px;border-radius:50%;border:1px solid var(--color-surface-border);background:var(--color-primary);"></div>
+  </div>
+</div>
 
 <div style="font-family:Georgia,serif;color:var(--color-text-heading);background:var(--color-surface);overflow-x:hidden;">
 
